@@ -16,9 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/ui/*": ["ui/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
+      "@features/*": ["features/*"],
+      "@app/*": ["app/*"],
+      "@assets/*": ["assets/*"],
+      "@utils/*": ["utils/*"]
     },
     "plugins": [
       {
