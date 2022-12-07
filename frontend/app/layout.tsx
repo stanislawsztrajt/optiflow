@@ -1,4 +1,4 @@
-import '@assets/styles/global.css'
+import '@/styles/dist.css'
 
 export default function RootLayout({
   children,
@@ -8,7 +8,9 @@ export default function RootLayout({
   return (
     <html>
       <head></head>
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

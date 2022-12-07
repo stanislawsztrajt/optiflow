@@ -16,10 +16,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@features/*": ["features/*"],
-      "@app/*": ["app/*"],
-      "@assets/*": ["assets/*"],
-      "@utils/*": ["utils/*"]
+      "@/assets/*": ["assets/*"],
+      "@/styles/*": ["styles/*"],
+      "@/app/*": ["app/*"],
+      "@/features/*": ["features/*"],
+      "@/utils/*": ["utils/*"],
     },
     "plugins": [
       {
