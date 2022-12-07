@@ -26,11 +26,9 @@
     "baseUrl": ".",
     "paths": {
       "@/assets/*": ["assets/*"],
-      "@/styles/*": ["styles/*"],
       "@/app/*": ["app/*"],
       "@/features/*": ["features/*"],
       "@/utils/*": ["utils/*"],
-
     }
   },
   "include": [
