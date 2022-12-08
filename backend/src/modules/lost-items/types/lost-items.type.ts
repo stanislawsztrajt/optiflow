@@ -1,0 +1,1 @@
+export type LostItemFoundType = 'Zgubione' | 'Znalezione'

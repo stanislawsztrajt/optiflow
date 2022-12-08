@@ -4,5 +4,5 @@ export const microsoftLoginConfig = {
   scopes: [
     'openid', 'profile', 'User.Read'
   ],
-  authority: 'https://login.microsoftonline.com/common'
+  authority: 'https://login.microsoftonline.com/office.technikum.kalisz.pl'
 }
