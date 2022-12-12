@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import { BookCategoryType, BookLookType } from '../types/books.type';
 
 export type BookDocument = HydratedDocument<Book>;
@@ -25,7 +25,7 @@ export class Book {
   look: BookLookType
 
   @Prop()
-  userId: Types.ObjectId | string
+  userId: string
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);

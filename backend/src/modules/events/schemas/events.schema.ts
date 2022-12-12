@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
 export type EventDocument = HydratedDocument<Event>;
 
@@ -24,7 +24,7 @@ export class Event {
   price?: number;
 
   @Prop()
-  userId: Types.ObjectId | string
+  userId: string
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);

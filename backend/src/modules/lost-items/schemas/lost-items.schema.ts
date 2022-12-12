@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import { LostItemFoundType } from '../types/lost-items.type';
 
 export type LostItemDocument = HydratedDocument<LostItem>;
@@ -26,7 +26,7 @@ export class LostItem {
   type: LostItemFoundType;
 
   @Prop()
-  finderId: Types.ObjectId | string
+  finderId: string
   // finder = current owner
 }
 
