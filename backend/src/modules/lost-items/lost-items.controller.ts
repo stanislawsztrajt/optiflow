@@ -19,16 +19,16 @@ export class LostItemsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.lostItemsService.findOne(+id);
+    return this.lostItemsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateLostItemDto: UpdateLostItemDto) {
-    return this.lostItemsService.update(+id, updateLostItemDto);
+    return this.lostItemsService.update(id, updateLostItemDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.lostItemsService.remove(+id);
+    return this.lostItemsService.remove(id);
   }
 }
