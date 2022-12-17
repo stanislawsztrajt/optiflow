@@ -20,15 +20,15 @@ export class BooksService {
     return this.bookModel.find().exec();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.bookModel.findById(id).exec();
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
+  update(id: string, updateBookDto: UpdateBookDto) {
     return this.bookModel.findByIdAndUpdate(id, updateBookDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.bookModel.findByIdAndDelete(id);
   }
 }

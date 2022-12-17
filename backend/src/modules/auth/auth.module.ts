@@ -5,6 +5,7 @@ import { UsersModule } from '../users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 
 import * as dotenv from 'dotenv'
+import { JwtStrategy } from './jwt.strategy';
 dotenv.config()
 
 @Module({
@@ -12,8 +13,14 @@ dotenv.config()
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '7d' },
-    }),],
+    })],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [AuthService, JwtStrategy],
+  exports: [
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '7d' },
+    })
+  ]
 })
 export class AuthModule {}
