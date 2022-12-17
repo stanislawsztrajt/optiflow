@@ -8,10 +8,10 @@ import { BooksModule } from './modules/books/books.module';
 import { EventsModule } from './modules/events/events.module';
 import { LostItemsModule } from './modules/lost-items/lost-items.module';
 import { UsersModule } from './modules/users/users.module';
-import { AuthModule } from './modules/auth/auth.module';
+import { PrivateLessonsModule } from './modules/private-lessons/private-lessons.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), MongooseModule.forRoot(process.env.MONGODB_URI), BooksModule, EventsModule, LostItemsModule, UsersModule, AuthModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), MongooseModule.forRoot(process.env.MONGODB_URI), BooksModule, EventsModule, LostItemsModule, UsersModule, PrivateLessonsModule],
   controllers: [AppController],
   providers: [AppService],
 })
