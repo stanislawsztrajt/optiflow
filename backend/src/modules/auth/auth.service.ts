@@ -35,7 +35,7 @@ export class AuthService {
 
     // if authorize is denied, api returns blank values
     if (JSON.stringify(info) === JSON.stringify(defaultResponseLibrusApi)) {
-      throw new UnauthorizedException();
+      throw new HttpException('Nieprawidłowy login i/lub hasło.', HttpStatus.UNAUTHORIZED)
     }
 
     const user = await this.usersService.findOne({ login: info.account.login })
@@ -52,7 +52,7 @@ export class AuthService {
     const splitedStudentClass: string[] = info.student.class.split(' ')
 
     if (splitedStudentClass[2] !== schoolSymbol) {
-      throw new HttpException('You are not from that school: Technikum im. św. Józefa w Kaliszu', HttpStatus.BAD_REQUEST)
+      throw new HttpException('Nie jesteś ze szkoły Technikum im. św. Józefa w Kaliszu', HttpStatus.UNAUTHORIZED)
     }
 
     const name: string = nameSurname[0];
