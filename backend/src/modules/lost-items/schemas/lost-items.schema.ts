@@ -26,8 +26,7 @@ export class LostItem {
   type: LostItemFoundType;
 
   @Prop()
-  finderId: string
-  // finder = current owner
+  userId: string
 }
 
 export const LostItemSchema = SchemaFactory.createForClass(LostItem);

@@ -21,8 +21,8 @@ export class PrivateLesson {
   @Prop({ max: 10000000000  })
   price: number;
 
-  @Prop({ maxlength: 100  })
-  date: string;
+  @Prop()
+  date: Date;
 
   @Prop()
   userId: string;
