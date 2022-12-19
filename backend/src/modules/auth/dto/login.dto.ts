@@ -7,7 +7,6 @@ export class LoginDto {
   @IsOptional({
     message: 'login is required',
   })
-  @MinLength(2)
   login: string;
 
   @IsString({
@@ -16,6 +15,5 @@ export class LoginDto {
   @IsOptional({
     message: 'password is required',
   })
-  @MinLength(2)
   password: string;
 }

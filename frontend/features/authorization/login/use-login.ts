@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import authServices from "@/utils/api/auth-services"
 import { IloginDto } from "../types";
 import { useRouter } from "next/navigation";
+import { Ierror } from "@/utils/types/api";
 
 
 const useLogin = () => {
@@ -17,13 +18,14 @@ const useLogin = () => {
     setLoading(true)
     try {
       const data = await authServices.login(loginDto);
+      setError('')
       Cookies.set('user', JSON.stringify(data.user))
       Cookies.set('jwt', data.jwt)
 
       router.push('/dashboard')
     } catch(err) {
-      console.log(err)
-      const error = err as unknown as { response: { data: { message: string } } }
+      console.error(err)
+      const error = err as unknown as Ierror
       setError(error.response.data.message)
     }
     setLoading(false)
