@@ -21,7 +21,4 @@ export class CreateLostItemDto {
 
   @IsEnum(LostItemFoundEnum)
   type: LostItemFoundEnum;
-
-  finderId: string
-  // finder = current owner
 }
