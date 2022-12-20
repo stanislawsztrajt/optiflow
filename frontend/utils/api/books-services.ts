@@ -1,12 +1,13 @@
 import { Ibook } from '@/features/books/types';
 import axios from 'axios'
+import { authHeader } from '../constans/user';
 import { Iresponse } from "../types/api";
 
 const url = `${process.env.NEXT_PUBLIC_API_URL}/books`
 
 class BooksServices {
   async create (book: Ibook): Promise<Ibook> {
-    const { data }: Iresponse<Ibook> = await axios.post(url, book)
+    const { data }: Iresponse<Ibook> = await axios.post(url, book, authHeader)
     return data
   }
 
@@ -21,12 +22,12 @@ class BooksServices {
   }
 
   async update (book: Ibook, id: string): Promise<Ibook> {
-    const { data }: Iresponse<Ibook> = await axios.patch(`${url}/${id}`, book)
+    const { data }: Iresponse<Ibook> = await axios.patch(`${url}/${id}`, book, authHeader)
     return data
   }
 
   async remove (id: string): Promise<Ibook> {
-    const { data }: Iresponse<Ibook> = await axios.delete(`${url}/${id}`)
+    const { data }: Iresponse<Ibook> = await axios.delete(`${url}/${id}`, authHeader)
     return data
   }
 }
