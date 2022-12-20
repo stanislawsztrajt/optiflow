@@ -17,7 +17,7 @@ export class UsersService {
     return await this.userModel.findOne(query).exec();
   }
 
-  async isUserAlreadyExist(login: string): Promise<boolean> {
+  async isAlreadyExist(login: string): Promise<boolean> {
     const user = await this.findOne({ login });
     if (user) {
       return true
@@ -25,8 +25,16 @@ export class UsersService {
     return false
   }
 
-  async craeteUser(user: User): Promise<User> {
+  async craete(user: User): Promise<User> {
     const createdUser = new this.userModel(user);
     return createdUser.save()
+  }
+
+  async update(id: string, user: User): Promise<User> {
+    return await this.userModel.findByIdAndUpdate(id, user);
+  }
+
+  async remove(id: string): Promise<User> {
+    return await this.userModel.findByIdAndRemove(id);
   }
 }
