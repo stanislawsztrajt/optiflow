@@ -21,7 +21,7 @@ const defaultResponseLibrusApi = {
   }
 }
 
-
+// TODO: Add better validation, if user has not equal info to past, change to present from api
 
 @Injectable()
 export class AuthService {
