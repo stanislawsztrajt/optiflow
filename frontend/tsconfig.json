@@ -29,6 +29,7 @@
       "@/app/*": ["app/*"],
       "@/features/*": ["features/*"],
       "@/utils/*": ["utils/*"],
+      "@/redux/*": ["redux/*"],
     }
   },
   "include": [
