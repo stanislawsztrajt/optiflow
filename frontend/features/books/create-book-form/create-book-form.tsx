@@ -8,7 +8,7 @@ import { Field, Form, Formik } from 'formik';
 
 
 const CreateBookForm: FC = () => {
-  const { error, loading, initialValues, createBook, setImages, images } = useCreateBookForm();
+  const { error, loading, initialValues, validationSchema, createBook, setImages, images } = useCreateBookForm();
 
   const categoryOptions = BookCategories.map(category => {
     return (
@@ -26,6 +26,7 @@ const CreateBookForm: FC = () => {
     <>
     <Formik
       initialValues={initialValues}
+      validationSchema={validationSchema}
       onSubmit={(values) => createBook(values as unknown as Ibook)}
     >
       <Form>
