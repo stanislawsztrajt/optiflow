@@ -18,7 +18,7 @@ export class Book {
   @Prop()
   images: string[];
 
-  @Prop({ max: 100000000000 })
+  @Prop({ max: 10000000000 })
   price: number;
 
   @Prop()

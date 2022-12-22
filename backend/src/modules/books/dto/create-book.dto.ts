@@ -1,5 +1,5 @@
-import { IsString, IsOptional, IsArray, IsNumber } from 'class-validator';
-import { BookCategoryType, BookLookType } from '../types/books.type';
+import { IsString, IsOptional, IsArray, IsNumber, MaxLength, IsEnum, ArrayMaxSize, Max, MinLength } from 'class-validator';
+import { BookCategoryType, BookLookType, BookLookEnum, BookCategoryEnum } from '../types/books.type';
 
 export class CreateBookDto {
   @IsString({
@@ -8,6 +8,8 @@ export class CreateBookDto {
   @IsOptional({
     message: 'title is required',
   })
+  @MaxLength(100)
+  @MinLength(5)
   title: string;
 
   @IsString({
@@ -16,37 +18,36 @@ export class CreateBookDto {
   @IsOptional({
     message: 'description is required',
   })
+  @MaxLength(500)
+  @MinLength(5)
   description: string;
 
   @IsOptional({
     message: 'category is required',
   })
+  @IsEnum(BookCategoryEnum)
+  @MaxLength(500)
   category: BookCategoryType;
 
   @IsArray({
-    message: 'images must be an array of Urls',
+    message: 'images must be an array',
   })
   @IsOptional({
     message: 'images is required',
   })
+  @ArrayMaxSize(3)
   images: string[];
 
   @IsNumber()
   @IsOptional({
     message: 'price is required',
   })
+  @Max(10000000000)
   price: number;
 
   @IsOptional({
     message: 'look is required',
   })
+  @IsEnum(BookLookEnum)
   look: BookLookType;
-
-  @IsString({
-    message: 'userId must be a string',
-  })
-  @IsOptional({
-    message: 'userId is required',
-  })
-  userId: string;
 }
