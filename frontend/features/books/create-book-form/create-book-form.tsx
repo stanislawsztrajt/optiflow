@@ -221,7 +221,7 @@ const CreateBookForm: FC = () => {
               className="mt-4 create-button-submit"
               type="submit"
             >
-              {loading ? <Loading /> : 'Dodaj książkę'}
+              {loading ? <Loading /> : "Dodaj książkę"}
             </button>
           </Form>
         )}

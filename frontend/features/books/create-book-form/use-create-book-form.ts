@@ -7,8 +7,10 @@ import { Ierror } from "@/utils/types/api";
 import { useEffect, useState } from "react";
 import { Ibook } from "../types";
 import { useRouter } from "next/navigation";
-import { createBookInitialValues, createBookValidationSchema } from "./create-book-form-config";
-
+import {
+  createBookInitialValues,
+  createBookValidationSchema,
+} from "./create-book-form-config";
 
 const useCreateBookForm = () => {
   const router = useRouter();
@@ -38,14 +40,14 @@ const useCreateBookForm = () => {
       const book: Ibook = { ...values, images: uploadedImages };
       await booksServices.create(book);
       successAlert("Dodano twoją książkę");
-      router.push('/dashboard')
+      router.push("/dashboard");
     } catch (err) {
       errorAlert("Problem z serverem... spróbuj później");
       console.error(err);
       const error = err as unknown as Ierror;
       setError(error.response.data.message);
     }
-    
+
     setLoading(false);
   };
 
