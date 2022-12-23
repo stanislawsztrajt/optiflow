@@ -1,5 +1,5 @@
 const useLoading = () => {
-  return {}
-}
+  return {};
+};
 
-export default useLoading
+export default useLoading;

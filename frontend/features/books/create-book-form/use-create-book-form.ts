@@ -1,67 +1,65 @@
-'use client'
+"use client";
 
-import booksServices from "@/utils/api/books-services"
+import booksServices from "@/utils/api/books-services";
 import { uploadImages } from "@/utils/helpers/cloudinary";
 import { errorAlert, successAlert } from "@/utils/helpers/sweet-alert";
 import { Ierror } from "@/utils/types/api";
-import { title } from "process";
-import { useState } from "react"
-import { BookCategoryEnum, BookLookEnum, Ibook } from "../types"
-import * as Yup from 'yup'
+import { useEffect, useState } from "react";
+import { Ibook } from "../types";
+import { useRouter } from "next/navigation";
+import { createBookInitialValues, createBookValidationSchema } from "./create-book-form-config";
 
-const initialValues = {
-  title: '',
-  description: '',
-  price: 0,
-  category: BookCategoryEnum.MATH,
-  look: BookLookEnum.GOOD
-}
-
-const validationSchema = Yup.object({
-  title: Yup.string()
-    .min(5, 'Tytuł musi mieć conajmniej 5 znaków')
-    .max(100 ,'Tytuł musi być krótszy niż 100 znaków')
-    .required('Tytuł jest wymagany'),
-  description: Yup.string()
-    .min(5, 'Opis musi mieć conajmniej 5 znaków')
-    .max(500 ,'Opis musi być krótszy niż 500 znaków')
-    .required('Opis jest wymagany'),
-  price: Yup.number()
-    .max(10000000, 'Cena musi być mniejsza niż 10000000')
-    .required('Cena jest wymagana'),
-})
 
 const useCreateBookForm = () => {
+  const router = useRouter();
+
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [images, setImages] = useState([]);
+  const [imagesUrls, setImagesUrls] = useState<string[]>([]);
+
+  useEffect(() => {
+    setImagesUrls(
+      images.map((image) => {
+        return URL.createObjectURL(image);
+      })
+    );
+  }, [images]);
+
+  const handleSetImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImages(Array.from(e.target.files as unknown as []).splice(0, 3));
+  };
 
   const createBook = async (values: Ibook) => {
-    setLoading(true)
+    setLoading(true);
 
     try {
       const uploadedImages = await uploadImages(images as []);
       const book: Ibook = { ...values, images: uploadedImages };
       await booksServices.create(book);
-      successAlert('Dodano twoją książkę')
+      successAlert("Dodano twoją książkę");
+      router.push('/dashboard')
     } catch (err) {
-      errorAlert('Problem z serverem... spróbuj później')
-      console.error(err)
-      const error = err as unknown as Ierror
-      setError(error.response.data.message)
+      errorAlert("Problem z serverem... spróbuj później");
+      console.error(err);
+      const error = err as unknown as Ierror;
+      setError(error.response.data.message);
     }
-    setLoading(false)
-  }
+    
+    setLoading(false);
+  };
 
   return {
     loading,
     error,
-    initialValues,
-    validationSchema,
+    initialValues: createBookInitialValues,
+    validationSchema: createBookValidationSchema,
     createBook,
     setImages,
-    images
-  }
-}
+    handleSetImages,
+    images,
+    imagesUrls,
+  };
+};
 
-export default useCreateBookForm
+export default useCreateBookForm;

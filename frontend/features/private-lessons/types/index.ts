@@ -1,12 +1,12 @@
 export enum PrivateLessonsCategoryEnum {
-  MATH = 'Matematyka'
+  MATH = "Matematyka",
 }
 
 export interface IprivateLesson {
   title: string;
   description: string;
-  category: PrivateLessonsCategoryEnum[]
+  category: PrivateLessonsCategoryEnum[];
   price: number;
   date: Date;
-  userId: string
+  userId: string;
 }
