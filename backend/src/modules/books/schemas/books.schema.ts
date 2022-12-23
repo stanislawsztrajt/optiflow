@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { BookCategoryType, BookLookType } from '../types/books.type';
+import { BookCategoryType, BookLookType, BookTypeType } from '../types/books.type';
 
 export type BookDocument = HydratedDocument<Book>;
 
@@ -14,6 +14,15 @@ export class Book {
 
   @Prop()
   category: BookCategoryType;
+
+  @Prop()
+  type: BookTypeType;
+
+  @Prop({ maxlength: 50 })
+  publishingHouse: string;
+
+  @Prop({ max: 10 })
+  part: number;
 
   @Prop()
   images: string[];

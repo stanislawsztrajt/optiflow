@@ -1,5 +1,5 @@
 import { IsString, IsOptional, IsArray, IsNumber, MaxLength, IsEnum, ArrayMaxSize, Max, MinLength } from 'class-validator';
-import { BookCategoryType, BookLookType, BookLookEnum, BookCategoryEnum } from '../types/books.type';
+import { BookCategoryType, BookLookType, BookLookEnum, BookCategoryEnum, BookTypeEnum, BookTypeType } from '../types/books.type';
 
 export class CreateBookDto {
   @IsString({
@@ -28,6 +28,28 @@ export class CreateBookDto {
   @IsEnum(BookCategoryEnum)
   @MaxLength(500)
   category: BookCategoryType;
+
+  @IsOptional({
+    message: 'type is required',
+  })
+  @IsEnum(BookTypeEnum)
+  type: BookTypeType;
+
+  @IsString({
+    message: 'publishing house must be a string',
+  })
+  @IsOptional({
+    message: 'publishing house is required',
+  })
+  @MaxLength(50)
+  publishingHouse: string
+
+  @IsNumber()
+  @IsOptional({
+    message: 'price is required',
+  })
+  @Max(10)
+  part: number;
 
   @IsArray({
     message: 'images must be an array',

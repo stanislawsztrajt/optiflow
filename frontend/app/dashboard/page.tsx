@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { Iuser } from '@/features/users/types';
-import { user as User } from '@/utils/constans/user';
-import React, { useEffect, useState } from 'react'
+import { Iuser } from "@/features/users/types";
+import { user as User } from "@/utils/constans/user";
+import React, { useEffect, useState } from "react";
 
 export default function DashboardPage() {
   const [user, setUser] = useState<Iuser | null>(null);
-  useEffect(() => setUser(User), [])
+  useEffect(() => setUser(User), []);
 
   return (
-    <main className=''>
+    <main className="">
       dashboard
       <div>
         {user?.class}
@@ -17,5 +17,5 @@ export default function DashboardPage() {
         {user?.surname}
       </div>
     </main>
-  )
+  );
 }
