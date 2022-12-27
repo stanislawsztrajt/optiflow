@@ -4,7 +4,7 @@ import { HydratedDocument } from 'mongoose';
 export type PrivateLessonDocument = HydratedDocument<PrivateLesson>;
 
 export enum PrivateLessonsCategoryEnum {
-  MATH = 'Matematyka'
+  MATH = 'Matematyka',
 }
 
 @Schema({ timestamps: true })
@@ -18,7 +18,7 @@ export class PrivateLesson {
   @Prop()
   category: PrivateLessonsCategoryEnum[];
 
-  @Prop({ max: 10000000000  })
+  @Prop({ max: 10000000000 })
   price: number;
 
   @Prop()

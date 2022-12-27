@@ -9,10 +9,13 @@ export class Message {
   content: string;
 
   @Prop()
-  userId: string
+  userId: string;
 
   @Prop()
-  secondUserId: string
+  secondUserId: string;
+
+  createdAt: string;
+  updatedAt: string;
 }
 
 export const MessageSchema = SchemaFactory.createForClass(Message);

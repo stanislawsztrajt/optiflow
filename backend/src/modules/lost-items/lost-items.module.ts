@@ -6,8 +6,11 @@ import { LostItem, LostItemSchema } from './schemas/lost-items.schema';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [AuthModule, MongooseModule.forFeature([{ name: LostItem.name, schema: LostItemSchema }])],
+  imports: [
+    AuthModule,
+    MongooseModule.forFeature([{ name: LostItem.name, schema: LostItemSchema }]),
+  ],
   controllers: [LostItemsController],
-  providers: [LostItemsService]
+  providers: [LostItemsService],
 })
 export class LostItemsModule {}

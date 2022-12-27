@@ -7,9 +7,7 @@ import { Book, BookDocument } from './schemas/books.schema';
 
 @Injectable()
 export class BooksService {
-  constructor(
-    @InjectModel(Book.name) private bookModel: Model<BookDocument>,
-  ){}
+  constructor(@InjectModel(Book.name) private bookModel: Model<BookDocument>) {}
 
   async create(createBookDto: CreateBookDto) {
     const createdBook = new this.bookModel(createBookDto);

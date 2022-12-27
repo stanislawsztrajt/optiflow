@@ -1,19 +1,19 @@
-import { User } from "src/modules/users/schemas/users.schema"
+import { User } from 'src/modules/users/schemas/users.schema';
 
 export interface IlibrusAccountInfo {
   student: {
-    nameSurname: string,
-    class: string,
-    index: string,
-    educator: string
-  },
+    nameSurname: string;
+    class: string;
+    index: string;
+    educator: string;
+  };
   account: {
-      nameSurname: string,
-      login: string
-  }
+    nameSurname: string;
+    login: string;
+  };
 }
 
 export interface IloginResponse {
-  user: User,
-  jwt: string
+  user: User;
+  jwt: string;
 }

@@ -14,5 +14,5 @@ export const findOneByCollectionName = async (
 };
 
 export const parseObjectObjectId = (object: object) => {
-  return JSON.parse(JSON.stringify(object))
-}
+  return JSON.parse(JSON.stringify(object));
+};

@@ -15,7 +15,7 @@ export class SetUserIdMiddleware implements NestMiddleware {
       secret: process.env.JWT_SECRET,
     });
 
-    req.body.userId = user._id
+    req.body.userId = user._id;
     next();
   }
 }

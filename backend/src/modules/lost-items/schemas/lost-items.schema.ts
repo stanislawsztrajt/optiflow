@@ -26,7 +26,7 @@ export class LostItem {
   type: LostItemFoundType;
 
   @Prop()
-  userId: string
+  userId: string;
 }
 
 export const LostItemSchema = SchemaFactory.createForClass(LostItem);

@@ -1,5 +1,5 @@
-export type LostItemFoundType = 'Zgubione' | 'Znalezione'
+export type LostItemFoundType = 'Zgubione' | 'Znalezione';
 export enum LostItemFoundEnum {
- LOST = 'Zgubione',
- FOUND = 'Znalezione'
+  LOST = 'Zgubione',
+  FOUND = 'Znalezione',
 }
