@@ -11,11 +11,13 @@ import { UsersModule } from './modules/users/users.module';
 import { PrivateLessonsModule } from './modules/private-lessons/private-lessons.module';
 import { SetUserIdMiddleware } from './core/middlewares/set-user-id.middleware';
 import { AuthModule } from './modules/auth/auth.module';
+import { ChatGateway } from './websockets/chat.gateway';
+import { MessagesModule } from './modules/messages/messages.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), MongooseModule.forRoot(process.env.MONGODB_URI), AuthModule,BooksModule, EventsModule, LostItemsModule, UsersModule, PrivateLessonsModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), MongooseModule.forRoot(process.env.MONGODB_URI), AuthModule,BooksModule, EventsModule, LostItemsModule, UsersModule, PrivateLessonsModule, MessagesModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ChatGateway],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
