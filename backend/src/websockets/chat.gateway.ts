@@ -18,7 +18,7 @@ interface IsocketUser {
 
 export class ChatGateway {
   constructor(private readonly messagesService: MessagesService) {}
-  
+
   @WebSocketServer()
   server: Server;
   users: IsocketUser[] = []
