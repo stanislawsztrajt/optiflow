@@ -169,6 +169,7 @@ const CreateBookForm: FC = () => {
               >
                 {typeOptions}
               </Field>
+              &nbsp;
             </div>
 
             <div className="create-form-element">
