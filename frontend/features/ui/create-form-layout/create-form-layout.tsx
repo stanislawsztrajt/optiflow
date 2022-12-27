@@ -20,7 +20,7 @@ const CreateFormLayout: FCC<Props> = ({ imageSrc, children }) => {
         <Image
           src={imageSrc}
           alt={""}
-          className="fixed w-1/2 top-1/4 lg:w-1/3"
+          className="w-1/2 lg:fixed top-1/4 lg:w-1/3"
           loading="lazy"
         />
       </div>

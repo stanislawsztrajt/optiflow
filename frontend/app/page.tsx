@@ -1,9 +1,14 @@
+'use client'
+
 import { featuresRoutes } from "@/utils/data/features-routes";
 import Link from "next/link";
 import React from "react";
+import useOnlineUsers from "@/features/chat/online-users/use-online-users";
 
 
 export default function Page() {
+  useOnlineUsers()
+
   const routes = featuresRoutes.map((route) => {
     return (
       <div key={route.name} className="flex flex-col items-center p-6 border rounded-input">
