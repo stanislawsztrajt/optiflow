@@ -1,1 +1,1 @@
-export const schoolSymbol = 'ZST5'
+export const schoolSymbol = 'ZST5';

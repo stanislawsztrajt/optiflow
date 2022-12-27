@@ -6,8 +6,11 @@ import { PrivateLesson, PrivateLessonsSchema } from './schemas/private-lessons.s
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [AuthModule, MongooseModule.forFeature([{ name: PrivateLesson.name, schema: PrivateLessonsSchema }])],
+  imports: [
+    AuthModule,
+    MongooseModule.forFeature([{ name: PrivateLesson.name, schema: PrivateLessonsSchema }]),
+  ],
   controllers: [PrivateLessonsController],
-  providers: [PrivateLessonsService]
+  providers: [PrivateLessonsService],
 })
 export class PrivateLessonsModule {}

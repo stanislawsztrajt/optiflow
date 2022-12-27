@@ -1,5 +1,22 @@
-import { IsString, IsOptional, IsArray, IsNumber, MaxLength, IsEnum, ArrayMaxSize, Max, MinLength } from 'class-validator';
-import { BookCategoryType, BookLookType, BookLookEnum, BookCategoryEnum, BookTypeEnum, BookTypeType } from '../types/books.type';
+import {
+  IsString,
+  IsOptional,
+  IsArray,
+  IsNumber,
+  MaxLength,
+  IsEnum,
+  ArrayMaxSize,
+  Max,
+  MinLength,
+} from 'class-validator';
+import {
+  BookCategoryType,
+  BookLookType,
+  BookLookEnum,
+  BookCategoryEnum,
+  BookTypeEnum,
+  BookTypeType,
+} from '../types/books.type';
 
 export class CreateBookDto {
   @IsString({
@@ -42,7 +59,7 @@ export class CreateBookDto {
     message: 'publishing house is required',
   })
   @MaxLength(50)
-  publishingHouse: string
+  publishingHouse: string;
 
   @IsNumber()
   @IsOptional({

@@ -15,7 +15,17 @@ import { ChatGateway } from './websockets/chat.gateway';
 import { MessagesModule } from './modules/messages/messages.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), MongooseModule.forRoot(process.env.MONGODB_URI), AuthModule,BooksModule, EventsModule, LostItemsModule, UsersModule, PrivateLessonsModule, MessagesModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
+    AuthModule,
+    BooksModule,
+    EventsModule,
+    LostItemsModule,
+    UsersModule,
+    PrivateLessonsModule,
+    MessagesModule,
+  ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],
 })
@@ -27,7 +37,8 @@ export class AppModule implements NestModule {
         { path: 'books', method: RequestMethod.POST },
         { path: 'events', method: RequestMethod.POST },
         { path: 'lost-items', method: RequestMethod.POST },
-        { path: 'private-lessons', method: RequestMethod.POST }
+        { path: 'private-lessons', method: RequestMethod.POST },
+        { path: 'messages', method: RequestMethod.POST },
       );
   }
 }

@@ -14,17 +14,12 @@ import { User } from '../../modules/users/schemas/users.schema';
 import { parseJwt } from '../../utils/helpers';
 import { findOneByCollectionName } from '../../utils/helpers/mongodb';
 
-
 @Injectable()
 export class OwnerGuard implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    const { headers, url }: Irequest<IschemaIds> = context
-      .switchToHttp()
-      .getRequest();
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
+    const { headers, url }: Irequest<IschemaIds> = context.switchToHttp().getRequest();
     const token: string = parseJwt(headers.authorization);
     const user: User = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
@@ -34,17 +29,14 @@ export class OwnerGuard implements CanActivate {
     // from /api/:colletion/:id
     // to [':colletion', ':id']
     const collectionData = url.split('/').slice(2, 4);
-    const collection = findOneByCollectionName(
-      collectionData[0].replace('-', ''),
-      {
-        _id: {
-          $eq: new Types.ObjectId(collectionData[1]),
-        },
-        userId: {
-          $eq: user._id,
-        },
+    const collection = findOneByCollectionName(collectionData[0].replace('-', ''), {
+      _id: {
+        $eq: new Types.ObjectId(collectionData[1]),
       },
-    );
+      userId: {
+        $eq: user._id,
+      },
+    });
 
     // if a collection  does not exist, a user is not an owner
     if (!collection) {

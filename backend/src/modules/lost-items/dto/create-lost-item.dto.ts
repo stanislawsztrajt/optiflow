@@ -1,6 +1,5 @@
-import { MaxLength, IsNumber, IsEnum } from "class-validator";
-import { LostItemFoundEnum } from "../types/lost-items.type";
-
+import { MaxLength, IsNumber, IsEnum } from 'class-validator';
+import { LostItemFoundEnum } from '../types/lost-items.type';
 
 export class CreateLostItemDto {
   @MaxLength(100)

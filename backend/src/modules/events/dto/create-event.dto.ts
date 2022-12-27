@@ -24,5 +24,5 @@ export class CreateEventDto {
   price?: number;
 
   @IsString()
-  userId: string
+  userId: string;
 }

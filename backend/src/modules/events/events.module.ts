@@ -8,6 +8,6 @@ import { AuthModule } from '../auth/auth.module';
 @Module({
   imports: [AuthModule, MongooseModule.forFeature([{ name: Event.name, schema: EventSchema }])],
   controllers: [EventsController],
-  providers: [EventsService]
+  providers: [EventsService],
 })
 export class EventsModule {}

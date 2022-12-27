@@ -1,5 +1,5 @@
-import { IsString, IsNumber, IsEnum, IsArray, IsOptional, MaxLength, Max } from "class-validator";
-import { PrivateLessonsCategoryEnum } from "../schemas/private-lessons.schema";
+import { IsString, IsNumber, IsEnum, IsArray, IsOptional, MaxLength, Max } from 'class-validator';
+import { PrivateLessonsCategoryEnum } from '../schemas/private-lessons.schema';
 
 export class CreatePrivateLessonDto {
   @IsString()

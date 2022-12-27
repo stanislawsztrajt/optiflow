@@ -5,9 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>
-  ){}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async findAll(query: FilterQuery<User>): Promise<User[]> {
     return await this.userModel.find(query).exec();
@@ -20,14 +18,14 @@ export class UsersService {
   async isAlreadyExist(login: string): Promise<boolean> {
     const user = await this.findOne({ login });
     if (user) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   async craete(user: User): Promise<User> {
     const createdUser = new this.userModel(user);
-    return createdUser.save()
+    return createdUser.save();
   }
 
   async update(id: string, user: User): Promise<User> {

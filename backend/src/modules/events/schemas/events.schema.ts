@@ -24,7 +24,7 @@ export class Event {
   price: number;
 
   @Prop()
-  userId: string
+  userId: string;
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);

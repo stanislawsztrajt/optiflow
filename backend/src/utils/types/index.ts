@@ -1,9 +1,9 @@
-import { Request } from "express"
+import { Request } from 'express';
 
 export interface Irespnse<T> {
-  data: T
+  data: T;
 }
 
 export interface Irequest<T> extends Request {
-  body: T
+  body: T;
 }

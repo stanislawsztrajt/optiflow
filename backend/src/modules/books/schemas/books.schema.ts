@@ -31,10 +31,10 @@ export class Book {
   price: number;
 
   @Prop()
-  look: BookLookType
+  look: BookLookType;
 
   @Prop()
-  userId: string
+  userId: string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);

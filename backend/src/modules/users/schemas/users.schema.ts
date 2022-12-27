@@ -17,7 +17,7 @@ export class User {
   @Prop({ select: false })
   login?: string;
 
-  _id?: string
+  _id?: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

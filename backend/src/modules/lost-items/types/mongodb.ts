@@ -1,4 +1,4 @@
 export interface IschemaIds {
-  userId: string
-  _id: string
+  userId: string;
+  _id: string;
 }
