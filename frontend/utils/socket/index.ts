@@ -7,11 +7,13 @@ export const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost
   // * how to join to room
   //      socket.emit('joinRoom', { userId: 'userId', room: 'room' })
 
-  // * how to get users:
-  // ? first emit onlineUsers:
-  //      socket.emit('onlineUsers')
+  // * how to get online users ids:
+  // ? first emit onlineUsersIds:
+  //      socket.emit('onlineUsersIds')
   // ? next to:
-  //      socket.on('getOnlineUsers', (users: Iuser[]) => (users))
+  //      socket.on('getOnlineUsersIds', (users: string[]) => (users))
+  //      to get list of online users from redux you have to use useSelector e.g(ids is loading from page root)
+  //      const onlineUsersIds = useSelector(getOnlineUsersIds)
 
 
   // * how to send and get message

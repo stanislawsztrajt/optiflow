@@ -6,11 +6,6 @@ import { Server, Socket } from 'socket.io';
 import { CreateMessageDto } from 'src/modules/messages/dto/create-message.dto';
 import { MessagesService } from 'src/modules/messages/messages.service';
 
-interface IsocketUser {
-  id: string;
-  userId: string;
-  room: string;
-}
 
 @WebSocketGateway(1338, {
   cors: '*',
@@ -21,15 +16,15 @@ export class ChatGateway {
 
   @WebSocketServer()
   server: Server;
-  users: IsocketUser[] = []
+  usersIds: string[] = []
 
   onModuleInit() {
     this.server.on('connection', async (socket: Socket) => {
-      let currentUser: IsocketUser = { id: '', userId: '', room: '' };
+      let currentUser = { id: '', userId: '', room: '' };
 
       socket.on('joinRoom', ({ userId, room }) => {
         currentUser = { id: socket.id, userId, room };
-        this.users.push(currentUser)
+        this.usersIds.push(userId)
         socket.join(room);
 
         console.log('[SOCKET] user joined: ', currentUser);
@@ -41,13 +36,13 @@ export class ChatGateway {
         console.log('[SOCKET] POST message');
       });
 
-      socket.on('onlineUsers', () => {
-        this.server.to(currentUser.id).emit('getOnlineUsers', this.users)
-        console.log('[SOCKET] GET online users')
+      socket.on('onlineUsersIds', () => {
+        this.server.to(currentUser.id).emit('getOnlineUsersIds', this.usersIds)
+        console.log('[SOCKET] GET online usersIds')
       })
 
       socket.on('disconnect', () => {
-        this.users = this.users.filter(user => user.id !== currentUser.id)
+        this.usersIds = this.usersIds.filter(userId => userId !== currentUser.userId)
         console.log('DISCONNECT ', currentUser)
       })
     });
