@@ -26,7 +26,7 @@ export const featuresRoutes = [
     mainRoute: "/lost-items",
     createName: "Dodaj zgubiony przedmiot",
     createRoute: "/lost-items/create-lost-item",
-    image: UndrawLesson,
+    image: UndrawLost,
   },
   {
     name: "Korepetycje",
@@ -34,6 +34,6 @@ export const featuresRoutes = [
     mainRoute: "/private-lessons",
     createName: "Dodaj korepetycje",
     createRoute: "/private-lessons/create-private-lesson",
-    image: UndrawLost,
+    image: UndrawLesson,
   },
 ];
