@@ -1,6 +1,7 @@
 'use client'
 
 import "@/assets/styles/globals.css";
+import { Header } from "@/features/ui";
 import ReduxProvider from "providers/redux-provider";
 
 export default function RootLayout({
@@ -13,7 +14,10 @@ export default function RootLayout({
     <html>
       <head></head>
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <Header />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
