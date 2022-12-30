@@ -26,7 +26,7 @@ const links = [
 const Header: FC = () => {
   const linksMap = links.map(link => {
     return (
-      <li className='text-gray-800 duration-100 hover:text-black'>
+      <li key={link.name} className='text-gray-800 duration-100 hover:text-black'>
         <Link href={link.route}>{link.name}</Link>
       </li>
     )

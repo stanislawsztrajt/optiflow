@@ -36,6 +36,14 @@ export class ChatGateway {
         console.log('[SOCKET] POST message');
       });
 
+      socket.on('displayNotifications', () => {
+        socket.emit('displayNotifications')
+      })
+
+      socket.on('hideNotifications', () => {
+        socket.emit('hideNotifications')
+      })
+
       socket.on('onlineUsersIds', () => {
         this.server.to(currentUser.id).emit('getOnlineUsersIds', this.usersIds)
         console.log('[SOCKET] GET online usersIds')
