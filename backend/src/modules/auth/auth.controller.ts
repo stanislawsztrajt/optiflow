@@ -10,4 +10,9 @@ export class AuthController {
   login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
+
+  @Post('dev-login')
+  devLogin(@Body() {login}: {login: string}) {
+    return this.authService.devLogin(login);
+  }
 }
