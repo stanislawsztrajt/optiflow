@@ -25,6 +25,14 @@ const defaultResponseLibrusApi = {
 export class AuthService {
   constructor(private readonly usersService: UsersService, private jwtService: JwtService) {}
 
+  async devLogin(login: string): Promise<IloginResponse> {
+    const user = await this.usersService.findOne({ login });
+    return {
+      user,
+      jwt: this.jwtService.sign(parseObjectObjectId(user)),
+    };
+  }
+
   async login(loginDto: LoginDto): Promise<IloginResponse> {
     const client = new Librus();
 
