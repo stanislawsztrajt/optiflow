@@ -8,8 +8,9 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Types } from 'mongoose';
 import { Observable } from 'rxjs';
-import { IschemaIds } from 'src/modules/lost-items/types/mongodb';
-import { Irequest } from 'src/utils/types';
+import { IschemaIds } from '../../modules/lost-items/types/mongodb';
+import { UsersEnum } from '../../modules/users/types';
+import { Irequest } from '../../utils/types';
 import { User } from '../../modules/users/schemas/users.schema';
 import { parseJwt } from '../../utils/helpers';
 import { findOneByCollectionName } from '../../utils/helpers/mongodb';
@@ -24,6 +25,10 @@ export class OwnerGuard implements CanActivate {
     const user: User = this.jwtService.verify(token, {
       secret: process.env.JWT_SECRET,
     });
+
+    if (user.role === UsersEnum.ADMIN) {
+      return true
+    }
 
     // catching data about collection name(index 0) and collection id(index 1) from url
     // from /api/:colletion/:id

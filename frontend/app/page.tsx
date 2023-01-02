@@ -4,7 +4,8 @@ import { featuresRoutes } from "@/utils/data/features-routes";
 import Link from "next/link";
 import React from "react";
 import useOnlineUsers from "@/features/chat/online-users/use-online-users";
-
+import { useSelector } from "react-redux";
+import { getOnlineUsers } from "@/features/chat/chat-slice/chat-slice";
 
 export default function Page() {
   useOnlineUsers()
