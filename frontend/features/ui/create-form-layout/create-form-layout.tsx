@@ -10,7 +10,7 @@ interface Props {
 const CreateFormLayout: FCC<Props> = ({ imageSrc, children }) => {
   return (
     <main className="flex flex-col w-full lg:flex-row">
-      <div className="flex flex-col items-center w-full h-full mt-20 lg:w-1/2 ">
+      <div className="flex flex-col items-center w-full h-full mt-36 lg:w-1/2 ">
         <div className="flex-col items-center justify-center w-full p-4 md:w-2/3">
           {children}
         </div>
