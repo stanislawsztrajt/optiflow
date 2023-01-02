@@ -1,11 +1,15 @@
 import io from 'socket.io-client';
+import { user } from '../constans/user';
 
-export const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:1338')
+export const socket = user ? io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:1338') : null
 
 
 // * how to use in client
   // * how to join to room
-  //      socket.emit('joinRoom', { userId: 'userId', room: 'room' })
+  //      socket.emit('joinRoom', { room: 'room' })
+
+  // * how to get online users ids using redux
+  // const onlineUsers = useSelector(getOnlineUsers)
 
   // * how to get online users ids:
   // ? first emit onlineUsersIds:
@@ -21,7 +25,7 @@ export const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost
   //      socket.emit('sendMessage', message)
   // ? get message
   //      socket.on('message', (message: string) => (message))
-  //      ?? message is content(string), but when you get e.g chat you will get type Imessage[]
+  //      ? message is content(string), but when you get e.g chat you will get type Imessage[]
   // interface Imessage {
   //   content: string;
   //   userId: string;

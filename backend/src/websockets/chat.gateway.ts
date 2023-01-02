@@ -22,12 +22,20 @@ export class ChatGateway {
     this.server.on('connection', async (socket: Socket) => {
       let currentUser = { id: '', userId: '', room: '' };
 
-      socket.on('joinRoom', ({ userId, room }) => {
-        currentUser = { id: socket.id, userId, room };
+      socket.on('beOnline', ({ userId }) => {
+        currentUser = { ...currentUser, id: socket.id, userId };
+        const isUserIdAlreadyExist = this.usersIds.some(userId => userId === currentUser.userId)
+        if (isUserIdAlreadyExist) return
+
         this.usersIds.push(userId)
+        console.log('[SOCKET] user joined: ', currentUser);
+      });
+
+      socket.on('joinRoom', ({ room }) => {
+        currentUser = { ...currentUser, room }
         socket.join(room);
 
-        console.log('[SOCKET] user joined: ', currentUser);
+        console.log('[SOCKET] user joined to room: ', currentUser);
       });
 
       socket.on('sendMessage', (message: CreateMessageDto) => {
