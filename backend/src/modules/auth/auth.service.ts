@@ -51,20 +51,6 @@ export class AuthService {
       );
     }
 
-    const user = await this.usersService.findOne({ login: info.account.login });
-    if (user) {
-      // updates user's class, if user changed class
-      if (user.class !== info.student.class) {
-        user.class = info.student.class;
-        await this.usersService.update(user._id, user);
-      }
-
-      return {
-        user,
-        jwt: this.jwtService.sign(parseObjectObjectId(user)),
-      };
-    }
-
     // index 0 is name, index 1 is surname
     const nameSurname: string[] = info.student.nameSurname.split(' ');
     // index 0 is number of class, index 1 is digit, index 2 is school symbol
@@ -73,6 +59,20 @@ export class AuthService {
     const name: string = nameSurname[0];
     const surname: string = nameSurname[1];
     const studentClass: string = splitedStudentClass[0] + splitedStudentClass[1];
+
+    const user = await this.usersService.findOne({ login: info.account.login });
+    if (user) {
+      // updates user's class, if user changed class
+      if (user.class !== studentClass) {
+        user.class = studentClass;
+        await this.usersService.update(user._id, user);
+      }
+
+      return {
+        user,
+        jwt: this.jwtService.sign(parseObjectObjectId(user)),
+      };
+    }
 
     const newUser: User = {
       name,
