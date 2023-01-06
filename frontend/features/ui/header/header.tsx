@@ -95,7 +95,7 @@ const Header: FC = () => {
             <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
           </div>
           <ul className="flex-col items-center hidden p-4 mt-4 bg-white border rounded-lg lg:flex lg:flex-row lg:space-x-8 lg:mt-0 lg:text-sm lg:font-medium lg:border-0">
-            {linksMap}
+            { linksMap }
           </ul>
         </div>
       </div>
