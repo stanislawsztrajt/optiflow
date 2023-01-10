@@ -16,7 +16,9 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <Header />
-          {children}
+          <div className='mt-20'>
+            {children}
+          </div>
         </ReduxProvider>
       </body>
     </html>

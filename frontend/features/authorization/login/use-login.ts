@@ -18,8 +18,9 @@ const useLogin = () => {
     try {
       const data = await authServices.login(loginDto);
       setError("");
-      Cookies.set("user", JSON.stringify(data.user));
-      Cookies.set("jwt", data.jwt);
+      console.log(data.user)
+      Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
+      Cookies.set("jwt", data.jwt, { expires: 7 });
 
       router.push("/dashboard");
     } catch (err) {

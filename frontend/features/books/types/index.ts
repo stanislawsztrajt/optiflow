@@ -27,4 +27,5 @@ export interface Ibook {
   price: number;
   look: BookLookType;
   userId: string;
+  _id: string;
 }

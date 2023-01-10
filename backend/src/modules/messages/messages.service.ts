@@ -15,7 +15,9 @@ export class MessagesService {
   ) {}
 
   async findMessagesChat(userId: string, secondUserId: string): Promise<Message[]> {
-    return await this.messageModel.find({ userId, secondUserId });
+    const userMessages = await this.messageModel.find({ userId, secondUserId });
+    const secondUserMessages = await this.messageModel.find({ userId: secondUserId, secondUserId: userId });
+    return [...secondUserMessages, ...userMessages]
   }
 
   async findChats(userId: string): Promise<Chat[]> {
