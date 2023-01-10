@@ -39,7 +39,11 @@ export class ChatGateway {
       });
 
       socket.on('sendMessage', (message: CreateMessageDto) => {
-        this.messagesService.create(message)
+        this.messagesService.create({
+          ...message,
+          userId: currentUser.userId
+        })
+
         const emitedMessage = {
           ...message,
           userId: currentUser.userId,

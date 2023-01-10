@@ -10,4 +10,9 @@ export class CreateMessageDto {
   @IsOptional()
   @MaxLength(200)
   secondUserId: string
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(200)
+  userId: string
 }

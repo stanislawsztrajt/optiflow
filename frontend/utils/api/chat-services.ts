@@ -6,13 +6,13 @@ import { Iresponse } from "../types/api";
 const url = `${process.env.NEXT_PUBLIC_API_URL}/messages`;
 
 class ChatServices {
-  async findChat (userId: string): Promise<Imessage[]> {
-    const { data }: Iresponse<Imessage[]> = await axios.get(`${url}/${userId}`, authHeader)
+  async findChats (userId: string): Promise<Ichat[]> {
+    const { data }: Iresponse<Ichat[]> = await axios.get(`${url}/${userId}`, authHeader)
     return data;
   }
 
-  async findChats (userId: string, secondUserId: string): Promise<Ichat[]> {
-    const { data }: Iresponse<Ichat[]> = await axios.get(`${url}/${userId}/${secondUserId}`, authHeader)
+  async findChat (userId: string, secondUserId: string): Promise<Imessage[]> {
+    const { data }: Iresponse<Imessage[]> = await axios.get(`${url}/${userId}/${secondUserId}`, authHeader)
     return data;
   }
 }

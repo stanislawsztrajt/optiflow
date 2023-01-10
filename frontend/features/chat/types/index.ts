@@ -6,9 +6,18 @@ export interface Imessage {
   secondUserId: string;
   createdAt: string;
   updatedAt: string;
+  _id: string;
 }
 
 export interface Ichat {
   user: Iuser
   latestMessage: Imessage
+}
+
+export interface ImessageInputInitialValues {
+  content: string
+}
+
+export interface ImessageInputFormikActions {
+  resetForm: () => void
 }

@@ -3,12 +3,14 @@ import { user } from '../constans/user';
 
 export const socket = user ? io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:1338') : null
 
+if(socket && user) {
+  socket.emit('beOnline', { userId: user._id })
+}
 
 // * how to use in client
   // * how to join to room
   // * you muset be online
-    // how to be?
-    // socket.emit('beOnline', { userId })
+  // how to be?
   //  socket.emit('joinRoom', { room: 'room' })
 
   // * how to get online users ids using redux
