@@ -6,7 +6,10 @@ export const socket = user ? io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://lo
 
 // * how to use in client
   // * how to join to room
-  //      socket.emit('joinRoom', { room: 'room' })
+  // * you muset be online
+    // how to be?
+    // socket.emit('beOnline', { userId })
+  //  socket.emit('joinRoom', { room: 'room' })
 
   // * how to get online users ids using redux
   // const onlineUsers = useSelector(getOnlineUsers)
@@ -24,8 +27,8 @@ export const socket = user ? io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://lo
   // ? send message
   //      socket.emit('sendMessage', message)
   // ? get message
-  //      socket.on('message', (message: string) => (message))
-  //      ? message is content(string), but when you get e.g chat you will get type Imessage[]
+  //      socket.on('message', (message: Imessage) => (message))
+  //      ? message is { content: string, secondUserId: string }, but when you get e.g chat you will get type Imessage[]
   // interface Imessage {
   //   content: string;
   //   userId: string;

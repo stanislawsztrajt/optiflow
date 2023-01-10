@@ -40,7 +40,13 @@ export class ChatGateway {
 
       socket.on('sendMessage', (message: CreateMessageDto) => {
         this.messagesService.create(message)
-        this.server.to(currentUser.room).emit("message", message.content);
+        const emitedMessage = {
+          ...message,
+          userId: currentUser.userId,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+        this.server.to(currentUser.room).emit("message", emitedMessage);
         console.log('[SOCKET] POST message');
       });
 
