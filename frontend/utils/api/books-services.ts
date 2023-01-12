@@ -11,14 +11,14 @@ class BooksServices {
     return data;
   }
 
-  async findAll(): Promise<Ibook[]> {
-    const { data }: Iresponse<Ibook[]> = await axios.get(url);
-    return data;
+  async findAll(cache: RequestCache = 'no-store'): Promise<Ibook[]> {
+    const data = await fetch(url, { cache })
+    return data.json();
   }
 
-  async findOne(id: string): Promise<Ibook> {
-    const { data }: Iresponse<Ibook> = await axios.get(`${url}/${id}`);
-    return data;
+  async findOne(id: string, cache: RequestCache = 'no-store'): Promise<Ibook> {
+    const data = await fetch(`${url}/${id}`, { cache });
+    return data.json();
   }
 
   async update(book: Ibook, id: string): Promise<Ibook> {
