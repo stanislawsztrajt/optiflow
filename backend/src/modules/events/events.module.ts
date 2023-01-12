@@ -4,10 +4,12 @@ import { EventsController } from './events.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Event, EventSchema } from './schemas/events.schema';
 import { AuthModule } from '../auth/auth.module';
+import { forwardRef } from '@nestjs/common/utils';
 
 @Module({
-  imports: [AuthModule, MongooseModule.forFeature([{ name: Event.name, schema: EventSchema }])],
+  imports: [forwardRef(() => AuthModule), MongooseModule.forFeature([{ name: Event.name, schema: EventSchema }])],
   controllers: [EventsController],
   providers: [EventsService],
+  exports: [EventsService]
 })
 export class EventsModule {}

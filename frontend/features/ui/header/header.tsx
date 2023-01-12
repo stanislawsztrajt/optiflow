@@ -1,15 +1,13 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import React, { FC, ReactNode, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBarsStaggered, faSchool, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSchool, faUser } from '@fortawesome/free-solid-svg-icons';
 import { APP_NAME } from '@/utils/constans';
-import { user as User } from '@/utils/constans/user';
-import { Iuser } from '@/features/users/types';
 import useHeader from './use-header';
 import Hamburger from 'hamburger-react'
+import { useUser } from '@/utils/hooks';
 
 const links = [
   {
@@ -31,15 +29,11 @@ const links = [
 ]
 
 const Header: FC = () => {
-  const [user, setUser] = useState<Iuser | null>(null);
+  const { user } = useUser()
   const {
     isMenuOpen,
     setIsMenuOpen
   } = useHeader()
-
-  useEffect(() => {
-    setUser(User)
-  }, [])
 
   const linksMap = links.map(link => {
     return (
@@ -101,7 +95,7 @@ const Header: FC = () => {
       </div>
 
       { isMenuOpen ? (
-        <div className='fixed left-0 w-screen h-screen bg-white border-t lg:hidden'>
+        <div className='fixed left-0 w-screen h-screen bg-white border-t lg:hidden menu-animation'>
           <div className='flex flex-col justify-end gap-4 px-4 text-center list-none h-3/4'>
             { menuLinksMap }
             { authButton }

@@ -17,12 +17,12 @@ export class PrivateLessonsController {
 
   @Get()
   findAll() {
-    return this.privateLessonsService.findAll();
+    return this.privateLessonsService.findAll({});
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.privateLessonsService.findOne(id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.privateLessonsService.findOne({ _id });
   }
 
   @UseGuards(JwtAuthGuard, OwnerGuard)

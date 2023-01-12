@@ -211,6 +211,7 @@ const CreateBookForm: FC = () => {
                 disabled={loading}
                 className="create-input"
                 type="file"
+                accept="image/*"
                 multiple
                 onChange={(e) => handleSetImages(e)}
               />

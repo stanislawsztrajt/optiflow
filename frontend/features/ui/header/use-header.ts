@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const useHeader = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return {
     isMenuOpen,
@@ -10,4 +10,3 @@ const useHeader = () => {
 }
 
 export default useHeader
-  

@@ -17,12 +17,12 @@ export class EventsController {
 
   @Get()
   findAll() {
-    return this.eventsService.findAll();
+    return this.eventsService.findAll({});
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.eventsService.findOne(id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.eventsService.findOne({ _id });
   }
 
   @UseGuards(JwtAuthGuard, OwnerGuard)
