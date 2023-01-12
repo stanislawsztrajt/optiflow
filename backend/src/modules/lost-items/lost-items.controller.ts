@@ -17,12 +17,12 @@ export class LostItemsController {
 
   @Get()
   findAll() {
-    return this.lostItemsService.findAll();
+    return this.lostItemsService.findAll({});
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.lostItemsService.findOne(id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.lostItemsService.findOne({ _id });
   }
 
   @UseGuards(JwtAuthGuard, OwnerGuard)

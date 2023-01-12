@@ -3,9 +3,12 @@ import { FilterQuery, Model } from 'mongoose';
 import { User, UserDocument } from './schemas/users.schema';
 import { InjectModel } from '@nestjs/mongoose';
 
+
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+  ) {}
 
   async findAll(query: FilterQuery<User>): Promise<User[]> {
     return await this.userModel.find(query).exec();

@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common/exceptions';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { CreateLostItemDto } from './dto/create-lost-item.dto';
 import { UpdateLostItemDto } from './dto/update-lost-item.dto';
 import { LostItem } from './schemas/lost-items.schema';
@@ -13,12 +13,12 @@ export class LostItemsService {
     return await createdLostItem.save();
   }
 
-  async findAll(): Promise<LostItem[]> {
-    return await this.lostItemModel.find().exec();
+  async findAll(query: FilterQuery<LostItem>): Promise<LostItem[]> {
+    return await this.lostItemModel.find(query).exec();
   }
 
-  async findOne(id: string): Promise<LostItem> {
-    return await this.lostItemModel.findById(id).exec();
+  async findOne(query: FilterQuery<LostItem>): Promise<LostItem> {
+    return await this.lostItemModel.findById(query).exec();
   }
 
   async update(id: string, updateLostItemDto: UpdateLostItemDto): Promise<LostItem> {

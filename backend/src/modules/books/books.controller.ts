@@ -17,12 +17,12 @@ export class BooksController {
 
   @Get()
   findAll() {
-    return this.booksService.findAll();
+    return this.booksService.findAll({});
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.booksService.findOne(id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.booksService.findOne({ _id });
   }
 
   @UseGuards(JwtAuthGuard, OwnerGuard)

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { CreatePrivateLessonDto } from './dto/create-private-lesson.dto';
 import { UpdatePrivateLessonDto } from './dto/update-private-lesson.dto';
 import { PrivateLesson } from './schemas/private-lessons.schema';
@@ -14,12 +14,12 @@ export class PrivateLessonsService {
     return createdPrivateLesson.save();
   }
 
-  async findAll(): Promise<PrivateLesson[]> {
-    return this.privateLessonModel.find().exec();
+  async findAll(query: FilterQuery<PrivateLesson>): Promise<PrivateLesson[]> {
+    return this.privateLessonModel.find(query).exec();
   }
 
-  async findOne(id: string): Promise<PrivateLesson> {
-    return this.privateLessonModel.findById(id).exec();
+  async findOne(query: FilterQuery<PrivateLesson>): Promise<PrivateLesson> {
+    return this.privateLessonModel.findOne(query).exec();
   }
 
   async update(id: string, updatePrivateLessonDto: UpdatePrivateLessonDto): Promise<PrivateLesson> {
