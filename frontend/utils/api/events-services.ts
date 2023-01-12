@@ -15,14 +15,14 @@ class EventsServices {
     return data;
   }
 
-  async findAll(): Promise<Ievent[]> {
-    const { data }: Iresponse<Ievent[]> = await axios.get(url);
-    return data;
+  async findAll(cache: RequestCache = 'no-store'): Promise<Ievent[]> {
+    const data = await fetch(url, { cache });
+    return data.json();
   }
 
-  async findOne(id: string): Promise<Ievent> {
-    const { data }: Iresponse<Ievent> = await axios.get(`${url}/${id}`);
-    return data;
+  async findOne(id: string, cache: RequestCache = 'no-store'): Promise<Ievent> {
+    const data = await fetch(`${url}/${id}`, { cache });
+    return data.json();
   }
 
   async update(events: Ievent, id: string): Promise<Ievent> {
