@@ -13,12 +13,12 @@ class BooksServices {
 
   async findAll(cache: RequestCache = 'no-store'): Promise<Ibook[]> {
     const data = await fetch(url, { cache })
-    return data.json();
+    return await data.json();
   }
 
   async findOne(id: string, cache: RequestCache = 'no-store'): Promise<Ibook> {
     const data = await fetch(`${url}/${id}`, { cache });
-    return data.json();
+    return await data.json();
   }
 
   async update(book: Ibook, id: string): Promise<Ibook> {

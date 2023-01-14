@@ -5,6 +5,7 @@ export enum LostItemFoundEnum {
 }
 
 export interface IlostItem {
+  _id: string;
   name: string;
   foundLocation: string;
   description: string;

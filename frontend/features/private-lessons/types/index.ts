@@ -3,6 +3,7 @@ export enum PrivateLessonsCategoryEnum {
 }
 
 export interface IprivateLesson {
+  _id: string;
   title: string;
   description: string;
   category: PrivateLessonsCategoryEnum[];

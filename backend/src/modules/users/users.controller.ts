@@ -25,13 +25,28 @@ export class UsersController {
     return this.usersService.findOne({ _id });
   }
 
-  @Get(':_id/all/count')
+  @Get(':_id/all')
   async findUserAll(@Param('_id') _id: string) {
+    const books = await this.booksService.findAll({ userId: _id });
+    const events = await this.eventsService.findAll({ userId: _id });
+    const lostItems = await this.lostItemsService.findAll({ userId: _id });
+    const privateLessons = await this.privateLessonsService.findAll({ userId: _id });
+
+    return {
+      books,
+      events,
+      lostItems,
+      privateLessons
+    }
+  }
+
+  @Get(':_id/all/count')
+  async findUserAllCount(@Param('_id') _id: string) {
     const books = (await this.booksService.findAll({ userId: _id })).length;
     const events = (await this.eventsService.findAll({ userId: _id })).length;
     const lostItems = (await this.lostItemsService.findAll({ userId: _id })).length;
     const privateLessons = (await this.privateLessonsService.findAll({ userId: _id })).length;
-    
+
     return {
       books,
       events,
