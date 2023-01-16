@@ -68,7 +68,7 @@
 }
 
 .hero-box {
-  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-2/3
+  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-3/4 mt-48
 }
 
 .hero-text-element, .hero-image {
