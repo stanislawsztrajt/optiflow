@@ -4,6 +4,7 @@ import { PrivateLessonsService } from '../private-lessons/private-lessons.servic
 import { BooksService } from '../books/books.service';
 import { EventsService } from '../events/events.service';
 import { LostItemsService } from '../lost-items/lost-items.service';
+import { Types } from 'mongoose';
 
 @Controller('users')
 export class UsersController {
@@ -22,7 +23,7 @@ export class UsersController {
 
   @Get(':_id')
   findOneById(@Param('_id') _id: string) {
-    return this.usersService.findOne({ _id });
+    return this.usersService.findOne({ _id: new Types.ObjectId(_id) });
   }
 
   @Get(':_id/all')
