@@ -4,6 +4,7 @@ import { PrivateLessonsService } from '../private-lessons/private-lessons.servic
 import { BooksService } from '../books/books.service';
 import { EventsService } from '../events/events.service';
 import { LostItemsService } from '../lost-items/lost-items.service';
+import { Types } from 'mongoose';
 
 @Controller('users')
 export class UsersController {
@@ -22,16 +23,31 @@ export class UsersController {
 
   @Get(':_id')
   findOneById(@Param('_id') _id: string) {
-    return this.usersService.findOne({ _id });
+    return this.usersService.findOne({ _id: new Types.ObjectId(_id) });
+  }
+
+  @Get(':_id/all')
+  async findUserAll(@Param('_id') _id: string) {
+    const books = await this.booksService.findAll({ userId: _id });
+    const events = await this.eventsService.findAll({ userId: _id });
+    const lostItems = await this.lostItemsService.findAll({ userId: _id });
+    const privateLessons = await this.privateLessonsService.findAll({ userId: _id });
+
+    return {
+      books,
+      events,
+      lostItems,
+      privateLessons
+    }
   }
 
   @Get(':_id/all/count')
-  async findUserAll(@Param('_id') _id: string) {
+  async findUserAllCount(@Param('_id') _id: string) {
     const books = (await this.booksService.findAll({ userId: _id })).length;
     const events = (await this.eventsService.findAll({ userId: _id })).length;
     const lostItems = (await this.lostItemsService.findAll({ userId: _id })).length;
     const privateLessons = (await this.privateLessonsService.findAll({ userId: _id })).length;
-    
+
     return {
       books,
       events,

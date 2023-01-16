@@ -66,3 +66,11 @@
 .menu-animation {
   animation: rightToLeft .15s linear 1;
 }
+
+.hero-box {
+  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-2/3
+}
+
+.hero-text-element, .hero-image {
+  @apply w-full lg:w-1/2
+}

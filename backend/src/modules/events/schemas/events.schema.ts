@@ -21,7 +21,7 @@ export class Event {
   images: string[];
 
   @Prop()
-  price: number;
+  price?: number;
 
   @Prop()
   userId: string;
