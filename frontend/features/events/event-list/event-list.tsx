@@ -9,13 +9,19 @@ interface Props {
 const EventList: FC<Props> = ({ events }) => {
   return(
     <>
-      {
-        events.map(event => {
-          return (
-            <EventItem event={event} key={event._id} />
-          )
-        })
-      }
+      { events.length === 0 ? (
+        <div>
+          Nie ma tutaj żadnych wydarzeń
+        </div>
+      ) : (
+        <>
+          { events.map(event => {
+            return (
+              <EventItem event={event} key={event._id} />
+            )
+          })}
+        </>
+      ) }
     </>
   )
 }

@@ -7,15 +7,22 @@ interface Props {
 }
 
 const BookList: FC<Props> = ({ books }) => {
-  const booksList = books.map(book => {
-    return (
-      <BookItem key={book._id} book={book}/>
-    )
-  })
 
   return(
     <>
-      { booksList }
+      { books.length === 0 ? (
+        <div>
+          Nie ma tutaj żadnych książek
+        </div>
+      ) : (
+        <>
+        { books.map(book => {
+          return (
+            <BookItem key={book._id} book={book}/>
+          )
+        })}
+        </>
+      ) }
     </>
   )
 }

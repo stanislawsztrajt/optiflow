@@ -9,13 +9,21 @@ interface Props {
 const LostItemList: FC<Props> = ({ lostItems }) => {
   return(
     <>
-      { 
-        lostItems.map(lostItem => {
-          return (
-            <LostItemItem lostItem={lostItem} key={lostItem._id} />
-          )
-        })
-      }
+      { lostItems.length === 0 ? (
+        <div>
+          Nie ma tutaj żadnych zgubionych przedmiotów
+        </div>
+      ) : (
+        <>
+          {
+            lostItems.map(lostItem => {
+              return (
+                <LostItemItem lostItem={lostItem} key={lostItem._id} />
+              )
+            })
+          }
+        </>
+      ) }
     </>
   )
 }
