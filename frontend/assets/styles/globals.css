@@ -1,9 +1,11 @@
+@import 'elements.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .button {
-  @apply w-full rounded-input text-color-primary-text border border-color-primary-text p-input text-center font-medium duration-100 hover:bg-gray-100
+  @apply w-full rounded-input text-color-primary-text border border-color-primary-text p-input text-center font-medium duration-100 hover:text-color-primary hover:border-color-primary
 }
 
 .button-bg {

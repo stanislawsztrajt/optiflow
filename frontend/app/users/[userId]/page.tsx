@@ -1,7 +1,14 @@
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+import UndrawBookLover from "@/assets/undraw/undraw_book_lover.svg";
+import UndrawEvent from "@/assets/undraw/undraw_event.svg";
+import UndrawLesson from "@/assets/undraw/undraw_lesson.svg";
+import UndrawLost from "@/assets/undraw/undraw_lost.svg";
+import { userFeaturesRoutes } from "@/utils/data/routes";
 
 interface Iprops {
   params: {
@@ -16,52 +23,39 @@ export default async function UserPage(props: Iprops) {
   const user = await usersServices.findOne(params.userId, 'force-cache')
   const userInfoLength = await usersServices.findUserAllInfoLength(params.userId, 'no-cache')
 
-  return (
-    <div className='mt-36'>
-      <div>
-        <div>
-          { user.name } { user.surname }
-        </div>
+  const featuresList = userFeaturesRoutes(userInfoLength, user._id).map(route => {
+    return (
+      <div
+        className="section-element w-96"
+      >
+        <h3 className="section-element-h3">
+          { route.name }
+        </h3>
+        <Image loading='lazy' width={500} height={500} className='h-32 mt-8 ' src={route.image} alt='' />
+        <p className='section-element-p'>
+          { route.content }
+        </p>
+        <Link className="mt-8 button" href={`/users/${route.route}/private-lessons`}>
+          { route.viewName }
+        </Link>
+      </div>
+    )
+  })
 
-        <div>
-          { user.class }
-        </div>
-      </div>
-      <div>
-        <div>
-          books
-          <Link href={`/users/${params.userId}/books`}>
-            <button className='button-bg'>
-              Książki użytkownika
-            </button>
-          </Link>
-          { userInfoLength.books }
-        </div>
-        <div>
-          <Link href={`/users/${params.userId}/events`}>
-            <button className='button-bg'>
-              Wydarzenia użytkownika
-            </button>
-          </Link>
-          { userInfoLength.events }
-        </div>
-        <div>
-          <Link href={`/users/${params.userId}/lost-items`}>
-          </Link>
-          <button className='button-bg'>
-            Zgubione przedmioty użytkownika
-          </button>
-          { userInfoLength.lostItems }
-        </div>
-        <div>
-          <Link href={`/users/${params.userId}/private-lessons`}>
-            <button className='button-bg'>
-              Korepetycje użytkownika
-            </button>
-          /</Link>
-          { userInfoLength.privateLessons }
-        </div>
-      </div>
-    </div>
+  return (
+    <main className='main-page-layout'>
+      <section className='section-header'>
+        <h1 className='section-header-h1'>
+          { user.name } { user.surname } { user.class }
+        </h1>
+        <h2 className='section-header-h2'>
+          Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać
+        </h2>
+      </section>
+
+      <section className="section-elements-layout">
+        { featuresList }
+      </section>
+    </main>
   );
 }

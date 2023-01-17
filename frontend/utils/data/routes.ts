@@ -2,6 +2,7 @@ import UndrawBookLover from "@/assets/undraw/undraw_book_lover.svg";
 import UndrawEvent from "@/assets/undraw/undraw_event.svg";
 import UndrawLesson from "@/assets/undraw/undraw_lesson.svg";
 import UndrawLost from "@/assets/undraw/undraw_lost.svg";
+import { IuserInfoLength } from "@/features/users/types";
 
 export const featuresRoutes = [
   {
@@ -41,3 +42,36 @@ export const featuresRoutes = [
     image: UndrawLesson,
   },
 ];
+
+export const userFeaturesRoutes = (userInfoLength: IuserInfoLength, userId: string) => {
+  return [
+    {
+      name: `Książki (${userInfoLength.books})`,
+      image: UndrawBookLover,
+      viewName: 'Książki użytkownika',
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/books`
+    },
+    {
+      name: `Wydarzenia (${userInfoLength.events})`,
+      image: UndrawEvent,
+      viewName: 'Wydarzenia użytkownika',
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/events`
+    },
+    {
+      name: `Zgubione przedmioty (${userInfoLength.lostItems})`,
+      image: UndrawLost,
+      viewName: 'Zgubione przedmioty użytkownika',
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/lost-items`
+    },
+    {
+      name: `Korepetycje (${userInfoLength.privateLessons})`,
+      image: UndrawLesson,
+      viewName: 'Korepetycje użytkownika',
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/private-lessons`
+    },
+  ]
+}

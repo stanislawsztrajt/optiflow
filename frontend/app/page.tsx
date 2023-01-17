@@ -1,6 +1,6 @@
 'use client'
 
-import { featuresRoutes } from "@/utils/data/features-routes";
+import { featuresRoutes } from "@/utils/data/routes";
 import Link from "next/link";
 import React from "react";
 import useOnlineUsers from "@/features/chat/online-users/use-online-users";
@@ -13,13 +13,13 @@ export default function Page() {
     return (
       <div
         key={route.name}
-        className="flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg"
+        className="section-element"
       >
-        <h3 className="text-2xl font-medium">
+        <h3 className="section-element-h3">
           {route.name}
         </h3>
         <Image loading='lazy' width={500} height={500} className='h-32 mt-8 ' src={route.image.src} alt='' />
-        <p className='mt-8 text-base font-light text-center text-gray-700'>
+        <p className='section-element-p'>
           {route.content}
         </p>
         <Link className="mt-8 button" href={route.mainRoute}>
@@ -33,18 +33,18 @@ export default function Page() {
   });
 
   return (
-    <main className='w-full mt-24 lg:mt-36'>
-      <div className='p-2 text-center'>
-        <h1 className='text-5xl font-medium'>
+    <main className='main-page-layout'>
+      <section className='section-header'>
+        <h1 className='section-header-h1'>
           Wybierz co cie aktualnie interesuje
         </h1>
-        <h2 className='font-light text-gray-600'>
+        <h2 className='section-header-h2'>
           Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać
         </h2>
-      </div>
-      <div className="flex flex-wrap items-center justify-center w-full gap-10 mt-8 lg:mt-12">
+      </section>
+      <section className="section-elements-layout">
         {routes}
-      </div>
+      </section>
     </main>
   );
 }
