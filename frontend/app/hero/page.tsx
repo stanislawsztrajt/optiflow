@@ -10,6 +10,8 @@ import UndrawEvent from "@/assets/undraw/undraw_event.svg";
 import UndrawLesson from "@/assets/undraw/undraw_lesson.svg";
 import UndrawLost from "@/assets/undraw/undraw_lost.svg";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function HeroPage() {
   const { user } = useUser()
@@ -28,11 +30,21 @@ export default function HeroPage() {
           <div className="flex flex-row gap-4 mt-2">
             {user ? (
               <Link href={'/dashboard'}>
-                <button className="button-bg">Dashboard</button>
+                <button type="button" className="menu-button lg:text">
+                  <FontAwesomeIcon icon={faUser} />
+                  <span className='ml-2'>
+                    Panel użytkownika
+                  </span>
+                </button>
               </Link>
             ) : (
               <Link href={'/auth/login'}>
-                <button className="button">Login</button>
+                <button type="button" className="menu-button">
+                  <FontAwesomeIcon icon={faSchool} />
+                  <span className='ml-2'>
+                    Zaloguj się używając Librus
+                  </span>
+                </button>
               </Link>
             )}
           </div>
