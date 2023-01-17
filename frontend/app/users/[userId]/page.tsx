@@ -26,6 +26,7 @@ export default async function UserPage(props: Iprops) {
   const featuresList = userFeaturesRoutes(userInfoLength, user._id).map(route => {
     return (
       <div
+        key={route.name}
         className="section-element w-96"
       >
         <h3 className="section-element-h3">
@@ -35,7 +36,7 @@ export default async function UserPage(props: Iprops) {
         <p className='section-element-p'>
           { route.content }
         </p>
-        <Link className="mt-8 button" href={`/users/${route.route}/private-lessons`}>
+        <Link className="mt-8 button" href={route.route}>
           { route.viewName }
         </Link>
       </div>

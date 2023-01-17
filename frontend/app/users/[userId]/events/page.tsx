@@ -4,20 +4,31 @@ import React from "react";
 
 interface Iprops {
   params: {
-    id: string
+    userId: string
   }
 }
 
 
-export default async function Page(props: Iprops) {
+export default async function EventsPage(props: Iprops) {
   const { params } = props
 
-  const user = await usersServices.findOne(params.id, 'force-cache')
-  const userEvents = await usersServices.findUserEvents(params.id, 'no-cache')
+  const user = await usersServices.findOne(params.userId, 'force-cache')
+  const userEvents = await usersServices.findUserEvents(params.userId, 'no-cache')
 
   return (
-    <div className='mt-24'>
-      <EventList events={userEvents} />
-    </div>
+    <main className='main-page-layout'>
+      <section className='section-header'>
+        <h1 className='section-header-h1'>
+          Wydarzenia użytkownika { user.name } { user.surname } { user.class }
+        </h1>
+        <h2 className='section-header-h2'>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque.
+        </h2>
+      </section>
+
+      <section className="section-elements-layout">
+        <EventList events={userEvents}/>
+      </section>
+    </main>
   );
 }

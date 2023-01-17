@@ -9,13 +9,19 @@ interface Props {
 const PrivateLessonList: FC<Props> = ({ privateLessons }) => {
   return(
     <>
-      {
-        privateLessons.map(privateLesson => {
-          return (
-            <PrivateLessonItem privateLesson={privateLesson} key={privateLesson._id} />
-          )
-        })
-      }
+      { privateLessons.length === 0 ? (
+        <div>
+          Nie ma tutaj żadnych korepetycji
+        </div>
+      ) : (
+        <>
+          { privateLessons.map(privateLesson => {
+            return (
+              <PrivateLessonItem privateLesson={privateLesson} key={privateLesson._id} />
+            )
+          })}
+        </>
+      )}
     </>
   )
 }
