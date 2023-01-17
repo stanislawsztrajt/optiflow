@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-page-layout {
+  @apply w-full mt-24 lg:mt-36
+}
+
+.section-header {
+  @apply p-2 text-center
+}
+
+.section-header-h1 {
+  @apply text-5xl font-medium
+}
+
+.section-header-h2 {
+  @apply font-light text-gray-600
+}
+
+.section-elements-layout {
+  @apply flex flex-wrap items-center justify-center w-full gap-10 mt-8 lg:mt-12
+}
+
+.section-element {
+  @apply flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+}
+
+.section-element-h3 {
+  @apply text-2xl font-medium
+}
+
+.section-element-p {
+  @apply mt-8 text-base font-light text-center text-gray-700
+}
+
