@@ -6,6 +6,7 @@ import UndrawLost from "@/assets/undraw/undraw_lost.svg";
 export const featuresRoutes = [
   {
     name: "Książki",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz książki",
     mainRoute: "/books",
     createName: "Dodaj książkę",
@@ -14,6 +15,7 @@ export const featuresRoutes = [
   },
   {
     name: "Wydarzenia",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz wydarzenia",
     mainRoute: "/events",
     createName: "Dodaj wydarzenie",
@@ -22,6 +24,7 @@ export const featuresRoutes = [
   },
   {
     name: "Zgubione przedmioty",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz zgubione przedmioty",
     mainRoute: "/lost-items",
     createName: "Dodaj zgubiony przedmiot",
@@ -30,6 +33,7 @@ export const featuresRoutes = [
   },
   {
     name: "Korepetycje",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz korepetycje",
     mainRoute: "/private-lessons",
     createName: "Dodaj korepetycje",

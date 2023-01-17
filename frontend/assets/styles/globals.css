@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .button {
-  @apply w-full rounded-input text-color-primary-text border border-color-primary-text p-input text-center font-semibold duration-100 hover:bg-gray-100
+  @apply w-full rounded-input text-color-primary-text border border-color-primary-text p-input text-center font-medium duration-100 hover:bg-gray-100
 }
 
 .button-bg {
-  @apply w-full rounded-input bg-color-primary p-input text-color-secondary-text text-center font-semibold duration-100 hover:brightness-125
+  @apply w-full rounded-input bg-color-primary p-input text-color-secondary-text text-center font-medium duration-100 hover:brightness-125
 }
 
 .auth-input-text {
@@ -68,7 +68,7 @@
 }
 
 .hero-box {
-  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-2/3
+  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-3/4 mt-24 xl:mt-48
 }
 
 .hero-text-element, .hero-image {
