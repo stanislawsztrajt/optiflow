@@ -5,10 +5,11 @@ import { Field, Form, Formik } from "formik";
 
 interface Iprops {
   secondUserId: string
+  noUserId: boolean
 }
 
 const useMessageInput = (props:Iprops) => {
-  const { secondUserId } = props
+  const { secondUserId, noUserId } = props
 
   const initialValues:ImessageInputInitialValues = {
     content: ''
@@ -21,7 +22,7 @@ const useMessageInput = (props:Iprops) => {
   });
 
   const sendMessage = (values:ImessageInputInitialValues, actions:ImessageInputFormikActions) => {
-    if(!socket) return
+    if(!socket || noUserId) return
 
     const message = {
       content: values.content,
