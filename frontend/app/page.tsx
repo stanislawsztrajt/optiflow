@@ -36,7 +36,7 @@ export default function Page() {
     <main className='main-page-layout'>
       <section className='section-header'>
         <h1 className='section-header-h1'>
-          Wybierz co cie aktualnie interesuje
+          Wybierz co Cię aktualnie interesuje
         </h1>
         <h2 className='section-header-h2'>
           Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać

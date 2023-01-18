@@ -56,7 +56,7 @@ const Header: FC = () => {
       { user ? (
         <Link href={'/dashboard'}>
           <button type="button" className="menu-button lg:text">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon className='h-4' icon={faUser} />
             <span className='ml-2'>
               Panel użytkownika
             </span>
@@ -65,7 +65,7 @@ const Header: FC = () => {
       ) : (
         <Link href={'/auth/login'}>
           <button type="button" className="menu-button">
-            <FontAwesomeIcon icon={faSchool} />
+            <FontAwesomeIcon className='h-4' icon={faSchool} />
             <span className='ml-2'>
               Zaloguj się używając Librus
             </span>
