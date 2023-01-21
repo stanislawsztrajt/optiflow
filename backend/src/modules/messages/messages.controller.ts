@@ -25,10 +25,4 @@ export class MessagesController {
   ): Promise<Message[]> {
     return await this.messagesService.findMessagesChat(userId, secondUserId);
   }
-
-  @UseGuards(JwtAuthGuard)
-  @Post()
-  async create(@Body() createMessageDto: CreateMessageDto): Promise<Message> {
-    return await this.messagesService.create(createMessageDto);
-  }
 }

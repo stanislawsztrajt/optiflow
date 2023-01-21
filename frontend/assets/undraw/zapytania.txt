@@ -1,0 +1,24 @@
+Zadanie 1
+SELECT Klasa FROM uczniowie GROUP BY Klasa HAVING COUNT(IF(Imie LIKE '%a', 1, NULL)) / COUNT(*) > 0.5;
+
+Zadanie 2
+SELECT Oceny.Data FROM Oceny WHERE Oceny.ocena=1 GROUP BY Oceny.Data HAVING Count(*)>10
+
+Zadanie 3
+SELECT uczniowie.Klasa, ROUND(AVG(oceny.Ocena), 2) FROM oceny, uczniowie WHERE oceny.Id_przedmiotu = 1 AND uczniowie.Id_ucznia = oceny.Id_ucznia AND uczniowie.Klasa LIKE 'IV%' GROUP BY uczniowie.Klasa;
+
+Zadanie 4
+SELECT przedmioty.Nazwa_przedmiotu, Month(oceny.Data), Count(*) FROM oceny, przedmioty WHERE przedmioty.Id_przedmiotu = oceny.Id_przedmiotu AND oceny.ocena=5 GROUP BY przedmioty.Nazwa_przedmiotu, Month(oceny.Data)
+
+Zadanie 5
+SELECT uczniowie.Imie, uczniowie.Nazwisko FROM uczniowie
+WHERE uczniowie.Klasa = "II A"
+AND (
+    SELECT COUNT(*) FROM oceny, przedmioty 
+    WHERE przedmioty.id_przedmiotu = oceny.id_przedmiotu 
+    AND oceny.id_ucznia = uczniowie.id_ucznia 
+    AND przedmioty.Nazwa_przedmiotu LIKE "sieci komp%"
+) = 0;
+
+
+Stanisław Sztrajt III B
