@@ -11,15 +11,15 @@ import { useUser } from '@/utils/hooks';
 
 const links = [
   {
-    route: '',
-    name: 'Strona główna'
-  },
-  {
-    route: '',
+    route: '/hero',
     name: 'O stronie'
   },
   {
-    route: '',
+    route: '/chat',
+    name: 'Chat'
+  },
+  {
+    route: '/privacy-policy',
     name: 'Polityka prywatności'
   },
   {
@@ -76,7 +76,7 @@ const Header: FC = () => {
   )
 
   return(
-    <nav className="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 -mt-2 lg:mt-0 left-0 bg-white border-b">
+    <nav className="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 lg:mt-0 left-0 bg-white border-b">
       <div className="container flex flex-wrap items-center justify-between h-16 mx-auto">
         <Link href="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap ">{APP_NAME}</span>

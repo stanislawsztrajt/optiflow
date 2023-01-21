@@ -1,6 +1,6 @@
 import { FCC } from "@/utils/types";
 import Image from "next/image";
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface Props {
   imageSrc: any;
