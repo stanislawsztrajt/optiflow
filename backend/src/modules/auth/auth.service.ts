@@ -70,7 +70,7 @@ export class AuthService {
 
     // if user is student
     const surname: string = nameSurname[1];
-    const studentClass: string = !info.student ? splitedStudentClass[0] + splitedStudentClass[1] : '';
+    const studentClass: string = info.student ? splitedStudentClass[0] + splitedStudentClass[1] : '';
 
     const user = await this.usersService.findOne({ login: info.account.login });
     if (user) {

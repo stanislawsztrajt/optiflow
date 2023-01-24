@@ -11,15 +11,15 @@ export interface Iuser {
 }
 
 export interface IuserInfo {
-  books: Ibook[]
-  events: Ievent[]
-  lostItems: IlostItem[]
-  privateLessons: IprivateLesson[]
+  books: Ibook[];
+  events: Ievent[];
+  lostItems: IlostItem[];
+  privateLessons: IprivateLesson[];
 }
 
 export interface IuserInfoLength {
-  books: number
-  events: number
-  lostItems: number
-  privateLessons: number
+  books: number;
+  events: number;
+  lostItems: number;
+  privateLessons: number;
 }

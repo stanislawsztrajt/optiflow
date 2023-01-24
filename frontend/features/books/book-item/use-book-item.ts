@@ -1,6 +1,5 @@
 const useBookItem = () => {
-  return {}
-}
+  return {};
+};
 
-export default useBookItem
-  
+export default useBookItem;

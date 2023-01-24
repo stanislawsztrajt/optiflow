@@ -7,5 +7,5 @@ export default function Error({ error, reset }: any) {
     console.log("logging error:", error);
   }, [error]);
 
-  return <div>Error</div>;
+  return <div className="bg-red-500 w-96 h-96"></div>;
 }

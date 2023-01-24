@@ -1,4 +1,4 @@
-import { IsString, IsDate, IsArray, IsNumber, MaxLength, IsOptional, IsMongoId } from 'class-validator';
+import { IsString, IsArray, IsNumber, MaxLength, IsOptional, IsMongoId } from 'class-validator';
 
 export class CreateEventDto {
   @IsString()
@@ -13,7 +13,7 @@ export class CreateEventDto {
   @MaxLength(100)
   location: string;
 
-  @IsDate()
+  @IsString()
   date: Date;
 
   @IsArray()

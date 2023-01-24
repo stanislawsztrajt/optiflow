@@ -1,34 +1,55 @@
+"use client";
+
 import EventList from "@/features/events/event-list";
+import { Ievent } from "@/features/events/types";
+import FeaturesLayout from "@/features/ui/features-layout";
+import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Iprops {
   params: {
-    userId: string
-  }
+    userId: string;
+  };
 }
 
+export default function EventsPage(props: Iprops) {
+  const { params } = props;
+  const router = useRouter();
 
-export default async function EventsPage(props: Iprops) {
-  const { params } = props
+  const [user, setUser] = useState<Iuser>();
+  const [userEvents, setUserEvents] = useState<Ievent[]>([]);
 
-  const user = await usersServices.findOne(params.userId, 'force-cache')
-  const userEvents = await usersServices.findUserEvents(params.userId, 'no-cache')
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = await usersServices.findOne(params.userId, "force-cache");
+      if (!user.name) {
+        router.back();
+      }
+
+      setUser(user);
+      const userEvents = await usersServices.findUserEvents(
+        params.userId,
+        "no-cache"
+      );
+      setUserEvents(userEvents);
+    };
+    fetchData();
+  }, []);
 
   return (
-    <main className='main-page-layout'>
-      <section className='section-header'>
-        <h1 className='section-header-h1'>
-          Wydarzenia użytkownika { user.name } { user.surname } { user.class }
-        </h1>
-        <h2 className='section-header-h2'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque.
-        </h2>
-      </section>
-
-      <section className="section-elements-layout">
-        <EventList events={userEvents}/>
-      </section>
-    </main>
+    <FeaturesLayout
+      header={
+        user?._id === params.userId
+          ? "Twoje wydarzenia"
+          : `Wydarzenia użytkownika ${user?.name ?? ""} ${
+              user?.surname ?? ""
+            } ${user?.class ?? ""}`
+      }
+      subHeader="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque."
+    >
+      <EventList events={userEvents} />
+    </FeaturesLayout>
   );
 }

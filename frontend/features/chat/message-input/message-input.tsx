@@ -1,14 +1,16 @@
-import React from 'react'
+import React from "react";
 import { Field, Form, Formik } from "formik";
-import useMessageInput from './use-message-input';
+import useMessageInput from "./use-message-input";
 
 interface Iprops {
-  loading: boolean
-  secondUserId: string
+  loading: boolean;
+  secondUserId: string;
 }
 
 const MessageInput: React.FC<Iprops> = ({ loading, secondUserId }) => {
-  const { initialValues, sendMessage, validationSchema }  = useMessageInput({ secondUserId })
+  const { initialValues, sendMessage, validationSchema } = useMessageInput({
+    secondUserId,
+  });
 
   return (
     <div>
@@ -28,7 +30,7 @@ const MessageInput: React.FC<Iprops> = ({ loading, secondUserId }) => {
         </Form>
       </Formik>
     </div>
-  )
-}
+  );
+};
 
 export default MessageInput;

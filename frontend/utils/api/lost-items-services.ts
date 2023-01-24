@@ -15,12 +15,15 @@ class EventsServices {
     return data;
   }
 
-  async findAll(cache: RequestCache = 'no-store'): Promise<IlostItem[]> {
+  async findAll(cache: RequestCache = "no-store"): Promise<IlostItem[]> {
     const data = await fetch(url, { cache });
     return data.json();
   }
 
-  async findOne(id: string, cache: RequestCache = 'no-store'): Promise<IlostItem> {
+  async findOne(
+    id: string,
+    cache: RequestCache = "no-store"
+  ): Promise<IlostItem> {
     const data = await fetch(`${url}/${id}`, { cache });
     return data.json();
   }

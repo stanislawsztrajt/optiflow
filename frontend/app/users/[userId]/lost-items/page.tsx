@@ -1,35 +1,57 @@
-import BookList from "@/features/books/book-list";
+"use client";
+
 import LostItemList from "@/features/lost-items/lost-item-list";
+import { IlostItem } from "@/features/lost-items/types";
+import FeaturesLayout from "@/features/ui/features-layout/features-layout";
+import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 interface Iprops {
   params: {
-    userId: string
-  }
+    userId: string;
+  };
 }
 
+export default function LostItemsPage(props: Iprops) {
+  const { params } = props;
+  const router = useRouter();
 
-export default async function LostItemsPage(props: Iprops) {
-  const { params } = props
+  const [user, setUser] = useState<Iuser>();
+  const [userLostItems, setUserLostuserLostItems] = useState<IlostItem[]>([]);
 
-  const user = await usersServices.findOne(params.userId, 'force-cache')
-  const userLostItems = await usersServices.findUserLostItems(params.userId, 'no-cache')
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = await usersServices.findOne(params.userId, "force-cache");
+      if (!user.name) {
+        router.back();
+      }
+
+      setUser(user);
+      const userLostItems = await usersServices.findUserLostItems(
+        params.userId,
+        "no-cache"
+      );
+      setUserLostuserLostItems(userLostItems);
+    };
+    fetchData();
+  }, []);
 
   return (
-    <main className='main-page-layout'>
-      <section className='section-header'>
-        <h1 className='section-header-h1'>
-          Zgubione przedmioty użytkownika { user.name } { user.surname } { user.class }
-        </h1>
-        <h2 className='section-header-h2'>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nihil suscipit sit accusantium ea, porro minima sed, nisi ipsum consequuntur odit aut nemo labore cumque corrupti ex! Vel, veritatis quod.
-        </h2>
-      </section>
-
-      <section className="section-elements-layout">
-        <LostItemList lostItems={userLostItems}/>
-      </section>
-    </main>
+    <FeaturesLayout
+      header={
+        user?._id === params.userId
+          ? "Twoje zgubione przedmioty"
+          : `Zgubione przedmioty ${user?.name ?? ""} ${user?.surname ?? ""} ${
+              user?.class ?? ""
+            }`
+      }
+      subHeader={
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      }
+    >
+      <LostItemList lostItems={userLostItems} />
+    </FeaturesLayout>
   );
 }
