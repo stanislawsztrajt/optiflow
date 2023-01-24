@@ -1,6 +1,6 @@
 "use client";
 
-import { RulesAndLawLayout } from "@/features/ui";
+import RulesAndLawLayout from "@/features/ui/rules-and-law-layout";
 
 export default function PrivacyPolicyPage() {
   return (

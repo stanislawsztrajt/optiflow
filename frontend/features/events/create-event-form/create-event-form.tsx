@@ -1,44 +1,21 @@
 "use client";
 
 import React, { FC } from "react";
-import { BookCategories, BookLooks, BookTypes, Ibook } from "../types";
-import useCreateBookForm from "./use-create-book-form";
+import useCreateEventForm from "./use-create-event-form";
 import { Field, Form, Formik } from "formik";
 import Loading from "@/features/ui/loading";
+import { Ievent } from "../types";
 
-const CreateBookForm: FC = () => {
+const CreateEventForm: FC = () => {
   const {
     loading,
     initialValues,
     validationSchema,
-    createBook,
+    createEvent,
     imagesUrls,
     handleSetImages,
-  } = useCreateBookForm();
+  } = useCreateEventForm();
 
-  const categoryOptions = BookCategories.map((category) => {
-    return (
-      <option key={category} value={category}>
-        {category}
-      </option>
-    );
-  });
-
-  const lookOptions = BookLooks.map((look) => {
-    return (
-      <option key={look} value={look}>
-        {look}
-      </option>
-    );
-  });
-
-  const typeOptions = BookTypes.map((type) => {
-    return (
-      <option key={type} value={type}>
-        {type}
-      </option>
-    );
-  });
 
   const selectedImages = imagesUrls.map((imageUrl) => {
     return (
@@ -54,13 +31,13 @@ const CreateBookForm: FC = () => {
   return (
     <>
       <h1 className="text-4xl font-medium text-color-primary-text">
-        Dodaj swoją ofertę
+        Dodaj swoje wydarzenie
       </h1>
 
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => createBook(values as unknown as Ibook)}
+        onSubmit={(values) => createEvent(values as unknown as Ievent)}
       >
         {({ errors, touched }) => (
           <Form className="flex flex-col justify-center mt-2">
@@ -71,68 +48,12 @@ const CreateBookForm: FC = () => {
               <Field
                 className="create-input"
                 type="text"
-                placeholder="Sprzedam książkę..."
+                placeholder="Wydarzenie..."
                 name="title"
                 disabled={loading}
               />
               <div className="text-red-500">
                 {errors.title && touched.title ? <>{errors.title}</> : null}
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="create-form-element">
-              <label className="create-input-label" htmlFor="">
-                Wydawnictwo
-              </label>
-              <Field
-                className="create-input"
-                type="text"
-                placeholder="Nowa Era..."
-                name="publishingHouse"
-                disabled={loading}
-              />
-              <div className="text-red-500">
-                {errors.publishingHouse && touched.publishingHouse ? (
-                  <>{errors.publishingHouse}</>
-                ) : null}
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="create-form-element">
-              <label className="create-input-label" htmlFor="">
-                Kategoria
-              </label>
-              <Field
-                disabled={loading}
-                className="create-input"
-                as="select"
-                name="category"
-              >
-                {categoryOptions}
-              </Field>
-              <div className="text-red-500">
-                {errors.category && touched.category ? (
-                  <>{errors.category}</>
-                ) : null}
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="create-form-element">
-              <label className="create-input-label" htmlFor="">
-                Część
-              </label>
-              <Field
-                disabled={loading}
-                className="create-input"
-                type="number"
-                placeholder="2"
-                name="part"
-              />
-              <div className="text-red-500">
-                {errors.part && touched.part ? <>{errors.part}</> : null}
                 &nbsp;
               </div>
             </div>
@@ -146,7 +67,7 @@ const CreateBookForm: FC = () => {
                 className="create-input"
                 rows="5"
                 as="textarea"
-                placeholder="Książka posiada..."
+                placeholder="Podczas wydarzenia..."
                 name="description"
               />
               <div className="text-red-500">
@@ -159,22 +80,40 @@ const CreateBookForm: FC = () => {
 
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
-                Typ
+                Lokalizacja
               </label>
               <Field
-                disabled={loading}
                 className="create-input"
-                as="select"
-                name="type"
-              >
-                {typeOptions}
-              </Field>
-              &nbsp;
+                type="text"
+                placeholder="ul. Złota 144, 62-820 Kalisz"
+                name="location"
+                disabled={loading}
+              />
+              <div className="text-red-500">
+                {errors.location && touched.location ? <>{errors.location}</> : null}
+                &nbsp;
+              </div>
             </div>
 
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
-                Cena
+                Data
+              </label>
+              <Field
+                className="create-input"
+                type="date"
+                name="date"
+                disabled={loading}
+              />
+              <div className="text-red-500">
+                {errors.date && touched.date ? <>{errors.date}</> : null}
+                &nbsp;
+              </div>
+            </div>
+
+            <div className="create-form-element">
+              <label className="create-input-label" htmlFor="">
+                Cena (opcjonalnie)
               </label>
               <Field
                 disabled={loading}
@@ -189,20 +128,6 @@ const CreateBookForm: FC = () => {
               </div>
             </div>
 
-            <div className="create-form-element">
-              <label className="create-input-label" htmlFor="">
-                Stan
-              </label>
-              <Field
-                disabled={loading}
-                className="create-input"
-                as="select"
-                name="look"
-              >
-                {lookOptions}
-              </Field>
-            </div>
-            <div className="mt-6"></div>
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
                 Zdjęcia (maksymalnie 3)
@@ -223,7 +148,7 @@ const CreateBookForm: FC = () => {
               className="mt-4 create-button-submit"
               type="submit"
             >
-              {loading ? <Loading /> : "Dodaj książkę"}
+              {loading ? <Loading /> : "Dodaj wydarzenie"}
             </button>
           </Form>
         )}
@@ -232,4 +157,4 @@ const CreateBookForm: FC = () => {
   );
 };
 
-export default CreateBookForm;
+export default CreateEventForm;

@@ -27,7 +27,7 @@
 
 
 .create-input-label {
-  @apply font-medium
+  @apply font-medium mb-1 ml-1
 }
 
 .create-input {
