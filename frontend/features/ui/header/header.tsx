@@ -11,16 +11,16 @@ import { useUser } from "@/utils/hooks";
 
 const links = [
   {
-    route: "",
-    name: "Strona główna",
+    route: '/hero',
+    name: 'O stronie'
   },
   {
-    route: "",
-    name: "O stronie",
+    route: '/chat',
+    name: 'Chat'
   },
   {
-    route: "",
-    name: "Polityka prywatności",
+    route: '/privacy-policy',
+    name: 'Polityka prywatności'
   },
   {
     route: "",
@@ -56,23 +56,27 @@ const Header: FC = () => {
       {user ? (
         <Link href={"/dashboard"}>
           <button type="button" className="menu-button lg:text">
-            <FontAwesomeIcon icon={faUser} />
-            <span className="ml-2">Panel użytkownika</span>
+            <FontAwesomeIcon className='h-4' icon={faUser} />
+            <span className='ml-2'>
+              Panel użytkownika
+            </span>
           </button>
         </Link>
       ) : (
         <Link href={"/auth/login"}>
           <button type="button" className="menu-button">
-            <FontAwesomeIcon icon={faSchool} />
-            <span className="ml-2">Zaloguj się używając Librus</span>
+            <FontAwesomeIcon className='h-4' icon={faSchool} />
+            <span className='ml-2'>
+              Zaloguj się używając Librus
+            </span>
           </button>
         </Link>
       )}
     </>
   );
 
-  return (
-    <nav className="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 -mt-2 lg:mt-0 left-0 bg-white border-b">
+  return(
+    <nav className="px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 lg:mt-0 left-0 bg-white border-b">
       <div className="container flex flex-wrap items-center justify-between h-16 mx-auto">
         <Link href="/" className="flex items-center">
           <span className="self-center text-xl font-semibold whitespace-nowrap ">

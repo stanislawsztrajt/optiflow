@@ -10,22 +10,14 @@ const Messages: React.FC<Iprops> = ({ secondUserId }) => {
   const { messages } = useMessages({ secondUserId });
   const { user } = useUser();
 
-  const messagesMap = messages?.map((message) => {
+   const messagesMap = messages?.map((message, _index) => {
     return (
       <div
-        className={`flex w-full mb-2 justify-${
-          message.userId === user?._id ? "end" : "start "
-        }`}
+        className={`flex w-full justify-${message.userId === user?._id ? 'end' : 'start '} ${messages[_index-1] && messages[_index-1].userId === message.userId ? 'mb-1' : 'mb-4'}`}
         key={message.createdAt}
       >
-        <p
-          className={`py-2 max-w-xs px-3 break-words shadow ${
-            message.userId === user?._id
-              ? "bg-white rounded-l-lg border-r border-gray-300"
-              : "bg-red-300 border-red-400 rounded-r-lg border-l"
-          }`}
-        >
-          {message.content} <br />
+        <p className={`py-2 max-w-xs px-3 break-words shadow-md ${message.userId === user?._id ? 'bg-color-primary text-white rounded-l-lg' : 'bg-gray-200 rounded-r-lg '}`}>
+          { message.content } <br />
         </p>
       </div>
     );
