@@ -9,18 +9,6 @@ interface Iprops {
   };
 }
 
-<<<<<<< HEAD
-export default function ChatPage(props: Iprops) {
-  const { params } = props;
-
-  return (
-    <>
-      <div className="flex items-center justify-center min-h-screen -mt-20 bg-gray-50 pt-14">
-        <ChatWindow secondUserId={params.secondUserId} />
-      </div>
-    </>
-  );
-=======
 export default function ChatPropPage(props:Iprops) {
   const { params } = props
 
@@ -29,5 +17,4 @@ export default function ChatPropPage(props:Iprops) {
       <ChatWindow secondUserId={params.secondUserId} />
     </div>
   </>;
->>>>>>> develop
 }
