@@ -1,6 +1,5 @@
 const useEventItem = () => {
-  return {}
-}
+  return {};
+};
 
-export default useEventItem
-  
+export default useEventItem;

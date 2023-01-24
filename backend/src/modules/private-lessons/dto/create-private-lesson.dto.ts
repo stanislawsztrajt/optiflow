@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsEnum, IsArray, IsOptional, MaxLength, Max } from 'class-validator';
+import { IsString, IsNumber, IsEnum, IsArray, IsOptional, MaxLength, Max, IsMongoId } from 'class-validator';
 import { PrivateLessonsCategoryEnum } from '../schemas/private-lessons.schema';
 
 export class CreatePrivateLessonDto {
@@ -23,6 +23,8 @@ export class CreatePrivateLessonDto {
   @MaxLength(100)
   date: string;
 
-  @IsString()
-  userId: string;
+  @IsMongoId()
+  @IsOptional()
+  @MaxLength(200)
+  userId: string
 }

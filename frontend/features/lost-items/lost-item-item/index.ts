@@ -1,1 +1,1 @@
-export { default } from "./lost-item-item"
+export { default } from "./lost-item-item";

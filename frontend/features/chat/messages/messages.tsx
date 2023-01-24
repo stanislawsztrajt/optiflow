@@ -1,14 +1,14 @@
-import { useUser } from '@/utils/hooks';
-import React from 'react';
-import useMessages from './use-messages';
+import { useUser } from "@/utils/hooks";
+import React from "react";
+import useMessages from "./use-messages";
 
 interface Iprops {
-  secondUserId: string
+  secondUserId: string;
 }
 
 const Messages: React.FC<Iprops> = ({ secondUserId }) => {
-  const { messages } = useMessages({ secondUserId })
-  const { user } = useUser()
+  const { messages } = useMessages({ secondUserId });
+  const { user } = useUser();
 
    const messagesMap = messages?.map((message, _index) => {
     return (
@@ -20,24 +20,21 @@ const Messages: React.FC<Iprops> = ({ secondUserId }) => {
           { message.content } <br />
         </p>
       </div>
-    )
-   })
+    );
+  });
 
   return (
-    <div className='h-full max-h-full'>
-      {
-        messages ?
-        <div className='flex flex-col-reverse w-full h-full px-10 overflow-y-scroll'>
+    <div className="h-full max-h-full ">
+      {messages ? (
+        <div className="flex flex-col-reverse w-full h-full px-10 pb-5 overflow-y-scroll">
           {messagesMap}
-          <p className='my-3 text-center text-gray-400'>Początek konwersacji</p>
+          <p className="my-3 text-center text-gray-400">Początek konwersacji</p>
         </div>
-        :
-        <div>
-          Ładowanie
-        </div>
-      }
+      ) : (
+        <div>Ładowanie</div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Messages;

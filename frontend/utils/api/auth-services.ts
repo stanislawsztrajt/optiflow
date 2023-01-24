@@ -7,7 +7,7 @@ const url = `${process.env.NEXT_PUBLIC_API_URL}/auth`;
 class AuthServices {
   async login(loginDto: IloginDto): Promise<IloginResponse> {
     const { data }: Iresponse<IloginResponse> = await axios.post(
-      `${url}/dev-login`,
+      `${url}/login`,
       loginDto
     );
     return data;

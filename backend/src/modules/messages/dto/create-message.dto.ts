@@ -6,13 +6,11 @@ export class CreateMessageDto {
   @MaxLength(500)
   content: string;
 
-  @IsString()
   @IsOptional()
   @IsMongoId()
   @MaxLength(200)
   secondUserId: string
 
-  @IsString()
   @IsMongoId()
   @IsOptional()
   @MaxLength(200)

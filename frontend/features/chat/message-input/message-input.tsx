@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Field, Form, Formik } from "formik";
 import useMessageInput from './use-message-input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -38,7 +38,7 @@ const MessageInput: React.FC<Iprops> = ({ loading, secondUserId, noUserId }) => 
         </Form>
       </Formik>
     </div>
-  )
-}
+  );
+};
 
 export default MessageInput;

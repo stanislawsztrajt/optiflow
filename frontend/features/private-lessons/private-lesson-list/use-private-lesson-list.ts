@@ -1,6 +1,5 @@
 const usePrivateLessonList = () => {
-  return {}
-}
+  return {};
+};
 
-export default usePrivateLessonList
-  
+export default usePrivateLessonList;

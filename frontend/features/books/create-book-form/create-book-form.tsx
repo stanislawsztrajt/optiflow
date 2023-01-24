@@ -202,7 +202,7 @@ const CreateBookForm: FC = () => {
                 {lookOptions}
               </Field>
             </div>
-            <div className='mt-6'></div>
+            <div className="mt-6"></div>
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
                 Zdjęcia{"(maksymalnie 3)"}

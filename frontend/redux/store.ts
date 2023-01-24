@@ -5,7 +5,7 @@ import chatReducer from "@/features/chat/chat-slice/chat-slice";
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    chat: chatReducer
+    chat: chatReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

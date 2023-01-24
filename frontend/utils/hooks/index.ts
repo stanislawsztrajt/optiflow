@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Iuser } from "@/features/users/types";
 import { user as User } from "@/utils/constans/user";
@@ -9,6 +9,6 @@ export const useUser = () => {
   useEffect(() => setUser(User), []);
 
   return {
-    user
-  }
-}
+    user,
+  };
+};

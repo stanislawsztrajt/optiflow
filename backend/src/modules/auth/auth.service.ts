@@ -56,14 +56,26 @@ export class AuthService {
     // index 0 is number of class, index 1 is digit, index 2 is school symbol
     const splitedStudentClass: string[] = info.student.class.split(' ');
 
-    const name: string = nameSurname[0];
+    let name: string = nameSurname[0];
+
+    // if user is parent
+    if (!info.account.login.includes('u')) {
+      name = `Rodzic ${nameSurname[0]}`
+    }
+
+    // if user is teacher
+    if (!info.student) {
+      name = `Nauczyciel ${nameSurname[0]}`
+    }
+
+    // if user is student
     const surname: string = nameSurname[1];
-    const studentClass: string = splitedStudentClass[0] + splitedStudentClass[1];
+    const studentClass: string = info.student ? splitedStudentClass[0] + splitedStudentClass[1] : '';
 
     const user = await this.usersService.findOne({ login: info.account.login });
     if (user) {
       // updates user's class, if user changed class
-      if (user.class !== studentClass) {
+      if (user.class !== studentClass && info.student) {
         user.class = studentClass;
         await this.usersService.update(user._id, user);
       }
