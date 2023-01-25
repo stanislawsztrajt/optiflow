@@ -1,8 +1,8 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Response, NextFunction } from 'express';
-import { User } from 'src/modules/users/schemas/users.schema';
-import { parseJwt } from 'src/utils/helpers';
+import { User } from '../../modules/users/schemas/users.schema';
+import { parseJwt } from '../../utils/helpers';
 import { IschemaIds } from '../../modules/lost-items/types/mongodb';
 import { Irequest } from '../../utils/types';
 

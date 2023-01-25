@@ -1,5 +1,5 @@
 import { UnauthorizedException } from '@nestjs/common';
-import { Message } from 'src/modules/messages/schemas/messages.schema';
+import { Message } from '../../modules/messages/schemas/messages.schema';
 
 export const parseJwt: (jwt: string) => string = (jwt) => {
   try {
