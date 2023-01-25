@@ -1,63 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './page/**/*.{js,ts,jsx,tsx}',
-    './ui/**/*.{js,ts,jsx,tsx}',
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./features/**/*.{js,ts,jsx,tsx}",
+    "!./node_modules"
   ],
   theme: {
     extend: {
-      // https://vercel.com/design/color
       colors: {
-        vercel: {
-          pink: '#FF0080',
-          blue: '#0070F3',
-          cyan: '#50E3C2',
-          orange: '#F5A623',
-          violet: '#7928CA',
-        },
+        'color-bg': '#fff',
+        'color-primary': '#EE4444',
+        'color-secondary': '',
+        'color-primary-text': '#000',
+        'color-secondary-text': '#fff',
+        'color-subtext': '#6b7280 '
       },
-      keyframes: ({ theme }) => ({
-        rerender: {
-          '0%': {
-            'border-color': theme('colors.vercel.pink'),
-          },
-          '40%': {
-            'border-color': theme('colors.vercel.pink'),
-          },
-        },
-        highlight: {
-          '0%': {
-            background: theme('colors.vercel.pink'),
-            color: theme('colors.white'),
-          },
-          '40%': {
-            background: theme('colors.vercel.pink'),
-            color: theme('colors.white'),
-          },
-        },
-        shimmer: {
-          '100%': {
-            transform: 'translateX(100%)',
-          },
-        },
-        translateXReset: {
-          '100%': {
-            transform: 'translateX(0)',
-          },
-        },
-        fadeToTransparent: {
-          '0%': {
-            opacity: 1,
-          },
-          '40%': {
-            opacity: 1,
-          },
-          '100%': {
-            opacity: 0,
-          },
-        },
-      }),
+      borderRadius: {
+        'input': '0.75rem'
+      },
+      borderColor: {
+        'color-input': '#d1d5db'
+      },
+      borderWidth: {
+        'input': '1px'
+      },
+      padding: {
+        'input': '0.7rem 1rem'
+      },
+      width: {
+        'input': '20rem'
+      }
     },
   },
-};
+  plugins: [],
+}

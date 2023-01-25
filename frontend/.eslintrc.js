@@ -5,6 +5,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
+        // "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"
     ],
@@ -21,14 +22,5 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "@typescript-eslint/ban-types": [
-            "error",
-            {
-              "extendDefaults": true,
-              "types": {
-                "{}": false
-              }
-            }
-          ]
     }
 }

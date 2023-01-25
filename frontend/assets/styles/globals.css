@@ -1,3 +1,78 @@
+@import 'elements.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+  @apply w-full rounded-input text-color-primary-text border border-color-primary-text p-input text-center font-medium duration-100 hover:text-color-primary hover:border-color-primary
+}
+
+.button-bg {
+  @apply w-full rounded-input bg-color-primary p-input text-color-secondary-text text-center font-medium duration-100 hover:brightness-125
+}
+
+.auth-input-text {
+  @apply rounded-input text-base border border-color-input p-input outline-none duration-150 focus:border-color-primary
+}
+
+.auth-input-label {
+  @apply font-medium
+}
+
+.auth-button-submit {
+  @apply rounded-input bg-color-primary p-input text-color-secondary-text font-semibold duration-100 hover:brightness-125
+}
+
+
+
+.create-input-label {
+  @apply font-medium mb-1 ml-1
+}
+
+.create-input {
+  @apply rounded-input text-base border border-color-input p-input outline-none duration-150 focus:border-color-primary
+}
+
+.create-form-element {
+  @apply flex flex-col mt-2
+}
+
+.create-textarea {
+
+}
+
+.create-button-submit {
+  @apply rounded-input bg-color-primary p-input text-color-secondary-text font-semibold duration-100 hover:brightness-125
+}
+
+
+.menu-button {
+  @apply w-full lg:w-auto text-white bg-color-primary hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0 flex flex-row justify-between items-center
+}
+
+.menu-list-link {
+  @apply w-full cursor-pointer lg:w-auto text-white bg-gray-800 hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0
+}
+
+
+@keyframes rightToLeft {
+  from {
+    @apply left-full;
+  }
+  to {
+    @apply left-0
+  }
+}
+
+.menu-animation {
+  animation: rightToLeft .15s linear 1;
+}
+
+.hero-box {
+  @apply flex flex-col w-full gap-20 even:lg:flex-row-reverse lg:flex-row xl:w-3/4 mt-24 xl:mt-48
+}
+
+.hero-text-element, .hero-image {
+  @apply w-full lg:w-1/2
+}

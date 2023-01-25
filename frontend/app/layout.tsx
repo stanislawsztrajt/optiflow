@@ -1,4 +1,9 @@
-import '@assets/styles/global.css'
+"use client";
+
+import "@/assets/styles/globals.css";
+import "animate.css";
+import { Header } from "@/features/ui";
+import ReduxProvider from "providers/redux-provider";
 
 export default function RootLayout({
   children,
@@ -8,7 +13,12 @@ export default function RootLayout({
   return (
     <html>
       <head></head>
-      <body>{children}</body>
+      <body>
+        <ReduxProvider>
+          <Header />
+          {children}
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

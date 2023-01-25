@@ -1,26 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common/exceptions';
+import { InjectModel } from '@nestjs/mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { CreateLostItemDto } from './dto/create-lost-item.dto';
 import { UpdateLostItemDto } from './dto/update-lost-item.dto';
+import { LostItem } from './schemas/lost-items.schema';
 
-@Injectable()
 export class LostItemsService {
-  create(createLostItemDto: CreateLostItemDto) {
-    return 'This action adds a new lostItem';
+  constructor(@InjectModel(LostItem.name) private readonly lostItemModel: Model<LostItem>) {}
+
+  async create(createLostItemDto: CreateLostItemDto): Promise<LostItem> {
+    const createdLostItem = new this.lostItemModel(createLostItemDto);
+    return await createdLostItem.save();
   }
 
-  findAll() {
-    return `This action returns all lostItems`;
+  async findAll(query: FilterQuery<LostItem>): Promise<LostItem[]> {
+    return await this.lostItemModel.find(query).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} lostItem`;
+  async findOne(query: FilterQuery<LostItem>): Promise<LostItem> {
+    return await this.lostItemModel.findById(query).exec();
   }
 
-  update(id: number, updateLostItemDto: UpdateLostItemDto) {
-    return `This action updates a #${id} lostItem`;
+  async update(id: string, updateLostItemDto: UpdateLostItemDto): Promise<LostItem> {
+    return await this.lostItemModel.findByIdAndUpdate(id, updateLostItemDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} lostItem`;
+  async remove(id: string): Promise<LostItem> {
+    const removedLostItem = await this.lostItemModel.findByIdAndRemove(id).exec();
+    if (!removedLostItem) {
+      throw new NotFoundException();
+    }
+    return removedLostItem;
   }
 }

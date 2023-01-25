@@ -1,26 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { FilterQuery, Model } from 'mongoose';
+import { User, UserDocument } from './schemas/users.schema';
+import { InjectModel } from '@nestjs/mongoose';
+
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+  ) {}
+
+  async findAll(query: FilterQuery<User>): Promise<User[]> {
+    return await this.userModel.find(query).exec();
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findOne(query: FilterQuery<User>): Promise<User> {
+    return await this.userModel.findOne(query).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async isAlreadyExist(login: string): Promise<boolean> {
+    const user = await this.findOne({ login });
+    if (user) {
+      return true;
+    }
+    return false;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async craete(user: User): Promise<User> {
+    const createdUser = new this.userModel(user);
+    return createdUser.save();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async update(id: string, user: User): Promise<User> {
+    return await this.userModel.findByIdAndUpdate(id, user);
+  }
+
+  async remove(id: string): Promise<User> {
+    return await this.userModel.findByIdAndRemove(id);
   }
 }
