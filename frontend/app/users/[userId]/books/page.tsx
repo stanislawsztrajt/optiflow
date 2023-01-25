@@ -1,34 +1,60 @@
+"use client";
+
 import BookList from "@/features/books/book-list";
+import { Ibook } from "@/features/books/types";
+import FeaturesLayout from "@/features/ui/features-layout";
+import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
-import React from "react";
+import { useUser } from "@/utils/hooks";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 interface Iprops {
   params: {
-    userId: string
-  }
+    userId: string;
+  };
 }
 
+export default function BooksPage(props: Iprops) {
+  const { params } = props;
+  const router = useRouter();
+  const { user: User } = useUser();
 
-export default async function BooksPage(props: Iprops) {
-  const { params } = props
+  const [user, setUser] = useState<Iuser>();
+  const [userBooks, setUserBooks] = useState<Ibook[]>([]);
 
-  const user = await usersServices.findOne(params.userId, 'force-cache')
-  const userBooks = await usersServices.findUserBooks(params.userId, 'no-cache')
+  useEffect(() => {
+    if (params.userId === User?._id) {
+      router.push("/dashbaord");
+    }
+
+    const fetchData = async () => {
+      const user = await usersServices.findOne(params.userId, "force-cache");
+      if (!user.name) {
+        router.back();
+      }
+
+      setUser(user);
+
+      const userBooks = await usersServices.findUserBooks(
+        params.userId,
+        "no-cache"
+      );
+      setUserBooks(userBooks);
+    };
+    fetchData();
+  }, []);
 
   return (
-    <main className='main-page-layout'>
-      <section className='section-header'>
-        <h1 className='section-header-h1'>
-          Książki użytkownika { user.name } { user.surname } { user.class }
-        </h1>
-        <h2 className='section-header-h2'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?
-        </h2>
-      </section>
-
-      <section className="section-elements-layout">
-        <BookList books={userBooks}/>
-      </section>
-    </main>
+    <FeaturesLayout
+      header={`Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
+        user?.class ?? ""
+      }`}
+      subHeader={
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      }
+    >
+      <BookList books={userBooks} />
+    </FeaturesLayout>
   );
 }

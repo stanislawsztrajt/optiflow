@@ -23,7 +23,7 @@
 }
 
 .section-element {
-  @apply flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+  @apply flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 hover:border-color-primary rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
 }
 
 .section-element-h3 {

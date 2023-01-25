@@ -1,4 +1,4 @@
-import { MaxLength, IsNumber, IsEnum } from 'class-validator';
+import { MaxLength, IsNumber, IsEnum, IsMongoId, IsOptional } from 'class-validator';
 import { LostItemFoundEnum } from '../types/lost-items.type';
 
 export class CreateLostItemDto {
@@ -20,4 +20,9 @@ export class CreateLostItemDto {
 
   @IsEnum(LostItemFoundEnum)
   type: LostItemFoundEnum;
+
+  @IsMongoId()
+  @IsOptional()
+  @MaxLength(200)
+  userId: string
 }

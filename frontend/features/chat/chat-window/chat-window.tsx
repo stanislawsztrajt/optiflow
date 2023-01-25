@@ -45,7 +45,7 @@ const ChatWindow: React.FC<Iprops> = ({ secondUserId = 'NO_USER_ID' }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChatWindow;

@@ -6,21 +6,21 @@ import { Iresponse } from "../types/api";
 const url = `${process.env.NEXT_PUBLIC_API_URL}/events`;
 
 class EventsServices {
-  async create(events: Ievent): Promise<Ievent> {
+  async create(event: Ievent): Promise<Ievent> {
     const { data }: Iresponse<Ievent> = await axios.post(
       url,
-      events,
+      event,
       authHeader
     );
     return data;
   }
 
-  async findAll(cache: RequestCache = 'no-store'): Promise<Ievent[]> {
+  async findAll(cache: RequestCache = "no-store"): Promise<Ievent[]> {
     const data = await fetch(url, { cache });
     return data.json();
   }
 
-  async findOne(id: string, cache: RequestCache = 'no-store'): Promise<Ievent> {
+  async findOne(id: string, cache: RequestCache = "no-store"): Promise<Ievent> {
     const data = await fetch(`${url}/${id}`, { cache });
     return data.json();
   }

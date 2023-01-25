@@ -1,6 +1,5 @@
 const useLostItemList = () => {
-  return {}
-}
+  return {};
+};
 
-export default useLostItemList
-  
+export default useLostItemList;

@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import "@/assets/styles/globals.css";
+import "animate.css";
 import { Header } from "@/features/ui";
 import ReduxProvider from "providers/redux-provider";
 
@@ -9,7 +10,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html>
       <head></head>

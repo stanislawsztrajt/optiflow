@@ -10,14 +10,14 @@ export interface Imessage {
 }
 
 export interface Ichat {
-  user: Iuser
-  latestMessage: Imessage
+  user: Iuser;
+  latestMessage: Imessage;
 }
 
 export interface ImessageInputInitialValues {
-  content: string
+  content: string;
 }
 
 export interface ImessageInputFormikActions {
-  resetForm: () => void
+  resetForm: () => void;
 }

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/redux/store";
@@ -8,9 +8,9 @@ const ChatSlice = createSlice({
   name: "chat",
   initialState: chatInitialStateSlice,
   reducers: {
-    loadOnlineUsersIds (state, action: PayloadAction<string[]>) {
+    loadOnlineUsersIds(state, action: PayloadAction<string[]>) {
       state.onlineUsersIds = action.payload;
-    }
+    },
   },
 });
 

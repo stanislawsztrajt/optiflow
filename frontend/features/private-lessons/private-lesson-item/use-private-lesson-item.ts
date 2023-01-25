@@ -1,6 +1,5 @@
 const usePrivateLessonItem = () => {
-  return {}
-}
+  return {};
+};
 
-export default usePrivateLessonItem
-  
+export default usePrivateLessonItem;

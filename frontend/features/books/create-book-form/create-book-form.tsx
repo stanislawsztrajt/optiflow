@@ -54,7 +54,7 @@ const CreateBookForm: FC = () => {
   return (
     <>
       <h1 className="text-4xl font-medium text-color-primary-text">
-        Dodaj swoją oferte
+        Dodaj swoją ofertę
       </h1>
 
       <Formik
@@ -202,10 +202,10 @@ const CreateBookForm: FC = () => {
                 {lookOptions}
               </Field>
             </div>
-            <div className='mt-6'></div>
+            <div className="mt-6"></div>
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
-                Zdjęcia{"(maksymalnie 3)"}
+                Zdjęcia (maksymalnie 3)
               </label>
               <input
                 disabled={loading}

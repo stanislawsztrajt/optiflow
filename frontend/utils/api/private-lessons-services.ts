@@ -15,12 +15,15 @@ class EventsServices {
     return data;
   }
 
-  async findAll(cache: RequestCache = 'no-store'): Promise<IprivateLesson[]> {
+  async findAll(cache: RequestCache = "no-store"): Promise<IprivateLesson[]> {
     const data = await fetch(url, { cache });
     return data.json();
   }
 
-  async findOne(id: string, cache: RequestCache = 'no-store'): Promise<IprivateLesson> {
+  async findOne(
+    id: string,
+    cache: RequestCache = "no-store"
+  ): Promise<IprivateLesson> {
     const data = await fetch(`${url}/${id}`, { cache });
     return data.json();
   }

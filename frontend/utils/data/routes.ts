@@ -7,7 +7,8 @@ import { IuserInfoLength } from "@/features/users/types";
 export const featuresRoutes = [
   {
     name: "Książki",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz książki",
     mainRoute: "/books",
     createName: "Dodaj książkę",
@@ -16,7 +17,8 @@ export const featuresRoutes = [
   },
   {
     name: "Wydarzenia",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz wydarzenia",
     mainRoute: "/events",
     createName: "Dodaj wydarzenie",
@@ -25,7 +27,8 @@ export const featuresRoutes = [
   },
   {
     name: "Zgubione przedmioty",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz zgubione przedmioty",
     mainRoute: "/lost-items",
     createName: "Dodaj zgubiony przedmiot",
@@ -34,7 +37,8 @@ export const featuresRoutes = [
   },
   {
     name: "Korepetycje",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz korepetycje",
     mainRoute: "/private-lessons",
     createName: "Dodaj korepetycje",
@@ -43,35 +47,45 @@ export const featuresRoutes = [
   },
 ];
 
-export const userFeaturesRoutes = (userInfoLength: IuserInfoLength, userId: string) => {
+export const userFeaturesRoutes = (
+  userInfoLength: IuserInfoLength,
+  userId: string,
+  isUserPage: boolean = true
+) => {
   return [
     {
       name: `Książki (${userInfoLength.books})`,
       image: UndrawBookLover,
-      viewName: 'Książki użytkownika',
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
-      route: `/users/${userId}/books`
+      viewName: isUserPage ? "Książki użytkownika" : "Twoje książki",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/books`,
     },
     {
       name: `Wydarzenia (${userInfoLength.events})`,
       image: UndrawEvent,
-      viewName: 'Wydarzenia użytkownika',
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
-      route: `/users/${userId}/events`
+      viewName: isUserPage ? "Wydarzenia użytkownika" : "Twoje wydarzenia",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/events`,
     },
     {
       name: `Zgubione przedmioty (${userInfoLength.lostItems})`,
       image: UndrawLost,
-      viewName: 'Zgubione przedmioty użytkownika',
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
-      route: `/users/${userId}/lost-items`
+      viewName: isUserPage
+        ? "Zgubione przedmioty użytkownika"
+        : "Twoje zgubione przedmioty",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/lost-items`,
     },
     {
       name: `Korepetycje (${userInfoLength.privateLessons})`,
       image: UndrawLesson,
-      viewName: 'Korepetycje użytkownika',
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
-      route: `/users/${userId}/private-lessons`
+      viewName: isUserPage ? "Korepetycje użytkownika" : "Twoje korepetycje",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      route: `/users/${userId}/private-lessons`,
     },
-  ]
-}
+  ];
+};

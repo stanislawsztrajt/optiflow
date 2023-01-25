@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 import React from "react";
 import ChatWindow from "@/features/chat/chat-window/chat-window";
 
 interface Iprops {
   params: {
-    secondUserId: string
-  }
+    secondUserId: string;
+  };
 }
 
 export default function ChatPropPage(props:Iprops) {

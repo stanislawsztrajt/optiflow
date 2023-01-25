@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const useHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return {
     isMenuOpen,
-    setIsMenuOpen
-  }
-}
+    setIsMenuOpen,
+  };
+};
 
-export default useHeader
+export default useHeader;

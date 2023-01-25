@@ -8,6 +8,7 @@ import {
   ArrayMaxSize,
   Max,
   MinLength,
+  IsMongoId,
 } from 'class-validator';
 import {
   BookCategoryType,
@@ -89,4 +90,9 @@ export class CreateBookDto {
   })
   @IsEnum(BookLookEnum)
   look: BookLookType;
+
+  @IsMongoId()
+  @IsOptional()
+  @MaxLength(200)
+  userId: string
 }

@@ -1,31 +1,20 @@
-import React, { FC } from 'react'
-import { IprivateLesson } from '../types'
+import React, { FC } from "react";
+import { IprivateLesson } from "../types";
 
 interface Props {
-  privateLesson: IprivateLesson
+  privateLesson: IprivateLesson;
 }
 
 const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
-  return(
+  return (
     <div>
-      <div>
-        { privateLesson.title }
-      </div>
-      <div>
-        { privateLesson.description }
-      </div>
-      <div>
-        { privateLesson.category }
-      </div>
-      <div>
-        { privateLesson.price }
-      </div>
-      <div>
-        { privateLesson.date.toISOString() }
-      </div>
+      <div>{privateLesson.title}</div>
+      <div>{privateLesson.description}</div>
+      <div>{privateLesson.category}</div>
+      <div>{privateLesson.price}</div>
+      <div>{privateLesson.date.toISOString()}</div>
     </div>
-  )
-}
+  );
+};
 
-export default PrivateLessonItem
-  
+export default PrivateLessonItem;

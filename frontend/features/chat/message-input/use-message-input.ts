@@ -1,6 +1,9 @@
 import * as Yup from "yup";
-import { socket } from '@/utils/socket';
-import { ImessageInputFormikActions, ImessageInputInitialValues } from "../types";
+import { socket } from "@/utils/socket";
+import {
+  ImessageInputFormikActions,
+  ImessageInputInitialValues,
+} from "../types";
 import { Field, Form, Formik } from "formik";
 
 interface Iprops {
@@ -11,14 +14,14 @@ interface Iprops {
 const useMessageInput = (props:Iprops) => {
   const { secondUserId, noUserId } = props
 
-  const initialValues:ImessageInputInitialValues = {
-    content: ''
-  }
+  const initialValues: ImessageInputInitialValues = {
+    content: "",
+  };
 
   const validationSchema = Yup.object().shape({
     content: Yup.string()
       .max(500, "Wiadomość może liczyć maksymalnie 500 znaków")
-      .required('Pole wymagane')
+      .required("Pole wymagane"),
   });
 
   const sendMessage = (values:ImessageInputInitialValues, actions:ImessageInputFormikActions) => {
@@ -26,18 +29,18 @@ const useMessageInput = (props:Iprops) => {
 
     const message = {
       content: values.content,
-      secondUserId
-    }
+      secondUserId,
+    };
 
-    socket.emit('sendMessage', message)
+    socket.emit("sendMessage", message);
     actions.resetForm();
-  }
+  };
 
   return {
     initialValues,
     sendMessage,
-    validationSchema
-  }
-}
+    validationSchema,
+  };
+};
 
 export default useMessageInput;
