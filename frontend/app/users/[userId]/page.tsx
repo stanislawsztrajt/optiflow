@@ -72,7 +72,7 @@ export default function UserPage(props: Iprops) {
   return (
     <FeaturesLayout
       header={`${user?.name} ${user?.surname} ${user?.class}`}
-      subHeader="Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać"
+      subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}
     </FeaturesLayout>

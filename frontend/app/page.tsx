@@ -36,7 +36,7 @@ export default function Page() {
   return (
     <FeaturesLayout
       header="Wybierz co cie aktualnie interesuje"
-      subHeader="Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać"
+      subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {routes}
     </FeaturesLayout>

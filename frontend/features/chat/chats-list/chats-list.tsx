@@ -20,7 +20,7 @@ const ChatsList: React.FC = () => {
   return (
     <div className='h-full'>
       {
-        chats ?
+        chats.length > 0 ?
         <div className='flex flex-col'>
           {chatsMap}
         </div>

@@ -53,7 +53,7 @@ export default function DashboardPage() {
   return (
     <FeaturesLayout
       header={`Witaj ${user?.name}!`}
-      subHeader="Problemy, które do tej pory nie były uporządkowane i klarowne, teraz możesz rozwiązać"
+      subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}
     </FeaturesLayout>
