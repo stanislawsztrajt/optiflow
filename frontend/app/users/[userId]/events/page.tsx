@@ -20,6 +20,7 @@ export default function EventsPage(props: Iprops) {
 
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +35,7 @@ export default function EventsPage(props: Iprops) {
         "no-cache"
       );
       setUserEvents(userEvents);
+      setLoading(false)
     };
     fetchData();
   }, []);
@@ -49,7 +51,7 @@ export default function EventsPage(props: Iprops) {
       }
       subHeader="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque."
     >
-      <EventList events={userEvents} />
+      <EventList events={userEvents} loading={loading} />
     </FeaturesLayout>
   );
 }

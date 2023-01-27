@@ -72,7 +72,7 @@ export default function LoginPage() {
             target="_blank"
             href="https://portal.librus.pl/rodzina/synergia/loguj"
           >
-            Sprawdź stronę librusa!
+            Sprawdź stronę Librusa
           </a>
         </div>
       </form>
