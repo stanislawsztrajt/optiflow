@@ -8,11 +8,12 @@ import { socket } from "@/utils/socket";
 
 interface Iprops {
   secondUserId: string;
+  noUserId: boolean
 }
 
 const useChatWindow = (props: Iprops) => {
+  const { secondUserId, noUserId } = props;
   const [loading, setLoading] = useState<boolean>(true);
-  const { secondUserId } = props;
   const { user } = useUser();
   const [secondUser, setSecondUser] = useState<Iuser>();
 
@@ -28,11 +29,12 @@ const useChatWindow = (props: Iprops) => {
   };
 
   useEffect(() => {
+    if(noUserId) return
     getSecondUser();
   }, []);
 
   useEffect(() => {
-    if (user?._id) joinSocketRoom();
+    if (user?._id && !noUserId) joinSocketRoom();
   }, [user]);
 
   return {

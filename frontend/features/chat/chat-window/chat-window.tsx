@@ -9,8 +9,8 @@ interface Iprops {
 }
 
 const ChatWindow: React.FC<Iprops> = ({ secondUserId = 'NO_USER_ID' }) => {
-  const { secondUser, loading } = useChatWindow({ secondUserId })
   const noUserId = secondUserId === 'NO_USER_ID' ? true : false
+  const { secondUser, loading } = useChatWindow({ secondUserId, noUserId })
 
   return (
     <div className='bg-white rounded-md h-1/2 w-[60rem] flex flex-row overflow-hidden text-gray-900 border shadow'>
