@@ -55,8 +55,8 @@ export default function UserPage(props: Iprops) {
         <h3 className="section-element-h3">{route.name}</h3>
         <Image
           loading="lazy"
-          width={500}
-          height={500}
+          width={150}
+          height={150}
           className="h-32 mt-8 "
           src={route.image}
           alt=""

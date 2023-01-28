@@ -3,11 +3,12 @@
 import Link from 'next/link'
 import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSchool, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSchool, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { APP_NAME } from '@/utils/constans';
 import useHeader from './use-header';
 import { Twirl as Hamburger } from 'hamburger-react'
 import { useUser } from '@/utils/hooks';
+import { logout } from '@/utils/helpers/user';
 
 const links = [
   {
@@ -54,14 +55,23 @@ const Header: FC = () => {
   const authButton: JSX.Element = (
     <>
       {user ? (
-        <Link href={"/dashboard"}>
-          <button type="button" className="menu-button lg:text">
-            <FontAwesomeIcon className='h-4' icon={faUser} />
-            <span className='ml-2'>
-              Panel użytkownika
-            </span>
+        <>
+          <Link href={"/dashboard"}>
+            <button type="button" className="menu-button lg:text">
+              <FontAwesomeIcon className='h-4' icon={faUser} />
+              <span className='ml-2'>
+                Panel użytkownika
+              </span>
+            </button>
+          </Link>
+          <button
+            type="button"
+            onClick={logout}
+            className="text-white ml-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
+          >
+            <FontAwesomeIcon icon={faRightFromBracket} />
           </button>
-        </Link>
+        </>
       ) : (
         <Link href={"/auth/login"}>
           <button type="button" className="menu-button">
@@ -84,6 +94,7 @@ const Header: FC = () => {
         <div className="order-2 hidden lg:flex">
           { authButton }
         </div>
+
         <div className="items-center justify-between lg:flex lg:w-auto" id="navbar-sticky">
           <div className='block text-2xl cursor-pointer lg:hidden'>
             <Hamburger

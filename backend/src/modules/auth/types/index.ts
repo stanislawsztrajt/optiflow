@@ -1,4 +1,4 @@
-import { User } from 'src/modules/users/schemas/users.schema';
+import { User } from '../../../modules/users/schemas/users.schema';
 
 export interface IlibrusAccountInfo {
   student: {

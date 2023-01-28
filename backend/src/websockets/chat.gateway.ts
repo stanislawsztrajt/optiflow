@@ -3,12 +3,13 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { CreateMessageDto } from 'src/modules/messages/dto/create-message.dto';
-import { MessagesService } from 'src/modules/messages/messages.service';
-
+import { CreateMessageDto } from '../modules/messages/dto/create-message.dto';
+import { MessagesService } from '../modules/messages/messages.service';
+import { config } from 'dotenv'
+config()
 
 @WebSocketGateway(1338, {
-  cors: '*',
+  cors: process.env.CLIENT_URL,
 })
 
 export class ChatGateway {

@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { schoolSymbol } from 'src/utils/constants/school';
-import { parseObjectObjectId } from 'src/utils/helpers/mongodb';
+import { schoolSymbol } from '../../utils/constants/school';
+import { parseObjectObjectId } from '../../utils/helpers/mongodb';
 import Librus from '../librus-auth/librus-client';
 import { User } from '../users/schemas/users.schema';
 import { UsersService } from '../users/users.service';

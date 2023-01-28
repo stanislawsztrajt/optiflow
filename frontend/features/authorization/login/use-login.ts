@@ -4,12 +4,9 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import authServices from "@/utils/api/auth-services";
 import { IloginDto } from "../types";
-import { useRouter } from "next/navigation";
 import { Ierror } from "@/utils/types/api";
 
 const useLogin = () => {
-  const router = useRouter();
-
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -22,7 +19,7 @@ const useLogin = () => {
       Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
       Cookies.set("jwt", data.jwt, { expires: 7 });
 
-      router.push("/dashboard");
+      window.location.href = '/dashboard'
     } catch (err) {
       console.error(err);
       const error = err as unknown as Ierror;
