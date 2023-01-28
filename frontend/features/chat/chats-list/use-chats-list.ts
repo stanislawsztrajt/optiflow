@@ -12,7 +12,6 @@ const useChatsList = () => {
     if(!user?._id) return
     const userChats:Ichat[] = await chatServices.findChats(user?._id)
 
-    console.log(userChats)
     setChats(userChats)
   }
 

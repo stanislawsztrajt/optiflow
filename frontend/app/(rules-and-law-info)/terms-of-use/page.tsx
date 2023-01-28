@@ -1,6 +1,6 @@
 "use client";
 
-import RulesAndLawLayout from "@/features/ui/rules-and-law-layout";
+import { RulesAndLawLayout } from "@/features/ui";
 
 export default function TermsOfUse() {
   return (

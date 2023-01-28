@@ -6,11 +6,11 @@ import { Ierror } from "@/utils/types/api";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  createEventInitialValues,
-  createEventValidationSchema,
-} from "./create-event-form-config";
-import { Ievent } from "../types";
-import eventsServices from "@/utils/api/events-services";
+  createLostItemInitialValues,
+  createLostItemValidationSchema,
+} from "./create-lost-item-form-config";
+import { IlostItem } from "../types";
+import lostItemsServices from "@/utils/api/lost-items-services";
 
 const useCreateEventForm = () => {
   const router = useRouter();
@@ -32,19 +32,19 @@ const useCreateEventForm = () => {
     setImages(Array.from(e.target.files as unknown as []).splice(0, 3));
   };
 
-  const createEvent = async (values: Ievent) => {
+  const createEvent = async (values: IlostItem) => {
     setLoading(true);
 
     try {
       const uploadedImages = await uploadImages(images as []);
-      const event: Ievent = {
+      const lostItem: IlostItem = {
         ...values,
         date: new Date(values.date),
-        price: values.price || 0,
         images: uploadedImages
       };
-      await eventsServices.create(event);
-      successAlert("Dodano twoje wydarzenie");
+      console.log(lostItem)
+      await lostItemsServices.create(lostItem);
+      successAlert("Dodano zgłoszenie zgubionego przedmiotu");
       router.push("/dashboard");
     } catch (err) {
       errorAlert("Problem z serverem... spróbuj ponownie później");
@@ -59,8 +59,8 @@ const useCreateEventForm = () => {
   return {
     loading,
     error,
-    initialValues: createEventInitialValues,
-    validationSchema: createEventValidationSchema,
+    initialValues: createLostItemInitialValues,
+    validationSchema: createLostItemValidationSchema,
     createEvent,
     setImages,
     handleSetImages,

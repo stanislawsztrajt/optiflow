@@ -1,9 +1,9 @@
 "use client";
 
 import React, { FC } from "react";
-import useCreateEventForm from "./use-create-event-form";
+import useCreateEventForm from "./use-create-lost-item-form";
 import { Field, Form, Formik } from "formik";
-import { Ievent } from "../types";
+import { IlostItem, LostItemTypes } from "../types";
 import { Loading } from "@/features/ui";
 
 const CreateEventForm: FC = () => {
@@ -16,7 +16,6 @@ const CreateEventForm: FC = () => {
     handleSetImages,
   } = useCreateEventForm();
 
-
   const selectedImages = imagesUrls.map((imageUrl) => {
     return (
       <img
@@ -28,32 +27,53 @@ const CreateEventForm: FC = () => {
     );
   });
 
+  const typeOptions = LostItemTypes.map((itemType) => {
+    return (
+      <option key={itemType} value={itemType}>
+        {itemType}
+      </option>
+    );
+  });
+
   return (
     <>
-      <h1 className="text-4xl font-medium text-color-primary-text">
-        Dodaj swoje wydarzenie
+      <h1 className="mb-4 text-4xl font-medium text-color-primary-text">
+        Dodaj zgubiony/znaleziony przedmiot
       </h1>
-
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => createEvent(values as unknown as Ievent)}
+        onSubmit={(values) => createEvent(values as unknown as IlostItem)}
       >
-        {({ errors, touched }) => (
-          <Form className="flex flex-col justify-center mt-2">
+        {({ errors, touched, values }) => (
+          <Form className="flex flex-col justify-center">
+            <div className="mb-6 create-form-element">
+              <label className="create-input-label" htmlFor="">
+                Rodzaj zgłoszenia
+              </label>
+              <Field
+                disabled={loading}
+                className="create-input"
+                as="select"
+                name="type"
+              >
+                {typeOptions}
+              </Field>
+            </div>
+
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
-                Tytuł
+                Nazwa przedmiotu
               </label>
               <Field
                 className="create-input"
                 type="text"
-                placeholder="Wydarzenie..."
-                name="title"
+                placeholder="Nazwa przedmiotu..."
+                name="name"
                 disabled={loading}
               />
               <div className="text-red-500">
-                {errors.title && touched.title ? <>{errors.title}</> : null}
+                {errors.name && touched.name ? <>{errors.name}</> : null}
                 &nbsp;
               </div>
             </div>
@@ -80,17 +100,17 @@ const CreateEventForm: FC = () => {
 
             <div className="create-form-element">
               <label className="create-input-label" htmlFor="">
-                Lokalizacja
+                Miejsce znalezienia/zgubienia (opcjonalne)
               </label>
               <Field
                 className="create-input"
                 type="text"
-                placeholder="Np. zdalnie/hala sportowa"
-                name="location"
+                placeholder="Np. świetlica/hala sportowa"
+                name="foundLocation"
                 disabled={loading}
               />
               <div className="text-red-500">
-                {errors.location && touched.location ? <>{errors.location}</> : null}
+                {errors.foundLocation && touched.foundLocation ? <>{errors.foundLocation}</> : null}
                 &nbsp;
               </div>
             </div>
@@ -107,23 +127,6 @@ const CreateEventForm: FC = () => {
               />
               <div className="text-red-500">
                 {errors.date && touched.date ? <>{errors.date}</> : null}
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="create-form-element">
-              <label className="create-input-label" htmlFor="">
-                Cena (opcjonalnie)
-              </label>
-              <Field
-                disabled={loading}
-                className="create-input"
-                type="number"
-                name="price"
-                placeholder="20"
-              />
-              <div className="text-red-500">
-                {errors.price && touched.price ? <>{errors.price}</> : null}
                 &nbsp;
               </div>
             </div>

@@ -2,11 +2,11 @@
 
 import EventList from "@/features/events/event-list";
 import { Ievent } from "@/features/events/types";
-import FeaturesLayout from "@/features/ui/features-layout";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FeaturesLayout } from "@/features/ui";
 
 interface Iprops {
   params: {

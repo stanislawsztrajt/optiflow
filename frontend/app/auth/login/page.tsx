@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import useLogin from "@/features/authorization/login/use-login";
-import Loading from "@/features/ui/loading";
+import { Loading } from "@/features/ui";
 
 export default function LoginPage() {
   const { error, loading, login } = useLogin();

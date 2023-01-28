@@ -9,6 +9,7 @@ import {
   Max,
   MinLength,
   IsMongoId,
+  Min,
 } from 'class-validator';
 import {
   BookCategoryType,
@@ -62,12 +63,13 @@ export class CreateBookDto {
   @MaxLength(50)
   publishingHouse: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional({
-    message: 'price is required',
+    message: 'part is required',
   })
+  @Min(0)
   @Max(10)
-  part: number;
+  part: string;
 
   @IsArray({
     message: 'images must be an array',
@@ -82,6 +84,7 @@ export class CreateBookDto {
   @IsOptional({
     message: 'price is required',
   })
+  @Min(0)
   @Max(10000000000)
   price: number;
 
