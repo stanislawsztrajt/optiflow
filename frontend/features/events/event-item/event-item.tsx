@@ -32,7 +32,7 @@ const EventItem: FC<Props> = ({ event }) => {
         />
       </div>
 
-      <div>
+      <div className='flex flex-col justify-between'>
         <h1 className="mt-4 text-xl text-gray-800 break-words">
           {title}
         </h1>
@@ -45,7 +45,6 @@ const EventItem: FC<Props> = ({ event }) => {
 
             <p className="text-sm text-gray-500 ">{format(new Date(date), 'PP', {locale: pl})}, {location}</p>
           </div>
-
           <Link href={`events/${_id}`} className="inline-block text-red-500 underline hover:text-red-400">Czytaj więcej</Link>
         </div>
       </div>

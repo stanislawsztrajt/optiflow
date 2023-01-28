@@ -1,6 +1,6 @@
 import "@/assets/styles/globals.css";
+import { CreateFormLayout } from "@/features/ui";
 import UndrawBook from "assets/undraw/undraw_book.svg";
-import CreateFormLayout from "@/features/ui/create-form-layout";
 
 export default function CreateBookLayout({
   children,

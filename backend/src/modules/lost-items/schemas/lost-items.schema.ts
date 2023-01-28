@@ -9,18 +9,18 @@ export class LostItem {
   @Prop({ maxlength: 100 })
   name: string;
 
-  @Prop({ maxlength: 100 })
-  foundLocation: string;
-  // the place where the item was found
-
   @Prop({ maxlength: 500 })
   description: string;
 
+  @Prop({ maxlength: 100 })
+  foundLocation?: string;
+  // the place where the item was found
+
+  @Prop()
+  date: Date;
+
   @Prop()
   images: string[];
-
-  @Prop({ max: 100000000000 })
-  price: number;
 
   @Prop()
   type: LostItemFoundType;

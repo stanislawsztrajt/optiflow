@@ -6,7 +6,7 @@ interface IProps {
   images: string[]
 }
 
-const EventImagesCarousel: React.FC<IProps> = ({ images }) => {
+const ImagesCarousel: React.FC<IProps> = ({ images }) => {
 
   const imagesMap = images?.map(image => {
     return (
@@ -39,4 +39,4 @@ const EventImagesCarousel: React.FC<IProps> = ({ images }) => {
   )
 }
 
-export default EventImagesCarousel;
+export default ImagesCarousel;

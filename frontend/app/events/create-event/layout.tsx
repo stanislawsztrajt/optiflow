@@ -1,6 +1,6 @@
 import "@/assets/styles/globals.css";
 import UndrawEvent from "assets/undraw/undraw_event.svg";
-import CreateFormLayout from "@/features/ui/create-form-layout";
+import { CreateFormLayout } from "@/features/ui";
 
 export default function CreateEventLayout({
   children,
