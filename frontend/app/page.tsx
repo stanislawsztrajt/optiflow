@@ -12,14 +12,14 @@ export default function Page() {
 
   const routes = featuresRoutes.map((route) => {
     return (
-      <div key={route.name} className="section-element">
+      <div key={route.name} className="section-element w-96">
         <h3 className="section-element-h3">{route.name}</h3>
         <Image
           loading="lazy"
           width={500}
           height={500}
           className="h-32 mt-8 "
-          src={route.image.src}
+          src={route.image}
           alt=""
         />
         <p className="section-element-p">{route.content}</p>
