@@ -9,65 +9,14 @@ import useHeader from './use-header';
 import { Twirl as Hamburger } from 'hamburger-react'
 import { useUser } from '@/utils/hooks';
 import { logout } from '@/utils/helpers/user';
+import { headerLinksList } from '@/utils/data/header';
 
-const linksList = [
-  {
-    name: 'Funkcjonalności',
-    list: [
-      {
-        name: 'Książki',
-        route: '/books',
-        createRoute: '/books/create-book'
-      },
-      {
-        name: 'Wydarzenia',
-        route: '/events',
-        createRoute: '/events/create-event'
-      },
-      {
-        name: 'Zgubione przedmioty',
-        route: '/lost-items',
-        createRoute: '/lost-items/create-lost-item'
-      },
-      {
-        name: 'Korepetycje',
-        route: '/private-lessons',
-        createRoute: '/private-lessons/create-private-lesson'
-      },
-      {
-        name: 'Chat',
-        route: '/chat',
-        createRoute: null
-      },
-    ]
-  },
-  {
-    name: 'Ogólne',
-    list: [
-      {
-        name: 'O stronie',
-        route: '/books',
-        createRoute: null
-      },
-      {
-        name: 'Kontakt',
-        route: '/events',
-        createRoute: null
-      },
-      {
-        name: 'Polityka prywatności',
-        route: '/lost-items',
-        createRoute: null
-      }
-    ]
-  }
-];
 
 const Header: FC = () => {
   const { user } = useUser();
   const { isMenuOpen, setIsMenuOpen } = useHeader();
 
-  const linksMap = linksList.map((links) => {
+  const linksMap = headerLinksList.map((links) => {
     return (
       <div>
         <button className="px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
