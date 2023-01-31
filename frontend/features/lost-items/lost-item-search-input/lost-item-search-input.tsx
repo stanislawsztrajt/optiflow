@@ -1,20 +1,20 @@
 import { Field, Form, Formik } from 'formik';
 import React, { Dispatch, SetStateAction } from 'react'
-import { Ievent } from '../types';
-import useEventSearchInput from './use-event-search-input';
+import { IlostItem } from '../types';
+import useLostItemSearchInput from './use-lost-item-search-input';
 
 interface IProps {
-  events: Ievent[]
-  setEvents: Dispatch<SetStateAction<Ievent[]>>
+  lostItems: IlostItem[]
+  setLostItems: Dispatch<SetStateAction<IlostItem[]>>
 }
 
-const EventSearchInput: React.FC<IProps> = ({ events, setEvents }) => {
-  const { searchEvents, initialValues } = useEventSearchInput({ events, setEvents })
+const LostItemSearchInput: React.FC<IProps> = ({ lostItems, setLostItems }) => {
+  const { searchLostItems, initialValues } = useLostItemSearchInput({ lostItems, setLostItems })
 
   return (
     <>
       <Formik
-        onSubmit={searchEvents}
+        onSubmit={searchLostItems}
         initialValues={initialValues}
       >
         <Form className='relative mt-4 md:mt-0'>
@@ -35,4 +35,4 @@ const EventSearchInput: React.FC<IProps> = ({ events, setEvents }) => {
   )
 }
 
-export default EventSearchInput;
+export default LostItemSearchInput;

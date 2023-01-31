@@ -15,7 +15,6 @@ const useLogin = () => {
     try {
       const data = await authServices.login(loginDto);
       setError("");
-      console.log(data.user);
       Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
       Cookies.set("jwt", data.jwt, { expires: 7 });
 

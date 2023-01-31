@@ -1,6 +1,19 @@
+"use client"
+
 import CreateFormLayout from "./create-form-layout";
 import FormLayout from "./form-layout";
 import Header from "./header";
 import Loading from "./loading";
+import RulesAndLawLayout from "./rules-and-law-layout";
+import FeaturesLayout from "./features-layout";
+import ImagesCarousel from "./images-carousel";
 
-export { CreateFormLayout, FormLayout, Header, Loading };
+export {
+  CreateFormLayout,
+  FormLayout,
+  Header,
+  Loading,
+  RulesAndLawLayout,
+  FeaturesLayout,
+  ImagesCarousel
+};

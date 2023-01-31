@@ -2,8 +2,7 @@
 
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import { Loading } from "@/features/ui";
-import FeaturesLayout from "@/features/ui/features-layout";
+import { FeaturesLayout, Loading } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";

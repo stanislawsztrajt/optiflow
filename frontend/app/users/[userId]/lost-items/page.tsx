@@ -2,7 +2,7 @@
 
 import LostItemList from "@/features/lost-items/lost-item-list";
 import { IlostItem } from "@/features/lost-items/types";
-import FeaturesLayout from "@/features/ui/features-layout/features-layout";
+import { FeaturesLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,7 @@ export default function LostItemsPage(props: Iprops) {
 
   const [user, setUser] = useState<Iuser>();
   const [userLostItems, setUserLostuserLostItems] = useState<IlostItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +35,7 @@ export default function LostItemsPage(props: Iprops) {
         "no-cache"
       );
       setUserLostuserLostItems(userLostItems);
+      setLoading(false)
     };
     fetchData();
   }, []);
@@ -51,7 +53,7 @@ export default function LostItemsPage(props: Iprops) {
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
       }
     >
-      <LostItemList lostItems={userLostItems} />
+      <LostItemList lostItems={userLostItems} loading={loading} />
     </FeaturesLayout>
   );
 }

@@ -4,9 +4,8 @@ import usersServices from "@/utils/api/users-services";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 import { userFeaturesRoutes } from "@/utils/data/routes";
-import FeaturesLayout from "@/features/ui/features-layout";
+import { FeaturesLayout } from "@/features/ui";
 import { useRouter } from "next/navigation";
 import { Iuser, IuserInfoLength } from "@/features/users/types";
 

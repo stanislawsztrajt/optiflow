@@ -21,13 +21,13 @@ export class Book {
   @Prop({ maxlength: 50 })
   publishingHouse: string;
 
-  @Prop({ max: 10 })
-  part: number;
+  @Prop({ minlength: 0, maxlength: 10 })
+  part: string;
 
   @Prop()
   images: string[];
 
-  @Prop({ max: 10000000000 })
+  @Prop({ min: 0, max: 10000000000 })
   price: number;
 
   @Prop()

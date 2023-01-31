@@ -2,7 +2,7 @@
 
 import BookList from "@/features/books/book-list";
 import { Ibook } from "@/features/books/types";
-import FeaturesLayout from "@/features/ui/features-layout";
+import { FeaturesLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";

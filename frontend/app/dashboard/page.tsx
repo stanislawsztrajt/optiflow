@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useUser } from "@/utils/hooks";
-import FeaturesLayout from "@/features/ui/features-layout/features-layout";
-import usersServices from "@/utils/api/users-services";
-import { userFeaturesRoutes } from "@/utils/data/routes";
 import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@/utils/hooks";
+import usersServices from "@/utils/api/users-services";
+import { userFeaturesRoutes } from "@/utils/data/routes";
 import { IuserInfoLength } from "@/features/users/types";
+import { FeaturesLayout } from "@/features/ui";
 
 export default function DashboardPage() {
   const { user } = useUser();

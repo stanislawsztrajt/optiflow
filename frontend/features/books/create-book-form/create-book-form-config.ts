@@ -22,13 +22,14 @@ export const createBookValidationSchema = Yup.object({
     .max(500, "Opis musi być krótszy niż 500 znaków")
     .required("Opis jest wymagany"),
   price: Yup.number()
+    .min(0, "Minimalna cena to 0")
     .max(10000000, "Cena musi być mniejsza niż 10000000")
     .required("Cena jest wymagana"),
   publishingHouse: Yup.string()
-    .min(2, "Wydawnictwo musi mieć conajmniej 2 znaków")
-    .max(50, "Wydawnictwo musi być krótszy niż 50 znaków")
-    .required("Wydawnictwo jest wymagany"),
+    .min(2, "Wydawnictwo musi mieć conajmniej 2 znaki")
+    .max(50, "Wydawnictwo musi być krótsze niż 50 znaków")
+    .required("Wydawnictwo jest wymagane"),
   part: Yup.number()
-    .max(10, "Cena musi być mniejsza niż 10")
-    .required("Cena jest wymagana"),
+    .max(10, "Część musi być krótsza niż 10 znaków")
+    .required("Część jest wymagana"),
 });
