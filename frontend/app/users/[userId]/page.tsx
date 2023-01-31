@@ -17,8 +17,7 @@ interface Iprops {
 
 export default function UserPage(props: Iprops) {
   const { params } = props;
-
-  const router = useRouter();
+  const router = useRouter()
 
   const [user, setUser] = useState<Iuser>();
   const [userInfoLength, setUserInfoLength] = useState<IuserInfoLength>({
@@ -70,7 +69,7 @@ export default function UserPage(props: Iprops) {
 
   return (
     <FeaturesLayout
-      header={`${user?.name} ${user?.surname} ${user?.class}`}
+      header={`${user?.name ?? ''} ${user?.surname ?? ''} ${user?.class ?? ''}`}
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}

@@ -2,11 +2,11 @@
 
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesLayout, Loading } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 
 interface Iprops {
   params: {
@@ -54,7 +54,9 @@ export default function PrivateLessonsPage(props: Iprops) {
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
       }
     >
-      <PrivateLessonList privateLessons={userPrivateLessons} />
+      <Suspense fallback={<Loading />}>
+        <PrivateLessonList privateLessons={userPrivateLessons} />
+      </Suspense>
     </FeaturesLayout>
   );
 }
