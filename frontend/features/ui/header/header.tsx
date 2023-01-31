@@ -3,52 +3,92 @@
 import Link from 'next/link'
 import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSchool, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faSchool, faUser, faRightFromBracket, faPlus, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { APP_NAME } from '@/utils/constans';
 import useHeader from './use-header';
 import { Twirl as Hamburger } from 'hamburger-react'
 import { useUser } from '@/utils/hooks';
 import { logout } from '@/utils/helpers/user';
 
-const links = [
+const linksList = [
   {
-    route: '/hero',
-    name: 'O stronie'
+    name: 'Funkcjonalności',
+    list: [
+      {
+        name: 'Książki',
+        route: '/books',
+        createRoute: '/books/create-book'
+      },
+      {
+        name: 'Wydarzenia',
+        route: '/events',
+        createRoute: '/events/create-event'
+      },
+      {
+        name: 'Zgubione przedmioty',
+        route: '/lost-items',
+        createRoute: '/lost-items/create-lost-item'
+      },
+      {
+        name: 'Korepetycje',
+        route: '/private-lessons',
+        createRoute: '/private-lessons/create-private-lesson'
+      },
+      {
+        name: 'Chat',
+        route: '/chat',
+        createRoute: null
+      },
+    ]
   },
   {
-    route: '/chat',
-    name: 'Chat'
-  },
-  {
-    route: '/privacy-policy',
-    name: 'Polityka prywatności'
-  },
-  {
-    route: "",
-    name: "Kontakt",
-  },
+    name: 'Ogólne',
+    list: [
+      {
+        name: 'O stronie',
+        route: '/books',
+        createRoute: null
+      },
+      {
+        name: 'Kontakt',
+        route: '/events',
+        createRoute: null
+      },
+      {
+        name: 'Polityka prywatności',
+        route: '/lost-items',
+        createRoute: null
+      }
+    ]
+  }
 ];
 
 const Header: FC = () => {
   const { user } = useUser();
   const { isMenuOpen, setIsMenuOpen } = useHeader();
 
-  const linksMap = links.map((link) => {
+  const linksMap = linksList.map((links) => {
     return (
-      <li
-        key={link.name}
-        className="text-gray-800 duration-100 hover:text-black "
-      >
-        <Link href={link.route}>{link.name}</Link>
-      </li>
-    );
-  });
-
-  const menuLinksMap = links.map((link) => {
-    return (
-      <li key={link.name} className="menu-list-link">
-        <Link href={link.route}>{link.name}</Link>
-      </li>
+      <div>
+        <button className="px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
+          { links.name }
+          <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
+        </button>
+        <div className="absolute flex-col items-center hidden w-full rounded-lg lg:bg-white lg:w-auto peer-hover:flex hover:flex drop-shadow-lg">
+          { links.list.map(link => (
+            <div key={link.name} className="flex items-center justify-between w-56 p-4 pt-5 duration-100 bg-white border-b lg:bg-transparent hover:bg-gray-100">
+              <Link href={link.route} className='text-gray-700 hover:text-black'>
+                {link.name}
+              </Link>
+              { link.createRoute ? (
+                <Link href={link.createRoute}>
+                  <FontAwesomeIcon className='w-4 h-4 p-1 text-white border bg-color-primary border-color-primary hover:brightness-110 rounded-xl' icon={faPlus} />
+                </Link>
+              ) : null }
+            </div>
+          )) }
+        </div>
+      </div>
     );
   });
 
@@ -57,7 +97,7 @@ const Header: FC = () => {
       {user ? (
         <>
           <Link href={"/dashboard"}>
-            <button type="button" className="menu-button lg:text">
+            <button type="button" className="menu-button">
               <FontAwesomeIcon className='h-4' icon={faUser} />
               <span className='ml-2'>
                 Panel użytkownika
@@ -67,7 +107,7 @@ const Header: FC = () => {
           <button
             type="button"
             onClick={logout}
-            className="text-white ml-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
+            className="text-white lg:ml-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
           >
             <FontAwesomeIcon icon={faRightFromBracket} />
           </button>
@@ -112,8 +152,8 @@ const Header: FC = () => {
 
       { isMenuOpen ? (
         <div className='fixed left-0 w-screen h-screen bg-white border-t top-20 lg:hidden menu-animation'>
-          <div className='flex flex-col justify-end gap-4 px-4 text-center list-none h-3/4'>
-            { menuLinksMap }
+          <div className='flex flex-col justify-center h-screen gap-4 pl-2 pr-6 text-center list-none'>
+            { linksMap }
             { authButton }
           </div>
         </div>
