@@ -6,7 +6,7 @@ export const createEventInitialValues = {
   location: "",
   date: "",
   images: [],
-  price: ""
+  price: "",
 };
 
 export const createEventValidationSchema = Yup.object({
@@ -22,6 +22,5 @@ export const createEventValidationSchema = Yup.object({
     .min(2, "Lokalizacja musi mieć conajmniej 5 znaków")
     .max(50, "Lokalizacja musi być krótsza niż 100 znaków")
     .required("Lokalizacja jest wymagana"),
-  date: Yup.date()
-    .required("Data jest wymagana"),
+  date: Yup.date().required("Data jest wymagana"),
 });

@@ -1,26 +1,29 @@
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { useUser } from ".";
 
-
-const loggedInRoutes = ['dashboard', 'create', 'chat'];
-const notLoggedInRoutes = ['auth'];
+const loggedInRoutes = ["dashboard", "create", "chat"];
+const notLoggedInRoutes = ["auth"];
 
 export const useRoutesGuards = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { user } = useUser()
+  const { user } = useUser();
 
   useEffect(() => {
-    const isLoggedInRoute = loggedInRoutes.some(route => pathname?.includes(route))
-    const isNotLoggedInRoute = notLoggedInRoutes.some(route => pathname?.includes(route))
+    const isLoggedInRoute = loggedInRoutes.some((route) =>
+      pathname?.includes(route)
+    );
+    const isNotLoggedInRoute = notLoggedInRoutes.some((route) =>
+      pathname?.includes(route)
+    );
 
     if (isLoggedInRoute && !user) {
-      router.push('/auth/login')
+      router.push("/auth/login");
     }
 
     if (isNotLoggedInRoute && user) {
-      router.push('/dashboard')
+      router.push("/dashboard");
     }
-  }, [pathname])
-}
+  }, [pathname]);
+};

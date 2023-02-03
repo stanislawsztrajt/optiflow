@@ -19,39 +19,39 @@ export default function EventPage(props: Iprops) {
   const [event, setEvent] = useState<Ievent>();
 
   useEffect(() => {
-    fetchEvent()
+    fetchEvent();
   }, []);
 
   const fetchEvent = async () => {
-    const event:Ievent = await eventsServices.findOne(params.eventId)
-    if(event.images.length === 0) event.images = [placeholderImageUrl]
+    const event: Ievent = await eventsServices.findOne(params.eventId);
+    if (event.images.length === 0) event.images = [placeholderImageUrl];
 
-    setEvent(event)
-  }
+    setEvent(event);
+  };
 
   return (
     <>
-      {
-        event ?
-          <div className='mt-32'>
-            <div className='w-11/12 mx-auto sm:w-4/5 lg:w-3/5 2xl:w-2/5'>
-              <ImagesCarousel images={event.images} />
-              <div className='grid grid-cols-1 gap-2 py-5 lg:px-10'>
-                <h1 className='text-2xl font-semibold lg:text-3xl'>{event.title}</h1>
-                <p className="text-gray-500 ">
-                  { format(new Date(event.date), 'PP', {locale: pl}) },
-                  { event.location }
-                </p>
-                <p className="text-2xl font-medium">
-                  { event.price ? `Opłata: ${event.price}zł` : "Za darmo" }
-                </p>
-                <p className='text-lg'> {event.description}</p>
-              </div>
+      {event ? (
+        <div className="mt-32">
+          <div className="w-11/12 mx-auto sm:w-4/5 lg:w-3/5 2xl:w-2/5">
+            <ImagesCarousel images={event.images} />
+            <div className="grid grid-cols-1 gap-2 my-5 lg:px-10">
+              <h1 className="text-2xl font-semibold lg:text-3xl">
+                {event.title}
+              </h1>
+              <p className="text-gray-500 ">
+                {format(new Date(event.date), "PP", { locale: pl })}, {event.location}
+              </p>
+              <p className="text-2xl font-medium">
+                {event.price ? `Opłata: ${event.price}zł` : "Za darmo"}
+              </p>
+              <p className="text-lg"> {event.description}</p>
             </div>
           </div>
-        :
-        'Ładowanie'
-      }
+        </div>
+      ) : (
+        "Ładowanie"
+      )}
     </>
   );
 }

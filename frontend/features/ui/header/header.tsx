@@ -18,7 +18,7 @@ const Header: FC = () => {
 
   const linksMap = headerLinksList.map((links) => {
     return (
-      <div>
+      <div key={links.name}>
         <button className="px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
           { links.name }
           <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
@@ -56,7 +56,7 @@ const Header: FC = () => {
           <button
             type="button"
             onClick={logout}
-            className="text-white lg:ml-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
+            className="text-white lg:ml-4 bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
           >
             <FontAwesomeIcon icon={faRightFromBracket} />
           </button>
@@ -64,28 +64,29 @@ const Header: FC = () => {
       ) : (
         <Link href={"/auth/login"}>
           <button type="button" className="menu-button">
-            <FontAwesomeIcon className='h-4' icon={faSchool} />
-            <span className='ml-2'>
-              Zaloguj się używając Librus
-            </span>
+            <FontAwesomeIcon className="h-4" icon={faSchool} />
+            <span className="ml-2">Zaloguj się używając Librus</span>
           </button>
         </Link>
       )}
     </>
   );
 
-  return(
+  return (
     <nav className="px-6 sm:px-4 py-2.5 fixed w-full z-20 top-0 lg:mt-0 left-0 bg-white border-b">
       <div className="container flex flex-wrap items-center justify-between h-16 mx-auto">
         <Link href="/" className="flex items-center">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap ">{APP_NAME}</span>
+          <span className="self-center text-2xl font-semibold whitespace-nowrap ">
+            {APP_NAME}
+          </span>
         </Link>
-        <div className="order-2 hidden lg:flex">
-          { authButton }
-        </div>
+        <div className="order-2 hidden lg:flex">{authButton}</div>
 
-        <div className="items-center justify-between lg:flex lg:w-auto" id="navbar-sticky">
-          <div className='block text-2xl cursor-pointer lg:hidden'>
+        <div
+          className="items-center justify-between lg:flex lg:w-auto"
+          id="navbar-sticky"
+        >
+          <div className="block text-2xl cursor-pointer lg:hidden">
             <Hamburger
               toggled={isMenuOpen}
               toggle={setIsMenuOpen}

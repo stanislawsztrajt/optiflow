@@ -7,7 +7,7 @@ import { useUser } from "@/utils/hooks";
 import usersServices from "@/utils/api/users-services";
 import { userFeaturesRoutes } from "@/utils/data/routes";
 import { IuserInfoLength } from "@/features/users/types";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesTabsLayout } from "@/features/ui";
 
 export default function DashboardPage() {
   const { user } = useUser();
@@ -51,11 +51,11 @@ export default function DashboardPage() {
     : null;
 
   return (
-    <FeaturesLayout
+    <FeaturesTabsLayout
       header={`Witaj ${user?.name}!`}
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}
-    </FeaturesLayout>
+    </FeaturesTabsLayout>
   );
 }

@@ -41,7 +41,7 @@ const useCreateEventForm = () => {
         ...values,
         date: new Date(values.date),
         price: values.price || 0,
-        images: uploadedImages
+        images: uploadedImages,
       };
       await eventsServices.create(event);
       successAlert("Dodano twoje wydarzenie");

@@ -7,12 +7,12 @@ import {
 import { Field, Form, Formik } from "formik";
 
 interface Iprops {
-  secondUserId: string
-  noUserId: boolean
+  secondUserId: string;
+  noUserId: boolean;
 }
 
-const useMessageInput = (props:Iprops) => {
-  const { secondUserId, noUserId } = props
+const useMessageInput = (props: Iprops) => {
+  const { secondUserId, noUserId } = props;
 
   const initialValues: ImessageInputInitialValues = {
     content: "",
@@ -24,8 +24,11 @@ const useMessageInput = (props:Iprops) => {
       .required("Pole wymagane"),
   });
 
-  const sendMessage = (values:ImessageInputInitialValues, actions:ImessageInputFormikActions) => {
-    if(!socket || noUserId) return
+  const sendMessage = (
+    values: ImessageInputInitialValues,
+    actions: ImessageInputFormikActions
+  ) => {
+    if (!socket || noUserId) return;
 
     const message = {
       content: values.content,

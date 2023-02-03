@@ -1,1 +1,1 @@
-export { default } from './rules-and-law-layout'
+export { default } from "./rules-and-law-layout";

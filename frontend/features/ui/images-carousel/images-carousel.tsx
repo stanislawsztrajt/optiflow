@@ -1,27 +1,25 @@
-import { Carousel } from 'flowbite-react'
-import Image from 'next/image'
-import React from 'react'
+import { Carousel } from "flowbite-react";
+import Image from "next/image";
+import React from "react";
 
 interface IProps {
-  images: string[]
+  images: string[];
 }
 
 const ImagesCarousel: React.FC<IProps> = ({ images }) => {
-
-  const imagesMap = images?.map(image => {
+  const imagesMap = images?.map((image) => {
     return (
-      <div key={image} className='relative w-full h-56 sm:h-72 lg:h-96'>
+      <div key={image} className="relative w-full h-56 sm:h-72 lg:h-96">
         <Image
           src={`${image}`}
           fill={true}
-          loading='lazy'
+          loading="lazy"
           className="object-cover object-center w-full rounded-lg shadow"
-          alt=''
+          alt=""
         />
       </div>
-    )
-  })
-
+    );
+  });
 
   return (
     <>
@@ -32,11 +30,11 @@ const ImagesCarousel: React.FC<IProps> = ({ images }) => {
           leftControl={images.length <= 1}
           rightControl={images.length <= 1}
         >
-          { imagesMap }
+          {imagesMap}
         </Carousel>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default ImagesCarousel;
