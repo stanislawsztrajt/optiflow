@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import useOnlineUsers from "@/features/chat/online-users/use-online-users";
 import Image from "next/image";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesTabsLayout } from "@/features/ui";
 
 export default function Page() {
   useOnlineUsers();
@@ -34,11 +34,11 @@ export default function Page() {
   });
 
   return (
-    <FeaturesLayout
+    <FeaturesTabsLayout
       header="Wybierz, co Cię aktualnie interesuje"
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {routes}
-    </FeaturesLayout>
+    </FeaturesTabsLayout>
   );
 }

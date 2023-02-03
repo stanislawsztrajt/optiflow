@@ -1,5 +1,3 @@
-const useEventImagesCarousel = () => {
-
-}
+const useEventImagesCarousel = () => {};
 
 export default useEventImagesCarousel;

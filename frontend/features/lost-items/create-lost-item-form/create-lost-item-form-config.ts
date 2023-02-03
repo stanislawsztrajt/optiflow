@@ -7,7 +7,7 @@ export const createLostItemInitialValues = {
   foundLocation: "",
   date: "",
   images: [],
-  type: LostItemFoundEnum.LOST
+  type: LostItemFoundEnum.LOST,
 };
 
 export const createLostItemValidationSchema = Yup.object({
@@ -22,6 +22,5 @@ export const createLostItemValidationSchema = Yup.object({
   foundLocation: Yup.string()
     .min(5, "Lokalizacja musi mieć conajmniej 5 znaków")
     .max(100, "Lokalizacja musi być krótsza niż 100 znaków"),
-  date: Yup.date()
-    .required("Data jest wymagana"),
+  date: Yup.date().required("Data jest wymagana"),
 });

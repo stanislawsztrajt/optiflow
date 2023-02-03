@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { FC } from "react";
 import { IprivateLesson } from "../types";
 
@@ -6,13 +7,31 @@ interface Props {
 }
 
 const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
+  const { _id, title, category, offerType, price } = privateLesson
+
   return (
     <div>
-      <div>{privateLesson.title}</div>
-      <div>{privateLesson.description}</div>
-      <div>{privateLesson.category}</div>
-      <div>{privateLesson.price}</div>
-      <div>{privateLesson.date.toISOString()}</div>
+      <div className="flex flex-col justify-between p-4 border rounded-md">
+        <h1 className="text-xl text-gray-800 break-words">{title}</h1>
+
+        <div className="flex items-end justify-between mt-2">
+          <div>
+            <p className="text-lg font-medium text-gray-700">
+              {price ? `${price}zł/godz` : "Za darmo"}
+            </p>
+
+            <p className="text-sm text-gray-500 ">
+              { category } | { offerType }
+            </p>
+          </div>
+          <Link
+            href={`private-lessons/${_id}`}
+            className="inline-block text-red-500 underline hover:text-red-400"
+          >
+            Czytaj więcej
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 "use client";
 
 import LostItemList from "@/features/lost-items/lost-item-list";
+import LostItemSearchInput from "@/features/lost-items/lost-item-search-input";
 import { IlostItem } from "@/features/lost-items/types";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesItemsLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";
@@ -19,7 +20,8 @@ export default function LostItemsPage(props: Iprops) {
   const router = useRouter();
 
   const [user, setUser] = useState<Iuser>();
-  const [userLostItems, setUserLostuserLostItems] = useState<IlostItem[]>([]);
+  const [userLostItems, setUserLostItems] = useState<IlostItem[]>([]);
+  const [initialUserLostItems, setInitialUserLostItems] = useState<IlostItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -34,26 +36,28 @@ export default function LostItemsPage(props: Iprops) {
         params.userId,
         "no-cache"
       );
-      setUserLostuserLostItems(userLostItems);
-      setLoading(false)
+      setUserLostItems(userLostItems);
+      setInitialUserLostItems(userLostItems);
+      setLoading(false);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={
+    <FeaturesItemsLayout
+      title={
         user?._id === params.userId
           ? "Twoje zgubione przedmioty"
           : `Zgubione przedmioty ${user?.name ?? ""} ${user?.surname ?? ""} ${
               user?.class ?? ""
             }`
       }
-      subHeader={
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      searchInput={
+        <LostItemSearchInput lostItems={initialUserLostItems} setLostItems={setUserLostItems} />
       }
-    >
-      <LostItemList lostItems={userLostItems} loading={loading} />
-    </FeaturesLayout>
+      content={
+        <LostItemList lostItems={userLostItems} loading={loading} />
+      }
+    />
   );
 }

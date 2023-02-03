@@ -11,7 +11,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useRoutesGuards()
+  useRoutesGuards();
 
   return (
     <html>

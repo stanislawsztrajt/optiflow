@@ -1,1 +1,1 @@
-export { default } from './images-carousel'
+export { default } from "./images-carousel";

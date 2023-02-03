@@ -2,7 +2,7 @@
 
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import { FeaturesLayout, Loading } from "@/features/ui";
+import { FeaturesTabsLayout, Loading } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";
@@ -42,7 +42,7 @@ export default function PrivateLessonsPage(props: Iprops) {
   }, []);
 
   return (
-    <FeaturesLayout
+    <FeaturesTabsLayout
       header={
         user?._id === params.userId
           ? "Twoje korepetycje"
@@ -57,6 +57,6 @@ export default function PrivateLessonsPage(props: Iprops) {
       <Suspense fallback={<Loading />}>
         <PrivateLessonList privateLessons={userPrivateLessons} />
       </Suspense>
-    </FeaturesLayout>
+    </FeaturesTabsLayout>
   );
 }

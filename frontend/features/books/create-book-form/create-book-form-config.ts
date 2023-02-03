@@ -22,7 +22,7 @@ export const createBookValidationSchema = Yup.object({
     .max(500, "Opis musi być krótszy niż 500 znaków")
     .required("Opis jest wymagany"),
   price: Yup.number()
-    .min(0, "Minimalna cena to 0")
+    .min(0, "Cena musi być większa lub równa 0")
     .max(10000000, "Cena musi być mniejsza niż 10000000")
     .required("Cena jest wymagana"),
   publishingHouse: Yup.string()

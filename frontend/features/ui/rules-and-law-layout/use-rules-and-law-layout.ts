@@ -1,32 +1,34 @@
 import { IrulesAndLawLink } from "../types";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 const useRulesAndLawLayout = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-  let links:IrulesAndLawLink[] = [
+  let links: IrulesAndLawLink[] = [
     {
       title: "Polityka prywatności",
-      route: "/privacy-policy"
+      route: "/privacy-policy",
     },
     {
       title: "Regulamin",
-      route: "/terms-of-use"
+      route: "/terms-of-use",
     },
     {
       title: "RODO",
-      route: "/rodo"
-    }
-  ]
+      route: "/rodo",
+    },
+  ];
 
-  const currentRoute = links.find(link => link.route === pathname) as IrulesAndLawLink
+  const currentRoute = links.find(
+    (link) => link.route === pathname
+  ) as IrulesAndLawLink;
 
-  links = links.filter(link => link.route !== pathname)
+  links = links.filter((link) => link.route !== pathname);
 
   return {
     links,
-    currentRoute
-  }
-}
+    currentRoute,
+  };
+};
 
 export default useRulesAndLawLayout;

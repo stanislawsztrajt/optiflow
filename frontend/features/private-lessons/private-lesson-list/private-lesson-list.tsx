@@ -4,26 +4,32 @@ import { IprivateLesson } from "../types";
 
 interface Props {
   privateLessons: IprivateLesson[];
+  loading: boolean
 }
 
-const PrivateLessonList: FC<Props> = ({ privateLessons }) => {
+const PrivateLessonList: FC<Props> = ({ privateLessons, loading }) => {
+  const privateLessonsMap = privateLessons.map((privateLesson) => {
+    return (
+      <PrivateLessonItem
+        key={privateLesson._id}
+        privateLesson={privateLesson}
+      />
+  )})
+
   return (
-    <>
-      {privateLessons.length === 0 ? (
-        <div>Nie ma tutaj żadnych korepetycji</div>
+    <div>
+      {privateLessons.length > 0 || loading ? (
+        <div className="grid grid-cols-1 gap-10 pt-2 gap-x-14 md:grid-cols-2 xl:grid-cols-3">
+          {privateLessonsMap}
+        </div>
       ) : (
-        <>
-          {privateLessons.map((privateLesson) => {
-            return (
-              <PrivateLessonItem
-                privateLesson={privateLesson}
-                key={privateLesson._id}
-              />
-            );
-          })}
-        </>
+        <div>
+          <h2 className="text-4xl text-gray-500">
+            Nie znaleziono żadnych ofert korepetycji
+          </h2>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

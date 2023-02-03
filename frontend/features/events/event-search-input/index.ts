@@ -1,1 +1,1 @@
-export { default } from './event-search-input'
+export { default } from "./event-search-input";

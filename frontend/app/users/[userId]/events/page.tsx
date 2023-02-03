@@ -6,7 +6,8 @@ import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesItemsLayout } from "@/features/ui";
+import EventSearchInput from "@/features/events/event-search-input";
 
 interface Iprops {
   params: {
@@ -20,6 +21,7 @@ export default function EventsPage(props: Iprops) {
 
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
+  const [initialUserEvents, setInitialUserEvents] = useState<Ievent[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -35,23 +37,29 @@ export default function EventsPage(props: Iprops) {
         "no-cache"
       );
       setUserEvents(userEvents);
-      setLoading(false)
+      setInitialUserEvents(userEvents);
+      setLoading(false);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={
-        user?._id === params.userId
-          ? "Twoje wydarzenia"
-          : `Wydarzenia użytkownika ${user?.name ?? ""} ${
-              user?.surname ?? ""
-            } ${user?.class ?? ""}`
-      }
-      subHeader="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque."
-    >
-      <EventList events={userEvents} loading={loading} />
-    </FeaturesLayout>
+    <>
+      <FeaturesItemsLayout
+        title={
+          user?._id === params.userId
+            ? "Twoje wydarzenia"
+            : `Wydarzenia użytkownika ${user?.name ?? ""} ${
+                user?.surname ?? ""
+              } ${user?.class ?? ""}`
+        }
+        searchInput={
+          <EventSearchInput events={initialUserEvents} setEvents={setUserEvents} />
+        }
+        content={
+          <EventList events={userEvents} loading={loading} />
+        }
+      />
+    </>
   );
 }

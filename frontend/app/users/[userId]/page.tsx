@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { userFeaturesRoutes } from "@/utils/data/routes";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesTabsLayout } from "@/features/ui";
 import { useRouter } from "next/navigation";
 import { Iuser, IuserInfoLength } from "@/features/users/types";
 
@@ -68,11 +68,11 @@ export default function UserPage(props: Iprops) {
   });
 
   return (
-    <FeaturesLayout
+    <FeaturesTabsLayout
       header={`${user?.name ?? ''} ${user?.surname ?? ''} ${user?.class ?? ''}`}
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}
-    </FeaturesLayout>
+    </FeaturesTabsLayout>
   );
 }
