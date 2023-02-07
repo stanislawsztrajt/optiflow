@@ -16,7 +16,6 @@ const CreateEventForm: FC = () => {
     handleSetImages,
   } = useCreateEventForm();
 
-
   const selectedImages = imagesUrls.map((imageUrl) => {
     return (
       <img
@@ -90,7 +89,9 @@ const CreateEventForm: FC = () => {
                 disabled={loading}
               />
               <div className="text-red-500">
-                {errors.location && touched.location ? <>{errors.location}</> : null}
+                {errors.location && touched.location ? (
+                  <>{errors.location}</>
+                ) : null}
                 &nbsp;
               </div>
             </div>

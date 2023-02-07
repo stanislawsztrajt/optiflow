@@ -18,7 +18,7 @@ const useLogin = () => {
       Cookies.set("user", JSON.stringify(data.user), { expires: 7 });
       Cookies.set("jwt", data.jwt, { expires: 7 });
 
-      window.location.href = '/dashboard'
+      window.location.href = "/dashboard";
     } catch (err) {
       console.error(err);
       const error = err as unknown as Ierror;

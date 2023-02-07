@@ -1,33 +1,33 @@
 import { IlostItem } from "../types";
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from "react";
 
 interface Iprops {
-  lostItems: IlostItem[]
-  setLostItems: Dispatch<SetStateAction<IlostItem[]>>
+  lostItems: IlostItem[];
+  setLostItems: Dispatch<SetStateAction<IlostItem[]>>;
 }
 
 interface IinitialValues {
-  searchQuery: string
+  searchQuery: string;
 }
 
-const useLostItemSearchInput = (props:Iprops) => {
-  const { lostItems, setLostItems } = props
+const useLostItemSearchInput = (props: Iprops) => {
+  const { lostItems, setLostItems } = props;
 
-  const initialValues:IinitialValues = {
-    searchQuery: ''
-  }
+  const initialValues: IinitialValues = {
+    searchQuery: "",
+  };
 
-  const searchLostItems = ({ searchQuery }:IinitialValues) => {
-    console.log(searchQuery)
-    const filteredLostItems:IlostItem[] = lostItems.filter(lostItem =>
+  const searchLostItems = ({ searchQuery }: IinitialValues) => {
+    console.log(searchQuery);
+    const filteredLostItems: IlostItem[] = lostItems.filter((lostItem) =>
       lostItem.name.toLowerCase().includes(searchQuery.trim().toLowerCase())
-    )
-    setLostItems(filteredLostItems)
-  }
+    );
+    setLostItems(filteredLostItems);
+  };
 
   return {
     searchLostItems,
-    initialValues
-  }
-}
+    initialValues,
+  };
+};
 export default useLostItemSearchInput;

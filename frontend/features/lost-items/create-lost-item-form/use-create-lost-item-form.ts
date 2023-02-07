@@ -12,7 +12,7 @@ import {
 import { IlostItem } from "../types";
 import lostItemsServices from "@/utils/api/lost-items-services";
 
-const useCreateEventForm = () => {
+const useCreateLostItemForm = () => {
   const router = useRouter();
 
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +32,7 @@ const useCreateEventForm = () => {
     setImages(Array.from(e.target.files as unknown as []).splice(0, 3));
   };
 
-  const createEvent = async (values: IlostItem) => {
+  const createLostItem = async (values: IlostItem) => {
     setLoading(true);
 
     try {
@@ -40,9 +40,8 @@ const useCreateEventForm = () => {
       const lostItem: IlostItem = {
         ...values,
         date: new Date(values.date),
-        images: uploadedImages
+        images: uploadedImages,
       };
-      console.log(lostItem)
       await lostItemsServices.create(lostItem);
       successAlert("Dodano zgłoszenie zgubionego przedmiotu");
       router.push("/dashboard");
@@ -61,7 +60,7 @@ const useCreateEventForm = () => {
     error,
     initialValues: createLostItemInitialValues,
     validationSchema: createLostItemValidationSchema,
-    createEvent,
+    createLostItem,
     setImages,
     handleSetImages,
     images,
@@ -69,4 +68,4 @@ const useCreateEventForm = () => {
   };
 };
 
-export default useCreateEventForm;
+export default useCreateLostItemForm;

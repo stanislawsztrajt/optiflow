@@ -1,1 +1,1 @@
-export { default } from './lost-item-search-input'
+export { default } from "./lost-item-search-input";

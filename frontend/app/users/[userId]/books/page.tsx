@@ -2,7 +2,7 @@
 
 import BookList from "@/features/books/book-list";
 import { Ibook } from "@/features/books/types";
-import { FeaturesLayout } from "@/features/ui";
+import { FeaturesTabsLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
@@ -46,7 +46,7 @@ export default function BooksPage(props: Iprops) {
   }, []);
 
   return (
-    <FeaturesLayout
+    <FeaturesTabsLayout
       header={`Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
         user?.class ?? ""
       }`}
@@ -55,6 +55,6 @@ export default function BooksPage(props: Iprops) {
       }
     >
       <BookList books={userBooks} />
-    </FeaturesLayout>
+    </FeaturesTabsLayout>
   );
 }

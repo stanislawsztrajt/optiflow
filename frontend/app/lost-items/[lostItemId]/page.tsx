@@ -19,39 +19,40 @@ export default function LostItemPage(props: Iprops) {
   const [lostItem, setLostItem] = useState<IlostItem>();
 
   useEffect(() => {
-    fetchLostItem()
+    fetchLostItem();
   }, []);
 
   const fetchLostItem = async () => {
-    const lostItem:IlostItem = await lostItemsServices.findOne(params.lostItemId)
-    if(lostItem.images.length === 0) lostItem.images = [placeholderImageUrl]
+    const lostItem: IlostItem = await lostItemsServices.findOne(
+      params.lostItemId
+    );
+    if (lostItem.images.length === 0) lostItem.images = [placeholderImageUrl];
 
-    setLostItem(lostItem)
-  }
+    setLostItem(lostItem);
+  };
 
   return (
     <>
-      {
-        lostItem ?
-          <div className='mt-32'>
-            <div className='w-11/12 mx-auto sm:w-4/5 lg:w-3/5 2xl:w-2/5'>
-              <ImagesCarousel images={lostItem.images} />
-              <div className='grid grid-cols-1 gap-2 py-5 lg:px-10'>
-                <h1 className='text-2xl font-semibold lg:text-3xl'>{lostItem.name}</h1>
-                <p className="text-gray-500 ">
-                  { format(new Date(lostItem.date), 'PP', {locale: pl}) }
-                  { lostItem.foundLocation ? `, ${lostItem.foundLocation}` : '' }
-                </p>
-                <p className="text-2xl font-medium">
-                  { lostItem.type }
-                </p>
-                <p className='text-lg'> {lostItem.description}</p>
-              </div>
+      {lostItem ? (
+        <div className="mt-32">
+          <div className="w-11/12 mx-auto sm:w-4/5 lg:w-3/5 2xl:w-2/5">
+            <ImagesCarousel images={lostItem.images} />
+            <div className="grid grid-cols-1 gap-2 py-5 lg:px-10">
+              <h1 className="text-2xl font-semibold lg:text-3xl">
+                {lostItem.name}
+              </h1>
+              <p className="text-gray-500 ">
+                {format(new Date(lostItem.date), "PP", { locale: pl })}
+                {lostItem.foundLocation ? `, ${lostItem.foundLocation}` : ""}
+              </p>
+              <p className="text-2xl font-medium">{lostItem.type}</p>
+              <p className="text-lg"> {lostItem.description}</p>
             </div>
           </div>
-        :
-        'Ładowanie'
-      }
+        </div>
+      ) : (
+        "Ładowanie"
+      )}
     </>
   );
 }

@@ -1,11 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { PrivateLessonsCategoryType, PrivateLessonsOfferTypeType } from '../types/private-lessons.type';
 
 export type PrivateLessonDocument = HydratedDocument<PrivateLesson>;
-
-export enum PrivateLessonsCategoryEnum {
-  MATH = 'Matematyka',
-}
 
 @Schema({ timestamps: true })
 export class PrivateLesson {
@@ -16,13 +13,13 @@ export class PrivateLesson {
   description: string;
 
   @Prop()
-  category: PrivateLessonsCategoryEnum[];
-
-  @Prop({ max: 10000000000 })
-  price: number;
+  category: PrivateLessonsCategoryType;
 
   @Prop()
-  date: Date;
+  offerType: PrivateLessonsOfferTypeType;
+
+  @Prop({ min: 0, max: 10000000 })
+  price: number;
 
   @Prop()
   userId: string;

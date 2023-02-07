@@ -1,20 +1,20 @@
 "use client";
 
 import React, { FC } from "react";
-import useCreateEventForm from "./use-create-lost-item-form";
+import useCreateLostItemForm from "./use-create-lost-item-form";
 import { Field, Form, Formik } from "formik";
 import { IlostItem, LostItemTypes } from "../types";
 import { Loading } from "@/features/ui";
 
-const CreateEventForm: FC = () => {
+const CreateLostItemForm: FC = () => {
   const {
     loading,
     initialValues,
     validationSchema,
-    createEvent,
+    createLostItem,
     imagesUrls,
     handleSetImages,
-  } = useCreateEventForm();
+  } = useCreateLostItemForm();
 
   const selectedImages = imagesUrls.map((imageUrl) => {
     return (
@@ -43,7 +43,7 @@ const CreateEventForm: FC = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => createEvent(values as unknown as IlostItem)}
+        onSubmit={(values) => createLostItem(values as unknown as IlostItem)}
       >
         {({ errors, touched, values }) => (
           <Form className="flex flex-col justify-center">
@@ -110,7 +110,9 @@ const CreateEventForm: FC = () => {
                 disabled={loading}
               />
               <div className="text-red-500">
-                {errors.foundLocation && touched.foundLocation ? <>{errors.foundLocation}</> : null}
+                {errors.foundLocation && touched.foundLocation ? (
+                  <>{errors.foundLocation}</>
+                ) : null}
                 &nbsp;
               </div>
             </div>
@@ -160,4 +162,4 @@ const CreateEventForm: FC = () => {
   );
 };
 
-export default CreateEventForm;
+export default CreateLostItemForm;

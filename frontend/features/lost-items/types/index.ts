@@ -1,8 +1,8 @@
-export type LostItemFoundType = "Zgubione" | "Znalezione";
 export enum LostItemFoundEnum {
   LOST = "Zgubione",
   FOUND = "Znalezione",
 }
+export type LostItemFoundType = `${LostItemFoundEnum}`;
 export const LostItemTypes = Object.values(LostItemFoundEnum);
 
 export interface IlostItem {
