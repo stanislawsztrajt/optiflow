@@ -19,9 +19,9 @@ const Header: FC = () => {
   const linksMap = headerLinksList.map((links) => {
     return (
       <div>
-        <button className="px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
+        <button className="flex flex-row px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
           { links.name }
-          <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
+          <FontAwesomeIcon icon={faCaretDown} className='h-4 ml-2' />
         </button>
         <div className="absolute flex-col items-center hidden w-full rounded-lg lg:bg-white lg:w-auto peer-hover:flex hover:flex drop-shadow-lg">
           { links.list.map(link => (

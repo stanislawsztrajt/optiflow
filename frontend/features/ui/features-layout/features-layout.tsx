@@ -16,7 +16,7 @@ const FeaturesLayout: FC<Props> = ({ children, header, subHeader }) => {
         <h1 className="section-header-h1">{header}</h1>
         <h2 className="section-header-h2">{subHeader}</h2>
       </section>
-      <section className={pathname === '/' ? 'section-elements-layout' : 'container px-6 py-10 mx-auto'}>{children}</section>
+      <section className={pathname === '/' || pathname?.includes('users') ? 'section-elements-layout' : 'container px-6 py-10 mx-auto'}>{children}</section>
     </main>
   );
 };
