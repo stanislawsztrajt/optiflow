@@ -69,7 +69,7 @@ export default function UserPage(props: Iprops) {
 
   return (
     <FeaturesTabsLayout
-      header={`${user?.name ?? ''} ${user?.surname ?? ''} ${user?.class ?? ''}`}
+      header={`${user?.name ?? ' '} ${user?.surname ?? ''} ${user?.class ?? ''}`}
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}
