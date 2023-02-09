@@ -1,26 +1,35 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Ibook } from "@/features/books/types";
+import { FeaturesItemsLayout } from "@/features/ui";
+import BookList from "@/features/books/book-list";
 import booksServices from "@/utils/api/books-services";
-import Link from "next/link";
 
-export default async function BooksPage() {
-  const books: Ibook[] = await booksServices.findAll();
+export default function BooksPage() {
+  const [initialBooks, setInitialBooks] = useState<Ibook[]>([]);
+  const [books, setBooks] = useState<Ibook[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const booksMap = books.map((book) => {
-    return (
-      <Link href={`books/${book._id}`}>
-        <div className="mb-5">
-          <p>{book.title}</p>
-          <p>{book.category}</p>
-          <p>{book.look}</p>
-          <p>{book.price}zł</p>
-        </div>
-      </Link>
-    );
-  });
+  useEffect(() => {
+    booksServices.findAll().then((res) => {
+      setBooks(res);
+      setInitialBooks(res);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
-      <div className="flex flex-col">{booksMap}</div>
+      <FeaturesItemsLayout
+        title="Książki"
+        searchInput={
+          <div></div>
+        }
+        content={
+          <BookList books={books} loading={loading} />
+        }
+      />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import { FeaturesTabsLayout, Loading } from "@/features/ui";
+import { FeaturesItemsLayout, Loading } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useRouter } from "next/navigation";
@@ -42,21 +42,18 @@ export default function PrivateLessonsPage(props: Iprops) {
   }, []);
 
   return (
-    <FeaturesTabsLayout
-      header={
+    <FeaturesItemsLayout
+      title={
         user?._id === params.userId
           ? "Twoje korepetycje"
-          : `Korepetycje ${user?.name ?? ""} ${user?.surname ?? ""} ${
-              user?.class ?? ""
-            }`
+          : `Korepetycje użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
-      subHeader={
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      content={
+        <Suspense fallback={<Loading />}>
+          <PrivateLessonList privateLessons={userPrivateLessons} />
+        </Suspense>
       }
-    >
-      <Suspense fallback={<Loading />}>
-        <PrivateLessonList privateLessons={userPrivateLessons} />
-      </Suspense>
-    </FeaturesTabsLayout>
+      searchInput={<></>}
+    />
   );
 }

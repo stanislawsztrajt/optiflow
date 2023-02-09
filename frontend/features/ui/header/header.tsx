@@ -30,7 +30,7 @@ const Header: FC = () => {
                 {link.name}
               </Link>
               { link.createRoute ? (
-                <Link href={link.createRoute}>
+                <Link href={link.createRoute} title={link.createName}>
                   <FontAwesomeIcon className='w-4 h-4 p-1 text-white border bg-color-primary border-color-primary hover:brightness-110 rounded-xl' icon={faPlus} />
                 </Link>
               ) : null }
@@ -57,6 +57,7 @@ const Header: FC = () => {
             type="button"
             onClick={logout}
             className="text-white mr-3 w-80 lg:w-auto lg:ml-4 bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:mr-1"
+            title='Wyloguj się'
           >
             <FontAwesomeIcon icon={faRightFromBracket} />
           </button>
@@ -75,7 +76,7 @@ const Header: FC = () => {
   return (
     <nav className="px-6 sm:px-4 py-2.5 fixed w-full z-20 top-0 lg:mt-0 left-0 bg-white border-b">
       <div className="container flex flex-wrap items-center justify-between h-16 mx-auto">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center text-black">
           <span className="self-center text-2xl font-semibold whitespace-nowrap ">
             {APP_NAME}
           </span>

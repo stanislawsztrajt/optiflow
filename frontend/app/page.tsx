@@ -23,7 +23,7 @@ export default function Page() {
           alt=""
         />
         <p className="section-element-p">{route.content}</p>
-        <Link className="mt-8 button" href={route.mainRoute}>
+        <Link className="mt-8 button" href={route.route}>
           {route.viewName}
         </Link>
         <Link className="mt-2 button-bg" href={route.createRoute}>

@@ -7,7 +7,7 @@ import EventSearchInput from "@/features/events/event-search-input";
 import { Ievent } from "@/features/events/types";
 import { FeaturesItemsLayout } from "@/features/ui";
 
-export default function EvenstPage() {
+export default function EventsPage() {
   const [initialEvents, setInitialEvents] = useState<Ievent[]>([]);
   const [events, setEvents] = useState<Ievent[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

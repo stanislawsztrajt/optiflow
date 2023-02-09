@@ -127,7 +127,7 @@ const CreateBookForm: FC = () => {
               <Field
                 disabled={loading}
                 className="create-input"
-                type="number"
+                type="text"
                 placeholder="2"
                 name="part"
               />
