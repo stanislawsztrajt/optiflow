@@ -14,6 +14,9 @@ export default function DashboardPage() {
   const [userInfoLength, setUserInfoLength] = useState<IuserInfoLength>();
 
   useEffect(() => {
+    console.log(user)
+    if (!user) return
+
     const fetchData = async () => {
       const data = await usersServices.findUserAllInfoLength(
         user?._id as string,
@@ -22,7 +25,7 @@ export default function DashboardPage() {
       setUserInfoLength(data);
     };
     fetchData();
-  }, []);
+  }, [user]);
 
   const featuresList = userInfoLength
     ? userFeaturesRoutes(
@@ -52,7 +55,7 @@ export default function DashboardPage() {
 
   return (
     <FeaturesTabsLayout
-      header={`Witaj ${user?.name}!`}
+      header={`Witaj ${user?.name ?? ''}!`}
       subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
     >
       {featuresList}

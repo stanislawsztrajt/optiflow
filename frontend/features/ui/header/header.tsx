@@ -19,11 +19,11 @@ const Header: FC = () => {
   const linksMap = headerLinksList.map((links) => {
     return (
       <div key={links.name}>
-        <button className="px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
+        <button className="flex items-center px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
           { links.name }
-          <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
+          <FontAwesomeIcon icon={faCaretDown} className='h-4 ml-2' />
         </button>
-        <div className="absolute flex-col items-center hidden w-full rounded-lg lg:bg-white lg:w-auto peer-hover:flex hover:flex drop-shadow-lg">
+        <div className="absolute flex-col hidden w-full rounded-lg lg:bg-white lg:w-auto peer-hover:flex hover:flex drop-shadow-lg">
           { links.list.map(link => (
             <div key={link.name} className="flex items-center justify-between w-56 p-4 pt-5 duration-100 bg-white border-b lg:bg-transparent hover:bg-gray-100">
               <Link href={link.route} className='text-gray-700 hover:text-black'>
@@ -56,7 +56,7 @@ const Header: FC = () => {
           <button
             type="button"
             onClick={logout}
-            className="text-white lg:ml-4 bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 lg:mr-1"
+            className="text-white mr-3 w-80 lg:w-auto lg:ml-4 bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:mr-1"
           >
             <FontAwesomeIcon icon={faRightFromBracket} />
           </button>
@@ -102,7 +102,7 @@ const Header: FC = () => {
 
       { isMenuOpen ? (
         <div className='fixed left-0 w-screen h-screen bg-white border-t top-20 lg:hidden menu-animation'>
-          <div className='flex flex-col justify-center h-screen gap-4 pl-2 pr-6 text-center list-none'>
+          <div className='flex flex-col items-center justify-center h-screen gap-4 pl-2 pr-6 text-center list-none'>
             { linksMap }
             { authButton }
           </div>
