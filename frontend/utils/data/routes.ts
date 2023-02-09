@@ -10,7 +10,7 @@ export const featuresRoutes = [
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz książki",
-    mainRoute: "/books",
+    route: "/books",
     createName: "Dodaj książkę",
     createRoute: "/books/create-book",
     image: UndrawBookLover,
@@ -20,7 +20,7 @@ export const featuresRoutes = [
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz wydarzenia",
-    mainRoute: "/events",
+    route: "/events",
     createName: "Dodaj wydarzenie",
     createRoute: "/events/create-event",
     image: UndrawEvent,
@@ -30,7 +30,7 @@ export const featuresRoutes = [
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz zgubione przedmioty",
-    mainRoute: "/lost-items",
+    route: "/lost-items",
     createName: "Dodaj zgubiony przedmiot",
     createRoute: "/lost-items/create-lost-item",
     image: UndrawLost,
@@ -40,7 +40,7 @@ export const featuresRoutes = [
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
     viewName: "Zobacz korepetycje",
-    mainRoute: "/private-lessons",
+    route: "/private-lessons",
     createName: "Dodaj korepetycje",
     createRoute: "/private-lessons/create-private-lesson",
     image: UndrawLesson,

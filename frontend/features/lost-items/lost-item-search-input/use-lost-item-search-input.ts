@@ -18,7 +18,6 @@ const useLostItemSearchInput = (props: Iprops) => {
   };
 
   const searchLostItems = ({ searchQuery }: IinitialValues) => {
-    console.log(searchQuery);
     const filteredLostItems: IlostItem[] = lostItems.filter((lostItem) =>
       lostItem.name.toLowerCase().includes(searchQuery.trim().toLowerCase())
     );

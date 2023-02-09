@@ -14,7 +14,6 @@ export default function DashboardPage() {
   const [userInfoLength, setUserInfoLength] = useState<IuserInfoLength>();
 
   useEffect(() => {
-    console.log(user)
     if (!user) return
 
     const fetchData = async () => {

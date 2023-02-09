@@ -16,17 +16,11 @@
   @apply rounded-input text-base border border-color-input p-input outline-none duration-150 focus:border-color-primary
 }
 
-.auth-input-label {
-  @apply font-medium
-}
-
 .auth-button-submit {
   @apply rounded-input bg-color-primary p-input text-color-secondary-text font-semibold duration-100 hover:brightness-125
 }
 
-
-
-.create-input-label {
+.auth-input-label, .create-input-label {
   @apply font-medium mb-1 ml-1
 }
 

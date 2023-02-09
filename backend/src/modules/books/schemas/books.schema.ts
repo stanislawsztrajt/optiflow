@@ -21,7 +21,7 @@ export class Book {
   @Prop({ maxlength: 50 })
   publishingHouse: string;
 
-  @Prop({ minlength: 0, maxlength: 10 })
+  @Prop({ minlength: 0, maxlength: 5 })
   part: string;
 
   @Prop()

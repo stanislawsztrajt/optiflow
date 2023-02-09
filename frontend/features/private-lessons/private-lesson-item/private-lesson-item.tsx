@@ -13,6 +13,9 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
     <div>
       <div className="flex flex-col justify-between p-4 border rounded-md">
         <h1 className="text-xl text-gray-800 break-words">{title}</h1>
+        <p className="text-sm text-gray-500">
+          { offerType }
+        </p>
 
         <div className="flex items-end justify-between mt-2">
           <div>
@@ -20,13 +23,13 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
               {price ? `${price}zł/godz` : "Za darmo"}
             </p>
 
-            <p className="text-sm text-gray-500 ">
-              { category } | { offerType }
+            <p className="text-sm text-gray-500">
+              { category }
             </p>
           </div>
           <Link
             href={`private-lessons/${_id}`}
-            className="inline-block text-red-500 underline hover:text-red-400"
+            className="inline-block text-red-500 underline hover:text-red-400 whitespace-nowrap"
           >
             Czytaj więcej
           </Link>

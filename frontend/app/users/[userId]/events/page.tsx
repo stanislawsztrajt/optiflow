@@ -49,9 +49,7 @@ export default function EventsPage(props: Iprops) {
         title={
           user?._id === params.userId
             ? "Twoje wydarzenia"
-            : `Wydarzenia użytkownika ${user?.name ?? ""} ${
-                user?.surname ?? ""
-              } ${user?.class ?? ""}`
+            : `Wydarzenia użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
         }
         searchInput={
           <EventSearchInput events={initialUserEvents} setEvents={setUserEvents} />

@@ -47,10 +47,8 @@ export default function LostItemsPage(props: Iprops) {
     <FeaturesItemsLayout
       title={
         user?._id === params.userId
-          ? "Twoje zgubione przedmioty"
-          : `Zgubione przedmioty ${user?.name ?? ""} ${user?.surname ?? ""} ${
-              user?.class ?? ""
-            }`
+          ? "Twoje zgubione/znalezione przedmioty"
+          : `Zgubione/znalezione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
       searchInput={
         <LostItemSearchInput lostItems={initialUserLostItems} setLostItems={setUserLostItems} />
