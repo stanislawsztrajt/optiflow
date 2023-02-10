@@ -48,7 +48,7 @@ export default function BooksPage(props: Iprops) {
   return (
     <FeaturesTabsLayout
       header={`Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
-        user?.class ?? ""
+        User?.class ?? ""
       }`}
       subHeader={
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"

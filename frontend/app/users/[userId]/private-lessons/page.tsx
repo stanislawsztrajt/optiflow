@@ -5,6 +5,7 @@ import { IprivateLesson } from "@/features/private-lessons/types";
 import { FeaturesTabsLayout, Loading } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, Suspense } from "react";
 
@@ -16,8 +17,8 @@ interface Iprops {
 
 export default function PrivateLessonsPage(props: Iprops) {
   const { params } = props;
-
   const router = useRouter();
+  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
   const [userPrivateLessons, setUserPrivateLessons] = useState<
@@ -44,7 +45,7 @@ export default function PrivateLessonsPage(props: Iprops) {
   return (
     <FeaturesTabsLayout
       header={
-        user?._id === params.userId
+        User?._id === params.userId
           ? "Twoje korepetycje"
           : `Korepetycje ${user?.name ?? ""} ${user?.surname ?? ""} ${
               user?.class ?? ""

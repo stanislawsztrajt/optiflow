@@ -30,6 +30,9 @@ module.exports = {
       },
       width: {
         'input': '20rem'
+      },
+      minHeight: {
+        '140': '35rem'
       }
     },
   },

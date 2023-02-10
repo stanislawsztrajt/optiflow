@@ -3,12 +3,12 @@ import UndrawEvent from "@/assets/undraw/undraw_event.svg";
 import UndrawLesson from "@/assets/undraw/undraw_lesson.svg";
 import UndrawLost from "@/assets/undraw/undraw_lost.svg";
 import { IuserInfoLength } from "@/features/users/types";
+import { featuresContent } from "./features-content";
 
 export const featuresRoutes = [
   {
     name: "Książki",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content: featuresContent.books,
     viewName: "Zobacz książki",
     mainRoute: "/books",
     createName: "Dodaj książkę",
@@ -17,8 +17,7 @@ export const featuresRoutes = [
   },
   {
     name: "Wydarzenia",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content: featuresContent.events,
     viewName: "Zobacz wydarzenia",
     mainRoute: "/events",
     createName: "Dodaj wydarzenie",
@@ -27,8 +26,7 @@ export const featuresRoutes = [
   },
   {
     name: "Zgubione przedmioty",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content: featuresContent.lostItems,
     viewName: "Zobacz zgubione przedmioty",
     mainRoute: "/lost-items",
     createName: "Dodaj zgubiony przedmiot",
@@ -37,8 +35,7 @@ export const featuresRoutes = [
   },
   {
     name: "Korepetycje",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+    content: featuresContent.privateLessons,
     viewName: "Zobacz korepetycje",
     mainRoute: "/private-lessons",
     createName: "Dodaj korepetycje",
@@ -57,16 +54,14 @@ export const userFeaturesRoutes = (
       name: `Książki (${userInfoLength.books})`,
       image: UndrawBookLover,
       viewName: isUserPage ? "Książki użytkownika" : "Twoje książki",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      content: featuresContent.books,
       route: `/users/${userId}/books`,
     },
     {
       name: `Wydarzenia (${userInfoLength.events})`,
       image: UndrawEvent,
       viewName: isUserPage ? "Wydarzenia użytkownika" : "Twoje wydarzenia",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      content: featuresContent.events,
       route: `/users/${userId}/events`,
     },
     {
@@ -75,16 +70,14 @@ export const userFeaturesRoutes = (
       viewName: isUserPage
         ? "Zgubione przedmioty użytkownika"
         : "Twoje zgubione przedmioty",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      content: featuresContent.lostItems,
       route: `/users/${userId}/lost-items`,
     },
     {
       name: `Korepetycje (${userInfoLength.privateLessons})`,
       image: UndrawLesson,
       viewName: isUserPage ? "Korepetycje użytkownika" : "Twoje korepetycje",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, ut dolor temporibus quisquam recusandae necessitatibus doloremque ab mollitia deleniti.",
+      content: featuresContent.privateLessons,
       route: `/users/${userId}/private-lessons`,
     },
   ];
