@@ -35,7 +35,7 @@ export default function EventPage(props: Iprops) {
         <div className="mt-32">
           <div className="w-11/12 mx-auto sm:w-4/5 lg:w-3/5 2xl:w-2/5">
             <ImagesCarousel images={event.images} />
-            <div className="grid grid-cols-1 gap-2 my-5 lg:px-10">
+            <div className="grid grid-cols-1 gap-2 px-2 my-5 lg:px-10">
               <h1 className="text-2xl font-semibold lg:text-3xl">
                 {event.title}
               </h1>

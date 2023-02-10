@@ -1,12 +1,23 @@
 export enum BookCategoryEnum {
   MATH = "Matematyka",
-  HISTORY = "Historia",
+  POL = "Język polski",
+  ENG = "Język angielski",
+  ESP = "Język hiszpański",
+  GER = "Język niemiecki",
+  HIST = "Historia",
+  PHYS = "Fizyka",
+  BIOL = "Biologia",
+  CHEM = "Chemia",
+  INF = "Informatyka"
 }
 export type BookCategoryType = `${BookCategoryEnum}`;
 export const BookCategories = Object.values(BookCategoryEnum);
 
 export enum BookLookEnum {
+  NEW = "Nowy",
+  VERY_GOOD = "Bardzo dobry",
   GOOD = "Dobry",
+  AVG = "Przeciętny",
   WEAK = "Słaby",
 }
 export type BookLookType = `${BookLookEnum}`;
@@ -26,6 +37,9 @@ export interface Ibook {
   images: string[];
   price: number;
   look: BookLookType;
+  publishingHouse: string,
+  part: string;
+  type: BookTypeType;
   userId: string;
   _id: string;
 }

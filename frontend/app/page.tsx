@@ -27,7 +27,7 @@ export default function Page() {
           <p className="section-element-p">{route.content}</p>
         </div>
         <div className='section-element-box'>
-          <Link className="mt-8 button" href={route.mainRoute}>
+          <Link className="mt-8 button" href={route.route}>
             {route.viewName}
           </Link>
           <Link className="mt-2 button-bg" href={route.createRoute}>

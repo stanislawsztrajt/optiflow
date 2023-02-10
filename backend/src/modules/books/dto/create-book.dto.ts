@@ -67,8 +67,8 @@ export class CreateBookDto {
   @IsOptional({
     message: 'part is required',
   })
-  @Min(0)
-  @Max(10)
+  @MinLength(0)
+  @MaxLength(5)
   part: string;
 
   @IsArray({

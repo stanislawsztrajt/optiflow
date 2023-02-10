@@ -4,7 +4,7 @@ import { IprivateLesson } from "../types";
 
 interface Props {
   privateLessons: IprivateLesson[];
-  loading: boolean
+  loading?: boolean
 }
 
 const PrivateLessonList: FC<Props> = ({ privateLessons, loading }) => {
