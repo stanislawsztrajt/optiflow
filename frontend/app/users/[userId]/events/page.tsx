@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FeaturesItemsLayout } from "@/features/ui";
 import EventSearchInput from "@/features/events/event-search-input";
+import { useUser } from "@/utils/hooks";
 
 interface Iprops {
   params: {
@@ -18,6 +19,7 @@ interface Iprops {
 export default function EventsPage(props: Iprops) {
   const { params } = props;
   const router = useRouter();
+  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
@@ -44,20 +46,20 @@ export default function EventsPage(props: Iprops) {
   }, []);
 
   return (
-    <>
-      <FeaturesItemsLayout
-        title={
-          user?._id === params.userId
-            ? "Twoje wydarzenia"
-            : `Wydarzenia użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
-        }
-        searchInput={
-          <EventSearchInput events={initialUserEvents} setEvents={setUserEvents} />
-        }
-        content={
-          <EventList events={userEvents} loading={loading} />
-        }
-      />
-    </>
+    <FeaturesItemsLayout
+      title={
+        User?._id === params.userId
+          ? "Twoje wydarzenia"
+          : `Wydarzenia użytkownika ${user?.name ?? ""} ${
+              user?.surname ?? ""
+            } ${user?.class ?? ""}`
+      }
+      searchInput={
+        <EventSearchInput events={initialUserEvents} setEvents={setUserEvents} />
+      }
+      content={
+        <EventList events={userEvents} loading={loading} />
+      }
+    />
   );
 }

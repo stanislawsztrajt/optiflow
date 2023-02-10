@@ -15,7 +15,7 @@
 }
 
 .section-header-h2 {
-  @apply font-light text-gray-600 mt-1 text-lg;
+  @apply mt-1 text-lg font-light text-gray-600;
 }
 
 .section-elements-layout {
@@ -23,7 +23,11 @@
 }
 
 .section-element {
-  @apply flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 hover:border-color-primary rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+  @apply min-h-0 sm:min-h-140 flex flex-col items-center justify-between p-6 duration-150 bg-white border w-96 md:w-80 hover:border-color-primary rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+}
+
+.section-element-box {
+  @apply flex flex-col items-center justify-center w-full
 }
 
 .section-element-h3 {

@@ -48,7 +48,7 @@ export default function BooksPage(props: Iprops) {
   return (
     <FeaturesItemsLayout
       title={
-        user?._id === params.userId
+        User?._id === params.userId
           ? "Twoje książki"
           : `Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }

@@ -6,6 +6,7 @@ import { IlostItem } from "@/features/lost-items/types";
 import { FeaturesItemsLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -18,6 +19,7 @@ interface Iprops {
 export default function LostItemsPage(props: Iprops) {
   const { params } = props;
   const router = useRouter();
+  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
   const [userLostItems, setUserLostItems] = useState<IlostItem[]>([]);
@@ -46,9 +48,11 @@ export default function LostItemsPage(props: Iprops) {
   return (
     <FeaturesItemsLayout
       title={
-        user?._id === params.userId
-          ? "Twoje zgubione/znalezione przedmioty"
-          : `Zgubione/znalezione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
+        User?._id === params.userId
+          ? "Twoje zgubione przedmioty"
+          : `Zgubione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
+              user?.class ?? ""
+            }`
       }
       searchInput={
         <LostItemSearchInput lostItems={initialUserLostItems} setLostItems={setUserLostItems} />

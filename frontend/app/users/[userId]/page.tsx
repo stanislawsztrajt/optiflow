@@ -8,6 +8,7 @@ import { userFeaturesRoutes } from "@/utils/data/routes";
 import { FeaturesTabsLayout } from "@/features/ui";
 import { useRouter } from "next/navigation";
 import { Iuser, IuserInfoLength } from "@/features/users/types";
+import { headersContent } from "@/utils/data/features-content";
 
 interface Iprops {
   params: {
@@ -50,16 +51,19 @@ export default function UserPage(props: Iprops) {
   ).map((route) => {
     return (
       <div key={route.name} className="section-element w-96">
-        <h3 className="section-element-h3">{route.name}</h3>
-        <Image
-          loading="lazy"
-          width={150}
-          height={150}
-          className="h-32 mt-8 "
-          src={route.image}
-          alt=""
-        />
-        <p className="section-element-p">{route.content}</p>
+        <div className='section-element-box'>
+          <h3 className="section-element-h3">{route.name}</h3>
+          <Image
+            loading="lazy"
+            width={150}
+            height={150}
+            className="h-32 mt-8 "
+            src={route.image}
+            alt=""
+          />
+          <p className="section-element-p">{route.content}</p>
+        </div>
+        
         <Link className="mt-8 button" href={route.route}>
           {route.viewName}
         </Link>
@@ -69,8 +73,8 @@ export default function UserPage(props: Iprops) {
 
   return (
     <FeaturesTabsLayout
-      header={`${user?.name ?? ' '} ${user?.surname ?? ''} ${user?.class ?? ''}`}
-      subHeader="Funkcjonalności, które do tej pory nie były uporządkowane, możesz teraz znaleźć w jednym miejscu."
+      header={`Profil użytkownika ${user?.name ?? ' '} ${user?.surname ?? ''} ${user?.class ?? ''}`}
+      subHeader={headersContent.homePage}
     >
       {featuresList}
     </FeaturesTabsLayout>
