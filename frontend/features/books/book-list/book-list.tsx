@@ -1,20 +1,26 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import BookItem from "../book-item";
 import { Ibook } from "../types";
 
 interface Props {
   books: Ibook[];
-  loading?: boolean;
+  setBooks: Dispatch<SetStateAction<Ibook[]>>
 }
 
-const BookList: FC<Props> = ({ books, loading }) => {
+const BookList: FC<Props> = ({ books, setBooks }) => {
   const booksMap = books.map((book) => {
-    return <BookItem key={book._id} book={book} />;
+    return (
+      <BookItem
+        key={book._id}
+        book={book}
+        setBooks={setBooks}
+      />
+    )
   });
 
   return (
     <div>
-      {books.length > 0 || loading ? (
+      {books.length > 0 ? (
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 xl:grid-cols-3">
           {booksMap}
         </div>

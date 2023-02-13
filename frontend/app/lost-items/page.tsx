@@ -3,32 +3,30 @@
 import { useState, useEffect } from "react";
 import lostItemsServices from "@/utils/api/lost-items-services";
 import LostItemList from "@/features/lost-items/lost-item-list";
-import LostItemSearchInput from "@/features/lost-items/lost-item-search-input";
 import { IlostItem } from "@/features/lost-items/types";
-import { FeaturesItemsLayout } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 
 export default function LostItemsPage() {
   const [initialLostItems, setInitialLostItems] = useState<IlostItem[]>([]);
-  const [lostItems, setlostItems] = useState<IlostItem[]>([]);
+  const [lostItems, setLostItems] = useState<IlostItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     lostItemsServices.findAll().then((res) => {
-      setlostItems(res);
+      setLostItems(res);
       setInitialLostItems(res);
       setLoading(false);
     });
   }, []);
 
   return (
-    <FeaturesItemsLayout
+    <FeaturesListLayout
       title="Zgubione/znalezione przedmioty"
-      searchInput={
-        <LostItemSearchInput lostItems={initialLostItems} setLostItems={setlostItems} />
-      }
       content={
-        <LostItemList lostItems={lostItems} loading={loading} />
+        <LostItemList lostItems={lostItems} setLostItems={setLostItems} />
       }
+      elements={initialLostItems}
+      setElements={setLostItems}
     />
   );
 }

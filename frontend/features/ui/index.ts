@@ -7,7 +7,7 @@ import Loading from "./loading";
 import RulesAndLawLayout from "./rules-and-law-layout";
 import ImagesCarousel from "./images-carousel";
 import FeaturesTabsLayout from "./features-tabs-layout";
-import FeaturesItemsLayout from "./features-items-layout";
+import FeaturesListLayout from "./features-list-layout";
 
 export {
   CreateFormLayout,
@@ -17,5 +17,5 @@ export {
   RulesAndLawLayout,
   ImagesCarousel,
   FeaturesTabsLayout,
-  FeaturesItemsLayout,
+  FeaturesListLayout,
 };

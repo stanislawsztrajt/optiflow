@@ -1,22 +1,23 @@
 import { Field, Form, Formik } from "formik";
 import React, { Dispatch, SetStateAction } from "react";
-import { IlostItem } from "../types";
-import useLostItemSearchInput from "./use-lost-item-search-input";
+import useEventSearchInput from "./use-features-list-search-input";
+import { featureElementsType, featureSetElementsType } from "../types";
+
 
 interface IProps {
-  lostItems: IlostItem[];
-  setLostItems: Dispatch<SetStateAction<IlostItem[]>>;
+  elements: featureElementsType;
+  setElements: featureSetElementsType;
 }
 
-const LostItemSearchInput: React.FC<IProps> = ({ lostItems, setLostItems }) => {
-  const { searchLostItems, initialValues } = useLostItemSearchInput({
-    lostItems,
-    setLostItems,
+const FeaturesListSearchInput: React.FC<IProps> = ({ elements, setElements }) => {
+  const { searchElements, initialValues } = useEventSearchInput({
+    elements,
+    setElements,
   });
 
   return (
     <>
-      <Formik onSubmit={searchLostItems} initialValues={initialValues}>
+      <Formik onSubmit={searchElements} initialValues={initialValues}>
         <Form className="relative mt-4 md:mt-0">
           <Field
             type="text"
@@ -45,4 +46,4 @@ const LostItemSearchInput: React.FC<IProps> = ({ lostItems, setLostItems }) => {
   );
 };
 
-export default LostItemSearchInput;
+export default FeaturesListSearchInput;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { IprivateLesson } from "@/features/private-lessons/types";
 import privateLessonsServices from "@/utils/api/private-lessons-services";
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list/private-lesson-list";
-import { FeaturesItemsLayout } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 
 export default function PrivateLessonsPage() {
   const [initialPrivateLessons, setInitialPrivateLessons] = useState<IprivateLesson[]>([]);
@@ -14,18 +14,19 @@ export default function PrivateLessonsPage() {
   useEffect(() => {
     privateLessonsServices.findAll().then((res) => {
       setPrivateLessons(res);
-      setPrivateLessons(res);
+      setInitialPrivateLessons(res);
       setLoading(false);
     });
   }, []);
 
   return (
-    <FeaturesItemsLayout
+    <FeaturesListLayout
       title="Korepetycje"
       content={
-        <PrivateLessonList privateLessons={privateLessons} loading={loading} />
+        <PrivateLessonList privateLessons={privateLessons} setPrivateLessons={setPrivateLessons} />
       }
-      searchInput={<div></div>}
+      elements={initialPrivateLessons}
+      setElements={setPrivateLessons}
     />
   );
 }

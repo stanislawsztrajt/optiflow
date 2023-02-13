@@ -3,9 +3,8 @@
 import { useState, useEffect } from "react";
 import eventsServices from "@/utils/api/events-services";
 import EventList from "@/features/events/event-list";
-import EventSearchInput from "@/features/events/event-search-input";
 import { Ievent } from "@/features/events/types";
-import { FeaturesItemsLayout } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 
 export default function EventsPage() {
   const [initialEvents, setInitialEvents] = useState<Ievent[]>([]);
@@ -22,14 +21,13 @@ export default function EventsPage() {
 
   return (
     <>
-      <FeaturesItemsLayout
+      <FeaturesListLayout
         title="Wydarzenia"
-        searchInput={
-          <EventSearchInput events={initialEvents} setEvents={setEvents} />
-        }
         content={
-          <EventList events={events} loading={loading} />
+          <EventList events={events} setEvents={setEvents} />
         }
+        elements={initialEvents}
+        setElements={setEvents}
       />
     </>
   );

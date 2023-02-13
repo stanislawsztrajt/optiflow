@@ -1,9 +1,8 @@
 "use client";
 
 import LostItemList from "@/features/lost-items/lost-item-list";
-import LostItemSearchInput from "@/features/lost-items/lost-item-search-input";
 import { IlostItem } from "@/features/lost-items/types";
-import { FeaturesItemsLayout } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
@@ -46,7 +45,7 @@ export default function LostItemsPage(props: Iprops) {
   }, []);
 
   return (
-    <FeaturesItemsLayout
+    <FeaturesListLayout
       title={
         User?._id === params.userId
           ? "Twoje zgubione przedmioty"
@@ -54,12 +53,11 @@ export default function LostItemsPage(props: Iprops) {
               user?.class ?? ""
             }`
       }
-      searchInput={
-        <LostItemSearchInput lostItems={initialUserLostItems} setLostItems={setUserLostItems} />
-      }
       content={
-        <LostItemList lostItems={userLostItems} loading={loading} />
+        <LostItemList lostItems={userLostItems} setLostItems={setUserLostItems} />
       }
+      elements={initialUserLostItems}
+      setElements={setUserLostItems}
     />
   );
 }
