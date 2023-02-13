@@ -1,13 +1,22 @@
+import { useUser } from "@/utils/hooks";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import Link from "next/link";
-import React, { FC } from "react";
 import { IprivateLesson } from "../types";
+import usePrivateLessonItem from "./use-private-lesson-item";
+import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
 interface Props {
   privateLesson: IprivateLesson;
+  setPrivateLessons: Dispatch<SetStateAction<IprivateLesson[]>>
 }
 
-const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
-  const { _id, title, category, offerType, price } = privateLesson
+const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
+  const { _id, title, category, offerType, price, userId } = privateLesson
+  const { user } =  useUser()
+  const { confirmDelete, deletePrivateLessonBtnText } = usePrivateLessonItem({ setPrivateLessons })
+  const pathname = usePathname()
 
   return (
     <div>
@@ -35,6 +44,20 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson }) => {
           </Link>
         </div>
       </div>
+      {
+        userId === user?._id && pathname?.includes(userId) ?
+          <div className='flex flex-row items-end justify-end mt-3'>
+            <button
+              onClick={() => confirmDelete(_id)}
+              type="button"
+              className="delete-button"
+            >
+              <FontAwesomeIcon icon={faTrashCan} />
+              <span className="ml-2">{deletePrivateLessonBtnText}</span>
+            </button>
+          </div>
+          : null
+      }
     </div>
   );
 };

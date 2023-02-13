@@ -2,12 +2,12 @@
 
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import { FeaturesItemsLayout, Loading } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Iprops {
   params: {
@@ -21,9 +21,8 @@ export default function PrivateLessonsPage(props: Iprops) {
   const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
-  const [userPrivateLessons, setUserPrivateLessons] = useState<
-    IprivateLesson[]
-  >([]);
+  const [userPrivateLessons, setUserPrivateLessons] = useState<IprivateLesson[]>([]);
+  const [initialUserPrivateLessons, setInitialUserPrivateLessons] = useState<IprivateLesson[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,28 +32,30 @@ export default function PrivateLessonsPage(props: Iprops) {
       }
 
       setUser(user);
+
       const userPrivateLessons = await usersServices.findUserPrivateLessons(
         params.userId,
         "no-cache"
       );
+
       setUserPrivateLessons(userPrivateLessons);
+      setInitialUserPrivateLessons(userPrivateLessons);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesItemsLayout
+    <FeaturesListLayout
       title={
         User?._id === params.userId
           ? "Twoje korepetycje"
           : `Korepetycje użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
       content={
-        <Suspense fallback={<Loading />}>
-          <PrivateLessonList privateLessons={userPrivateLessons} />
-        </Suspense>
+        <PrivateLessonList privateLessons={userPrivateLessons} setPrivateLessons={setUserPrivateLessons} />
       }
-      searchInput={<></>}
+      elements={initialUserPrivateLessons}
+      setElements={setUserPrivateLessons}
     />
   );
 }

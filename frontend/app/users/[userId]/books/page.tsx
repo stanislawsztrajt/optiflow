@@ -2,7 +2,7 @@
 
 import BookList from "@/features/books/book-list";
 import { Ibook } from "@/features/books/types";
-import { FeaturesItemsLayout } from "@/features/ui";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
@@ -21,6 +21,7 @@ export default function BooksPage(props: Iprops) {
   const { user: User } = useUser();
 
   const [user, setUser] = useState<Iuser>();
+  const [initialUserBooks, setInitialUserBooks] = useState<Ibook[]>([]);
   const [userBooks, setUserBooks] = useState<Ibook[]>([]);
 
   useEffect(() => {
@@ -40,22 +41,25 @@ export default function BooksPage(props: Iprops) {
         params.userId,
         "no-cache"
       );
+
       setUserBooks(userBooks);
+      setInitialUserBooks(userBooks);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesItemsLayout
+    <FeaturesListLayout
       title={
         User?._id === params.userId
           ? "Twoje książki"
           : `Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
-      searchInput={<></>}
       content={
-        <BookList books={userBooks} />
+        <BookList books={userBooks} setBooks={setUserBooks} />
       }
+      elements={initialUserBooks}
+      setElements={setUserBooks}
     />
   );
 }

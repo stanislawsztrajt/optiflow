@@ -1,24 +1,25 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import PrivateLessonItem from "../private-lesson-item/private-lesson-item";
 import { IprivateLesson } from "../types";
 
 interface Props {
   privateLessons: IprivateLesson[];
-  loading?: boolean
+  setPrivateLessons: Dispatch<SetStateAction<IprivateLesson[]>>
 }
 
-const PrivateLessonList: FC<Props> = ({ privateLessons, loading }) => {
+const PrivateLessonList: FC<Props> = ({ privateLessons, setPrivateLessons }) => {
   const privateLessonsMap = privateLessons.map((privateLesson) => {
     return (
       <PrivateLessonItem
         key={privateLesson._id}
         privateLesson={privateLesson}
+        setPrivateLessons={setPrivateLessons}
       />
   )})
 
   return (
     <div>
-      {privateLessons.length > 0 || loading ? (
+      {privateLessons.length > 0 ? (
         <div className="grid grid-cols-1 gap-10 pt-2 gap-x-14 md:grid-cols-2 xl:grid-cols-3">
           {privateLessonsMap}
         </div>

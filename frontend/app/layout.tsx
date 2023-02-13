@@ -15,7 +15,9 @@ export default function RootLayout({
 
   return (
     <html>
-      <head></head>
+      <head>
+        <title>Nethings | Uporządkowane funkcje, których dotychczas brakowało - teraz dostępne w jednym miejscu.</title>
+      </head>
       <body>
         <ReduxProvider>
           <Header />
