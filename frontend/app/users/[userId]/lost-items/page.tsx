@@ -23,7 +23,6 @@ export default function LostItemsPage(props: Iprops) {
   const [user, setUser] = useState<Iuser>();
   const [userLostItems, setUserLostItems] = useState<IlostItem[]>([]);
   const [initialUserLostItems, setInitialUserLostItems] = useState<IlostItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +38,6 @@ export default function LostItemsPage(props: Iprops) {
       );
       setUserLostItems(userLostItems);
       setInitialUserLostItems(userLostItems);
-      setLoading(false);
     };
     fetchData();
   }, []);
@@ -56,7 +54,8 @@ export default function LostItemsPage(props: Iprops) {
       content={
         <LostItemList lostItems={userLostItems} setLostItems={setUserLostItems} />
       }
-      elements={initialUserLostItems}
+      elements={userLostItems}
+      initialElements={initialUserLostItems}
       setElements={setUserLostItems}
     />
   );

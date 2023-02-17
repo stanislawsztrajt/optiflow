@@ -58,7 +58,8 @@ export default function BooksPage(props: Iprops) {
       content={
         <BookList books={userBooks} setBooks={setUserBooks} />
       }
-      elements={initialUserBooks}
+      elements={userBooks}
+      initialElements={initialUserBooks}
       setElements={setUserBooks}
     />
   );

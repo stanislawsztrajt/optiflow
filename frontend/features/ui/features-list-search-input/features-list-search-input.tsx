@@ -22,7 +22,7 @@ const FeaturesListSearchInput: React.FC<IProps> = ({ elements, setElements }) =>
           <Field
             type="text"
             name="searchQuery"
-            className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg shadow-inner focus:border-red-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-red-300"
+            className="py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-lg shadow-inner w-60 focus:border-red-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-red-300"
             placeholder="Wyszukaj"
           />
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
