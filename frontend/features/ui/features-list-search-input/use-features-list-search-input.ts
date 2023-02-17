@@ -27,11 +27,11 @@ const useFeaturesListSearchInput = (props: Iprops) => {
     if(elements.length === 0) return
 
     if('name' in elements[0]) {
-      filteredElements = (elements as any[]).filter((element: IlostItem) =>
+      filteredElements = (elements as any).filter((element: IlostItem) =>
         element.name.toLowerCase().includes(searchQuery.trim().toLowerCase())
       );
     } else {
-      filteredElements = (elements as any[]).filter((element: Ievent | IprivateLesson | Ibook) =>
+      filteredElements = (elements as any).filter((element: Ievent | IprivateLesson | Ibook) =>
         element.title.toLowerCase().includes(searchQuery.trim().toLowerCase())
       );
     }

@@ -9,13 +9,11 @@ import { FeaturesListLayout } from "@/features/ui";
 export default function LostItemsPage() {
   const [initialLostItems, setInitialLostItems] = useState<IlostItem[]>([]);
   const [lostItems, setLostItems] = useState<IlostItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     lostItemsServices.findAll().then((res) => {
       setLostItems(res);
       setInitialLostItems(res);
-      setLoading(false);
     });
   }, []);
 
@@ -25,7 +23,8 @@ export default function LostItemsPage() {
       content={
         <LostItemList lostItems={lostItems} setLostItems={setLostItems} />
       }
-      elements={initialLostItems}
+      elements={lostItems}
+      initialElements={initialLostItems}
       setElements={setLostItems}
     />
   );

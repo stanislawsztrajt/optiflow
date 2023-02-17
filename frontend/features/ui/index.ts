@@ -8,6 +8,8 @@ import RulesAndLawLayout from "./rules-and-law-layout";
 import ImagesCarousel from "./images-carousel";
 import FeaturesTabsLayout from "./features-tabs-layout";
 import FeaturesListLayout from "./features-list-layout";
+import FeaturesListSearchInput from "./features-list-search-input";
+import FeaturesListSorting from "./features-list-sorting";
 
 export {
   CreateFormLayout,
@@ -18,4 +20,6 @@ export {
   ImagesCarousel,
   FeaturesTabsLayout,
   FeaturesListLayout,
+  FeaturesListSearchInput,
+  FeaturesListSorting
 };

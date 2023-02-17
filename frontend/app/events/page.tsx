@@ -9,13 +9,11 @@ import { FeaturesListLayout } from "@/features/ui";
 export default function EventsPage() {
   const [initialEvents, setInitialEvents] = useState<Ievent[]>([]);
   const [events, setEvents] = useState<Ievent[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     eventsServices.findAll().then((res) => {
       setEvents(res);
       setInitialEvents(res);
-      setLoading(false);
     });
   }, []);
 
@@ -26,7 +24,8 @@ export default function EventsPage() {
         content={
           <EventList events={events} setEvents={setEvents} />
         }
-        elements={initialEvents}
+        elements={events}
+        initialElements={initialEvents}
         setElements={setEvents}
       />
     </>

@@ -6,7 +6,6 @@ import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/utils/hooks";
 import { FeaturesListLayout } from "@/features/ui";
 
 interface Iprops {
@@ -18,12 +17,10 @@ interface Iprops {
 export default function EventsPage(props: Iprops) {
   const { params } = props;
   const router = useRouter();
-  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
   const [initialUserEvents, setInitialUserEvents] = useState<Ievent[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +36,6 @@ export default function EventsPage(props: Iprops) {
       );
       setUserEvents(userEvents);
       setInitialUserEvents(userEvents);
-      setLoading(false);
     };
     fetchData();
   }, []);
@@ -55,7 +51,8 @@ export default function EventsPage(props: Iprops) {
         content={
           <EventList events={userEvents}  setEvents={setUserEvents} />
         }
-        elements={initialUserEvents}
+        elements={userEvents}
+        initialElements={initialUserEvents}
         setElements={setUserEvents}
       />
     </>

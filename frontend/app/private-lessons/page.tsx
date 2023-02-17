@@ -9,13 +9,11 @@ import { FeaturesListLayout } from "@/features/ui";
 export default function PrivateLessonsPage() {
   const [initialPrivateLessons, setInitialPrivateLessons] = useState<IprivateLesson[]>([]);
   const [privateLessons, setPrivateLessons] = useState<IprivateLesson[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     privateLessonsServices.findAll().then((res) => {
       setPrivateLessons(res);
       setInitialPrivateLessons(res);
-      setLoading(false);
     });
   }, []);
 
@@ -25,7 +23,8 @@ export default function PrivateLessonsPage() {
       content={
         <PrivateLessonList privateLessons={privateLessons} setPrivateLessons={setPrivateLessons} />
       }
-      elements={initialPrivateLessons}
+      elements={privateLessons}
+      initialElements={initialPrivateLessons}
       setElements={setPrivateLessons}
     />
   );

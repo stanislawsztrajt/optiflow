@@ -9,13 +9,11 @@ import booksServices from "@/utils/api/books-services";
 export default function BooksPage() {
   const [initialBooks, setInitialBooks] = useState<Ibook[]>([]);
   const [books, setBooks] = useState<Ibook[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     booksServices.findAll().then((res) => {
       setBooks(res);
       setInitialBooks(res);
-      setLoading(false);
     });
   }, []);
 
@@ -26,7 +24,8 @@ export default function BooksPage() {
         content={
           <BookList books={books} setBooks={setBooks} />
         }
-        elements={initialBooks}
+        elements={books}
+        initialElements={initialBooks}
         setElements={setBooks}
       />
     </>

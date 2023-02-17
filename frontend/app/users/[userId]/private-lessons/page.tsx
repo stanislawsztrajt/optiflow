@@ -54,7 +54,8 @@ export default function PrivateLessonsPage(props: Iprops) {
       content={
         <PrivateLessonList privateLessons={userPrivateLessons} setPrivateLessons={setUserPrivateLessons} />
       }
-      elements={initialUserPrivateLessons}
+      elements={userPrivateLessons}
+      initialElements={initialUserPrivateLessons}
       setElements={setUserPrivateLessons}
     />
   );
