@@ -4,11 +4,13 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { OwnerGuard } from '../../core/guards/owner.guard';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('events')
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
+  @Throttle(6, 60)
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createEventDto: CreateEventDto) {

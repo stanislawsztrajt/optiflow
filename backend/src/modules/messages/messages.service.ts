@@ -21,7 +21,10 @@ export class MessagesService {
   }
 
   async findChats(userId: string): Promise<Chat[]> {
-    const messages: Message[] = await this.messageModel.find({ userId }).exec();
+    const userOwner: Message[] = await this.messageModel.find({ userId }).exec();
+    const otherUserOwner: Message[] = await this.messageModel.find({ secondUserId: userId }).exec();
+    const messages = [...userOwner, ...otherUserOwner];
+
     const groupedMessages: Record<string, Message[]> = groupBy(
       messages,
       (message) => message.secondUserId,

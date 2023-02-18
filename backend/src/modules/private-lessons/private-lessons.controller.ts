@@ -4,17 +4,20 @@ import { CreatePrivateLessonDto } from './dto/create-private-lesson.dto';
 import { UpdatePrivateLessonDto } from './dto/update-private-lesson.dto';
 import { OwnerGuard } from '../../core/guards/owner.guard';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('private-lessons')
 export class PrivateLessonsController {
   constructor(private readonly privateLessonsService: PrivateLessonsService) {}
 
+  @Throttle(6, 60)
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createPrivateLessonDto: CreatePrivateLessonDto) {
     return this.privateLessonsService.create(createPrivateLessonDto);
   }
 
+  @Throttle(1, 10)
   @Get()
   findAll() {
     return this.privateLessonsService.findAll({});
