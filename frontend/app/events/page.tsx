@@ -5,6 +5,7 @@ import eventsServices from "@/utils/api/events-services";
 import EventList from "@/features/events/event-list";
 import { Ievent } from "@/features/events/types";
 import { FeaturesListLayout } from "@/features/ui";
+import { eventsSortingConfig } from "@/utils/data/sorting";
 
 export default function EventsPage() {
   const [initialEvents, setInitialEvents] = useState<Ievent[]>([]);
@@ -27,6 +28,7 @@ export default function EventsPage() {
         elements={events}
         initialElements={initialEvents}
         setElements={setEvents}
+        sortingConfig={eventsSortingConfig}
       />
     </>
   );

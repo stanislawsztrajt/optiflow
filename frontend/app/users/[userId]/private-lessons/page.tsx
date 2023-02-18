@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
 import { FeaturesListLayout } from "@/features/ui";
@@ -7,7 +8,7 @@ import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { privateLessonsSortingConfig } from "@/utils/data/sorting";
 
 interface Iprops {
   params: {
@@ -57,6 +58,7 @@ export default function PrivateLessonsPage(props: Iprops) {
       elements={userPrivateLessons}
       initialElements={initialUserPrivateLessons}
       setElements={setUserPrivateLessons}
+      sortingConfig={privateLessonsSortingConfig}
     />
   );
 }

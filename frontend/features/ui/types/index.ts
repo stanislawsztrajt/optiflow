@@ -22,10 +22,3 @@ export interface IsortingOption {
   variable: string
   sort: string
 }
-
-export interface IsortingConfig {
-  "books": IsortingOption[]
-  "events": IsortingOption[]
-  "private-lessons": IsortingOption[]
-  "lost-items": IsortingOption[]
-}
