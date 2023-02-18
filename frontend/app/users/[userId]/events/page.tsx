@@ -7,6 +7,7 @@ import usersServices from "@/utils/api/users-services";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FeaturesListLayout } from "@/features/ui";
+import { eventsSortingConfig } from "@/utils/data/sorting";
 
 interface Iprops {
   params: {
@@ -54,6 +55,7 @@ export default function EventsPage(props: Iprops) {
         elements={userEvents}
         initialElements={initialUserEvents}
         setElements={setUserEvents}
+        sortingConfig={eventsSortingConfig}
       />
     </>
   );

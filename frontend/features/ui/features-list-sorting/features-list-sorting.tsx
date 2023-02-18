@@ -1,20 +1,17 @@
 import React from 'react'
-import { featureElementsType, featureSetElementsType } from '../types'
+import { featureElementsType, featureSetElementsType, IsortingOption } from '../types'
 import useFeaturesListSorting from './use-features-list-sorting'
-import { sortingConfig } from '@/utils/data/sorting'
-import { usePathname } from 'next/navigation'
 
 interface IProps {
   elements: featureElementsType
   setElements: featureSetElementsType
+  sortingConfig: IsortingOption[]
 }
 
-const FeaturesListSorting: React.FC<IProps> = ({ elements, setElements }) => {
+const FeaturesListSorting: React.FC<IProps> = ({ elements, setElements, sortingConfig }) => {
   const { handleSortingChange } = useFeaturesListSorting({ elements, setElements })
-  const pathname = usePathname()
-  const sortingConfigPath = (pathname!.replaceAll('/', '') as 'events' | 'books' | 'private-lessons' | 'lost-items')
 
-  const optionsMap = sortingConfig[sortingConfigPath].map(option => {
+  const optionsMap = sortingConfig.map(option => {
     return (
       <option
         key={option.text}

@@ -5,6 +5,7 @@ import { Ibook } from "@/features/books/types";
 import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { booksSortingConfig } from "@/utils/data/sorting";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -61,6 +62,7 @@ export default function BooksPage(props: Iprops) {
       elements={userBooks}
       initialElements={initialUserBooks}
       setElements={setUserBooks}
+      sortingConfig={booksSortingConfig}
     />
   );
 }

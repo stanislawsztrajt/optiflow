@@ -5,6 +5,7 @@ import { IlostItem } from "@/features/lost-items/types";
 import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { lostItemsSortingConfig } from "@/utils/data/sorting";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -47,9 +48,7 @@ export default function LostItemsPage(props: Iprops) {
       title={
         User?._id === params.userId
           ? "Twoje zgubione przedmioty"
-          : `Zgubione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
-              user?.class ?? ""
-            }`
+          : `Zgubione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${ user?.class ?? "" }`
       }
       content={
         <LostItemList lostItems={userLostItems} setLostItems={setUserLostItems} />
@@ -57,6 +56,7 @@ export default function LostItemsPage(props: Iprops) {
       elements={userLostItems}
       initialElements={initialUserLostItems}
       setElements={setUserLostItems}
+      sortingConfig={lostItemsSortingConfig}
     />
   );
 }

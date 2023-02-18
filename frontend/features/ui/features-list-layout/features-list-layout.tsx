@@ -9,9 +9,10 @@ interface Props {
   elements: featureElementsType;
   initialElements: featureElementsType;
   setElements: featureSetElementsType
+  sortingConfig: IsortingOption[]
 }
 
-const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElements, setElements }) => {
+const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElements, setElements, sortingConfig }) => {
   return (
     <main className="mt-24 bg-white">
       <div className="container px-6 py-10 mx-auto">
@@ -20,7 +21,7 @@ const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElemen
             {title}
           </h1>
           <div className='flex flex-row'>
-            <FeaturesListSorting  elements={elements} setElements={setElements} />
+            <FeaturesListSorting elements={elements} setElements={setElements} sortingConfig={sortingConfig} />
             <FeaturesListSearchInput elements={initialElements} setElements={setElements} />
           </div>
         </div>
