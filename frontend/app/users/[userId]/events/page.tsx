@@ -2,11 +2,12 @@
 
 import EventList from "@/features/events/event-list";
 import { Ievent } from "@/features/events/types";
-import FeaturesLayout from "@/features/ui/features-layout";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FeaturesListLayout } from "@/features/ui";
+import { eventsSortingConfig } from "@/utils/data/sorting";
 
 interface Iprops {
   params: {
@@ -20,6 +21,7 @@ export default function EventsPage(props: Iprops) {
 
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
+  const [initialUserEvents, setInitialUserEvents] = useState<Ievent[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,22 +36,27 @@ export default function EventsPage(props: Iprops) {
         "no-cache"
       );
       setUserEvents(userEvents);
+      setInitialUserEvents(userEvents);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={
-        user?._id === params.userId
-          ? "Twoje wydarzenia"
-          : `Wydarzenia użytkownika ${user?.name ?? ""} ${
-              user?.surname ?? ""
-            } ${user?.class ?? ""}`
-      }
-      subHeader="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat, unde, facere cumque quia quas, aspernatur repellendus cupiditate fugiat quidem possimus dicta vero saepe. Mollitia maxime non, rerum cumque similique eaque."
-    >
-      <EventList events={userEvents} />
-    </FeaturesLayout>
+    <>
+      <FeaturesListLayout
+        title={
+          user?._id === params.userId
+            ? "Twoje wydarzenia"
+            : `Wydarzenia użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
+        }
+        content={
+          <EventList events={userEvents}  setEvents={setUserEvents} />
+        }
+        elements={userEvents}
+        initialElements={initialUserEvents}
+        setElements={setUserEvents}
+        sortingConfig={eventsSortingConfig}
+      />
+    </>
   );
 }

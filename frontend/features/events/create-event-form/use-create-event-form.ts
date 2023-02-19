@@ -41,9 +41,8 @@ const useCreateEventForm = () => {
         ...values,
         date: new Date(values.date),
         price: values.price || 0,
-        images: uploadedImages
+        images: uploadedImages,
       };
-      console.log(event)
       await eventsServices.create(event);
       successAlert("Dodano twoje wydarzenie");
       router.push("/dashboard");

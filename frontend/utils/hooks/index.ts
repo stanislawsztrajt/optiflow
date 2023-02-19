@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 
 export const useUser = () => {
   const [user, setUser] = useState<Iuser | null>(null);
-  useEffect(() => setUser(User), []);
+  useEffect(() => {
+    setUser(User)
+  }, []);
 
   return {
     user,

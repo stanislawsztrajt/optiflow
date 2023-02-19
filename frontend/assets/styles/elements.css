@@ -7,23 +7,27 @@
 }
 
 .section-header {
-  @apply p-2 text-center
+  @apply p-2 text-center mx-5 sm:mx-10
 }
 
 .section-header-h1 {
-  @apply text-5xl font-medium
+  @apply text-2xl sm:text-4xl font-medium
 }
 
 .section-header-h2 {
-  @apply font-light text-gray-600
+  @apply mt-1 text-lg font-light text-gray-600;
 }
 
 .section-elements-layout {
-  @apply flex flex-wrap items-center justify-center w-full gap-10 mt-8 lg:mt-12
+  @apply flex flex-wrap items-center justify-center w-full gap-10 mt-8 lg:mt-12 px-5
 }
 
 .section-element {
-  @apply flex flex-col items-center p-6 duration-150 bg-white border w-96 md:w-80 hover:border-color-primary rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+  @apply min-h-0 sm:min-h-140 flex flex-col items-center justify-between p-6 duration-150 bg-white border w-96 md:w-80 hover:border-color-primary rounded-input hover:text-color-primary hover:scale-105 hover:shadow-lg
+}
+
+.section-element-box {
+  @apply flex flex-col items-center justify-center w-full
 }
 
 .section-element-h3 {

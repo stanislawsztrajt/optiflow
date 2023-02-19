@@ -2,9 +2,10 @@
 
 import BookList from "@/features/books/book-list";
 import { Ibook } from "@/features/books/types";
-import FeaturesLayout from "@/features/ui/features-layout";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { booksSortingConfig } from "@/utils/data/sorting";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ export default function BooksPage(props: Iprops) {
   const { user: User } = useUser();
 
   const [user, setUser] = useState<Iuser>();
+  const [initialUserBooks, setInitialUserBooks] = useState<Ibook[]>([]);
   const [userBooks, setUserBooks] = useState<Ibook[]>([]);
 
   useEffect(() => {
@@ -40,21 +42,27 @@ export default function BooksPage(props: Iprops) {
         params.userId,
         "no-cache"
       );
+
       setUserBooks(userBooks);
+      setInitialUserBooks(userBooks);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={`Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${
-        user?.class ?? ""
-      }`}
-      subHeader={
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+    <FeaturesListLayout
+      title={
+        User?._id === params.userId
+          ? "Twoje książki"
+          : `Książki użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
-    >
-      <BookList books={userBooks} />
-    </FeaturesLayout>
+      content={
+        <BookList books={userBooks} setBooks={setUserBooks} />
+      }
+      elements={userBooks}
+      initialElements={initialUserBooks}
+      setElements={setUserBooks}
+      sortingConfig={booksSortingConfig}
+    />
   );
 }

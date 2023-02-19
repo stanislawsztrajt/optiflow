@@ -1,28 +1,36 @@
-import { MaxLength, IsNumber, IsEnum, IsMongoId, IsOptional } from 'class-validator';
+import { MaxLength, IsArray, IsEnum, IsOptional, IsString, ArrayMaxSize, Validate, MinLength } from 'class-validator';
+import { MaxLengthOfArrayStrings } from 'src/modules/books/dto/create-book.dto';
 import { LostItemFoundEnum } from '../types/lost-items.type';
 
 export class CreateLostItemDto {
+  @IsString()
+  @MinLength(5)
   @MaxLength(100)
   name: string;
 
-  @MaxLength(100)
-  foundLocation: string;
-  // the place where the item was found
-
+  @IsString()
   @MaxLength(500)
+  @MinLength(5)
   description: string;
 
-  images: string[];
+  @IsString()
+  @IsOptional()
+  @MaxLength(100)
+  foundLocation?: string;
+  // the place where the item was found
 
-  @IsNumber()
-  @MaxLength(10000000000)
-  price: number;
+  @IsString()
+  date: Date;
+
+  @IsArray({
+    message: 'images must be an array',
+  })
+  @ArrayMaxSize(3)
+  @Validate(MaxLengthOfArrayStrings, {
+    message: 'Max length of links is 1000 chars'
+  })
+  images: string[];
 
   @IsEnum(LostItemFoundEnum)
   type: LostItemFoundEnum;
-
-  @IsMongoId()
-  @IsOptional()
-  @MaxLength(200)
-  userId: string
 }

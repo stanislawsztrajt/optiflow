@@ -16,17 +16,11 @@
   @apply rounded-input text-base border border-color-input p-input outline-none duration-150 focus:border-color-primary
 }
 
-.auth-input-label {
-  @apply font-medium
-}
-
 .auth-button-submit {
   @apply rounded-input bg-color-primary p-input text-color-secondary-text font-semibold duration-100 hover:brightness-125
 }
 
-
-
-.create-input-label {
+.auth-input-label, .create-input-label {
   @apply font-medium mb-1 ml-1
 }
 
@@ -38,21 +32,25 @@
   @apply flex flex-col mt-2
 }
 
-.create-textarea {
-
-}
-
 .create-button-submit {
   @apply rounded-input bg-color-primary p-input text-color-secondary-text font-semibold duration-100 hover:brightness-125
 }
 
 
+.menu-button, .delete-button {
+  @apply text-white bg-color-primary hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0 flex flex-row justify-center items-center
+}
+
+.delete-button {
+  @apply w-[9.5rem];
+}
+
 .menu-button {
-  @apply w-full lg:w-auto text-white bg-color-primary hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0 flex flex-row justify-between items-center
+  @apply w-80 lg:w-auto ;
 }
 
 .menu-list-link {
-  @apply w-full cursor-pointer lg:w-auto text-white bg-gray-800 hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0
+  @apply w-80 cursor-pointer lg:w-auto text-white bg-gray-800 hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0
 }
 
 

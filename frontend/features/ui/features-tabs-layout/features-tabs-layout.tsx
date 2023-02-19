@@ -3,10 +3,10 @@ import React, { FC, ReactNode } from "react";
 interface Props {
   children: ReactNode;
   header: string;
-  subHeader: string;
+  subHeader?: string;
 }
 
-const FeaturesLayout: FC<Props> = ({ children, header, subHeader }) => {
+const FeaturesTabsLayout: FC<Props> = ({ children, header, subHeader = '' }) => {
   return (
     <main className="main-page-layout">
       <section className="section-header">
@@ -18,4 +18,4 @@ const FeaturesLayout: FC<Props> = ({ children, header, subHeader }) => {
   );
 };
 
-export default FeaturesLayout;
+export default FeaturesTabsLayout;

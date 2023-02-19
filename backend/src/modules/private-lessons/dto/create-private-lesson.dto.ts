@@ -1,30 +1,25 @@
-import { IsString, IsNumber, IsEnum, IsArray, IsOptional, MaxLength, Max, IsMongoId } from 'class-validator';
-import { PrivateLessonsCategoryEnum } from '../schemas/private-lessons.schema';
+import { IsString, IsNumber, IsEnum, MaxLength, Max, Min, MinLength } from 'class-validator';
+import { PrivateLessonsCategoryEnum, PrivateLessonsCategoryType, PrivateLessonsOfferTypeEnum, PrivateLessonsOfferTypeType } from '../types/private-lessons.type';
 
 export class CreatePrivateLessonDto {
   @IsString()
   @MaxLength(100)
+  @MinLength(5)
   title: string;
 
   @IsString()
   @MaxLength(500)
+  @MinLength(5)
   description: string;
 
-  @IsOptional()
-  @IsArray()
   @IsEnum(PrivateLessonsCategoryEnum)
-  category: PrivateLessonsCategoryEnum[];
+  category: PrivateLessonsCategoryType;
+
+  @IsEnum(PrivateLessonsOfferTypeEnum)
+  offerType: PrivateLessonsOfferTypeType;
 
   @IsNumber()
-  @Max(10000000000)
+  @Min(0)
+  @Max(10000000)
   price: number;
-
-  @IsString()
-  @MaxLength(100)
-  date: string;
-
-  @IsMongoId()
-  @IsOptional()
-  @MaxLength(200)
-  userId: string
 }

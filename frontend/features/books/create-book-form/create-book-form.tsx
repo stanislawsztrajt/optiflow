@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { BookCategories, BookLooks, BookTypes, Ibook } from "../types";
 import useCreateBookForm from "./use-create-book-form";
 import { Field, Form, Formik } from "formik";
-import Loading from "@/features/ui/loading";
+import { Loading } from "@/features/ui";
 
 const CreateBookForm: FC = () => {
   const {
@@ -127,7 +127,7 @@ const CreateBookForm: FC = () => {
               <Field
                 disabled={loading}
                 className="create-input"
-                type="number"
+                type="text"
                 placeholder="2"
                 name="part"
               />

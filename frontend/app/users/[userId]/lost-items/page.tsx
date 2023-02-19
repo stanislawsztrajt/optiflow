@@ -2,9 +2,11 @@
 
 import LostItemList from "@/features/lost-items/lost-item-list";
 import { IlostItem } from "@/features/lost-items/types";
-import FeaturesLayout from "@/features/ui/features-layout/features-layout";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { lostItemsSortingConfig } from "@/utils/data/sorting";
+import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -17,9 +19,11 @@ interface Iprops {
 export default function LostItemsPage(props: Iprops) {
   const { params } = props;
   const router = useRouter();
+  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
-  const [userLostItems, setUserLostuserLostItems] = useState<IlostItem[]>([]);
+  const [userLostItems, setUserLostItems] = useState<IlostItem[]>([]);
+  const [initialUserLostItems, setInitialUserLostItems] = useState<IlostItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,25 +37,26 @@ export default function LostItemsPage(props: Iprops) {
         params.userId,
         "no-cache"
       );
-      setUserLostuserLostItems(userLostItems);
+      setUserLostItems(userLostItems);
+      setInitialUserLostItems(userLostItems);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={
-        user?._id === params.userId
+    <FeaturesListLayout
+      title={
+        User?._id === params.userId
           ? "Twoje zgubione przedmioty"
-          : `Zgubione przedmioty ${user?.name ?? ""} ${user?.surname ?? ""} ${
-              user?.class ?? ""
-            }`
+          : `Zgubione przedmioty użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${ user?.class ?? "" }`
       }
-      subHeader={
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      content={
+        <LostItemList lostItems={userLostItems} setLostItems={setUserLostItems} />
       }
-    >
-      <LostItemList lostItems={userLostItems} />
-    </FeaturesLayout>
+      elements={userLostItems}
+      initialElements={initialUserLostItems}
+      setElements={setUserLostItems}
+      sortingConfig={lostItemsSortingConfig}
+    />
   );
 }

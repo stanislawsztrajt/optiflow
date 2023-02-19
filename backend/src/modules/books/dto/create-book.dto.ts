@@ -1,6 +1,5 @@
 import {
   IsString,
-  IsOptional,
   IsArray,
   IsNumber,
   MaxLength,
@@ -8,7 +7,10 @@ import {
   ArrayMaxSize,
   Max,
   MinLength,
-  IsMongoId,
+  Min,
+  ValidatorConstraintInterface,
+  ValidatorConstraint,
+  Validate,
 } from 'class-validator';
 import {
   BookCategoryType,
@@ -19,12 +21,17 @@ import {
   BookTypeType,
 } from '../types/books.type';
 
+@ValidatorConstraint()
+export class MaxLengthOfArrayStrings implements ValidatorConstraintInterface {
+  public async validate(images: string[]) {
+    if (!images) return true
+    return images.every(image => image.length < 1000)
+  }
+}
+
 export class CreateBookDto {
   @IsString({
     message: 'title must be a string',
-  })
-  @IsOptional({
-    message: 'title is required',
   })
   @MaxLength(100)
   @MinLength(5)
@@ -33,66 +40,41 @@ export class CreateBookDto {
   @IsString({
     message: 'description must be a string',
   })
-  @IsOptional({
-    message: 'description is required',
-  })
   @MaxLength(500)
   @MinLength(5)
   description: string;
 
-  @IsOptional({
-    message: 'category is required',
-  })
   @IsEnum(BookCategoryEnum)
-  @MaxLength(500)
   category: BookCategoryType;
 
-  @IsOptional({
-    message: 'type is required',
-  })
   @IsEnum(BookTypeEnum)
   type: BookTypeType;
 
   @IsString({
     message: 'publishing house must be a string',
   })
-  @IsOptional({
-    message: 'publishing house is required',
-  })
   @MaxLength(50)
   publishingHouse: string;
 
-  @IsNumber()
-  @IsOptional({
-    message: 'price is required',
-  })
-  @Max(10)
-  part: number;
+  @IsString()
+  @MinLength(0)
+  @MaxLength(10)
+  part: string;
 
   @IsArray({
     message: 'images must be an array',
   })
-  @IsOptional({
-    message: 'images is required',
-  })
   @ArrayMaxSize(3)
+  @Validate(MaxLengthOfArrayStrings, {
+    message: 'Max length of links is 1000 chars'
+  })
   images: string[];
 
   @IsNumber()
-  @IsOptional({
-    message: 'price is required',
-  })
+  @Min(0)
   @Max(10000000000)
   price: number;
 
-  @IsOptional({
-    message: 'look is required',
-  })
   @IsEnum(BookLookEnum)
   look: BookLookType;
-
-  @IsMongoId()
-  @IsOptional()
-  @MaxLength(200)
-  userId: string
 }

@@ -1,24 +1,31 @@
-import React, { FC } from "react";
-import LostItemItem from "../lost-item-item/lost-item-item";
+import React, { Dispatch, FC, SetStateAction } from "react";
+import LostItemItem from "../lost-item-item";
 import { IlostItem } from "../types";
 
 interface Props {
   lostItems: IlostItem[];
+  setLostItems: Dispatch<SetStateAction<IlostItem[]>>
 }
 
-const LostItemList: FC<Props> = ({ lostItems }) => {
+const LostItemList: FC<Props> = ({ lostItems, setLostItems }) => {
+  const lostItemsMap = lostItems.map((lostItem) => {
+    return <LostItemItem key={lostItem._id} lostItem={lostItem} setLostItems={setLostItems} />;
+  });
+
   return (
-    <>
-      {lostItems.length === 0 ? (
-        <div>Nie ma tutaj żadnych zgubionych przedmiotów</div>
+    <div>
+      {lostItems.length > 0 ? (
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 xl:grid-cols-3">
+          {lostItemsMap}
+        </div>
       ) : (
-        <>
-          {lostItems.map((lostItem) => {
-            return <LostItemItem lostItem={lostItem} key={lostItem._id} />;
-          })}
-        </>
+        <div>
+          <h2 className="text-4xl text-gray-500">
+            Nie znaleziono żadnych zgubionych/znalezionych przedmiotów
+          </h2>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

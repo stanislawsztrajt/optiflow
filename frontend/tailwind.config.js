@@ -3,7 +3,8 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./features/**/*.{js,ts,jsx,tsx}",
-    "!./node_modules"
+    "!./node_modules",
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -29,6 +30,9 @@ module.exports = {
       },
       width: {
         'input': '20rem'
+      },
+      minHeight: {
+        '140': '35rem'
       }
     },
   },

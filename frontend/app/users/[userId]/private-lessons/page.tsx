@@ -1,12 +1,14 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list";
 import { IprivateLesson } from "@/features/private-lessons/types";
-import FeaturesLayout from "@/features/ui/features-layout";
+import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { privateLessonsSortingConfig } from "@/utils/data/sorting";
 
 interface Iprops {
   params: {
@@ -16,13 +18,12 @@ interface Iprops {
 
 export default function PrivateLessonsPage(props: Iprops) {
   const { params } = props;
-
   const router = useRouter();
+  const { user: User } = useUser()
 
   const [user, setUser] = useState<Iuser>();
-  const [userPrivateLessons, setUserPrivateLessons] = useState<
-    IprivateLesson[]
-  >([]);
+  const [userPrivateLessons, setUserPrivateLessons] = useState<IprivateLesson[]>([]);
+  const [initialUserPrivateLessons, setInitialUserPrivateLessons] = useState<IprivateLesson[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,29 +33,32 @@ export default function PrivateLessonsPage(props: Iprops) {
       }
 
       setUser(user);
+
       const userPrivateLessons = await usersServices.findUserPrivateLessons(
         params.userId,
         "no-cache"
       );
+
       setUserPrivateLessons(userPrivateLessons);
+      setInitialUserPrivateLessons(userPrivateLessons);
     };
     fetchData();
   }, []);
 
   return (
-    <FeaturesLayout
-      header={
-        user?._id === params.userId
+    <FeaturesListLayout
+      title={
+        User?._id === params.userId
           ? "Twoje korepetycje"
-          : `Korepetycje ${user?.name ?? ""} ${user?.surname ?? ""} ${
-              user?.class ?? ""
-            }`
+          : `Korepetycje użytkownika ${user?.name ?? ""} ${user?.surname ?? ""} ${user?.class ?? ""}`
       }
-      subHeader={
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium earum ipsam sequi similique dignissimos quidem perspiciatis. Nisi maxime non sunt unde delectus modi, porro quod earum tempora laudantium accusamus voluptatum?"
+      content={
+        <PrivateLessonList privateLessons={userPrivateLessons} setPrivateLessons={setUserPrivateLessons} />
       }
-    >
-      <PrivateLessonList privateLessons={userPrivateLessons} />
-    </FeaturesLayout>
+      elements={userPrivateLessons}
+      initialElements={initialUserPrivateLessons}
+      setElements={setUserPrivateLessons}
+      sortingConfig={privateLessonsSortingConfig}
+    />
   );
 }

@@ -3,8 +3,8 @@
 import React, { FC } from "react";
 import useCreateEventForm from "./use-create-event-form";
 import { Field, Form, Formik } from "formik";
-import Loading from "@/features/ui/loading";
 import { Ievent } from "../types";
+import { Loading } from "@/features/ui";
 
 const CreateEventForm: FC = () => {
   const {
@@ -15,7 +15,6 @@ const CreateEventForm: FC = () => {
     imagesUrls,
     handleSetImages,
   } = useCreateEventForm();
-
 
   const selectedImages = imagesUrls.map((imageUrl) => {
     return (
@@ -85,12 +84,14 @@ const CreateEventForm: FC = () => {
               <Field
                 className="create-input"
                 type="text"
-                placeholder="ul. Złota 144, 62-820 Kalisz"
+                placeholder="Np. zdalnie/hala sportowa"
                 name="location"
                 disabled={loading}
               />
               <div className="text-red-500">
-                {errors.location && touched.location ? <>{errors.location}</> : null}
+                {errors.location && touched.location ? (
+                  <>{errors.location}</>
+                ) : null}
                 &nbsp;
               </div>
             </div>

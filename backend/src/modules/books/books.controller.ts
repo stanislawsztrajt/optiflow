@@ -4,11 +4,13 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { Throttle } from '@nestjs/throttler'
 
 @Controller('books')
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
+  @Throttle(6, 60)
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
