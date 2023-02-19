@@ -33,4 +33,8 @@ export const createEventValidationSchema = Yup.object({
       return !swearWords.some(word => value?.includes(word));
     }),
   date: Yup.date().required("Data jest wymagana"),
+  price: Yup.number()
+    .min(0, "Cena musi być większa lub równa 0")
+    .max(10000000, "Cena musi być mniejsza niż 10000000")
+    .required("Cena jest wymagana"),
 });

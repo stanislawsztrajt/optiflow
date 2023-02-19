@@ -8,3 +8,7 @@ export const featuresContent = {
 export const headersContent = {
   homePage: 'Uporządkowane funkcje, których dotychczas brakowało - teraz dostępne w jednym miejscu.'
 }
+
+export const heroContent = {
+  h1Content: 'Jeśli potrzebujesz podręczników do szkoły, zgubiłeś swoją ulubioną koszulkę na wuefie lub potrzebujesz pomocy w nauce matematyki, to ta aplikacja jest właśnie dla Ciebie! W jednym miejscu możesz sprzedawać i kupować książki, publikować i przeglądać najważniejsze wydarzenia szkolne, odnajdywać zgubione przedmioty oraz nawiązywać kontakty z innymi uczniami i nauczycielami w celu uzyskania korepetycji. Ta wszechstronna aplikacja ułatwi Twoje życie szkolne.'
+}

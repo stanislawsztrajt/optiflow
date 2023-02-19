@@ -5,10 +5,12 @@ import Cookies from "js-cookie";
 import authServices from "@/utils/api/auth-services";
 import { IloginDto } from "../types";
 import { Ierror } from "@/utils/types/api";
+import { useRouter } from "next/navigation";
 
 const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter()
 
   const login = async (loginDto: IloginDto) => {
     setLoading(true);

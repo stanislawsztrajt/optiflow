@@ -11,7 +11,8 @@ import UndrawLesson from "@/assets/undraw/undraw_lesson.svg";
 import UndrawLost from "@/assets/undraw/undraw_lost.svg";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faSchool, faUser } from "@fortawesome/free-solid-svg-icons";
+import { featuresContent, headersContent, heroContent } from "@/utils/data/features-content";
 
 export default function HeroPage() {
   const { user } = useUser();
@@ -19,14 +20,12 @@ export default function HeroPage() {
   return (
     <main className="flex flex-col items-center p-8">
       <section className="hero-box">
-        <div className="hero-text-element">
-          <h1 className="font-semibold text-8xl">
-            Storing the texts in your mind
+        <div className="-mt-12 hero-text-element">
+          <h1 className="font-semibold text-7xl">
+            {headersContent.homePage}
           </h1>
-          <p className="mt-4 text-2xl">
-            Write your texts and translate them with the help of one of the best
-            translators - DeepL API, texts are saved in the database and used in
-            later functionalities.
+          <p className="mt-4 text-xl">
+            {heroContent.h1Content}
           </p>
           <div className="flex flex-row gap-4 mt-2">
             {user ? (
@@ -44,6 +43,10 @@ export default function HeroPage() {
                 </button>
               </Link>
             )}
+            <button type="button" className="menu-button lg:text">
+              <FontAwesomeIcon icon={faHome} />
+              <span className="ml-2">Strona główna</span>
+            </button>
           </div>
         </div>
         <div className="hero-image">
@@ -53,10 +56,9 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h2 className="text-7xl">Translating and saving texts</h2>
+          <h2 className="text-7xl">Sprzedaż i kupno książek</h2>
           <p className="mt-4 text-xl">
-            Translate your texts using deepl api and write them down href learn
-            from them.
+            {featuresContent.books}
           </p>
         </div>
         <div className="hero-image">
@@ -66,9 +68,9 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h3 className="text-7xl">Flash cards</h3>
+          <h3 className="text-7xl">Publikowanie i przeglądanie wydzarzeń</h3>
           <p className="mt-4 text-xl">
-            Learn using flashcards, draw words and use flash cards.
+            {featuresContent.events}
           </p>
         </div>
         <div className="hero-image">
@@ -78,11 +80,9 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h4 className="text-7xl">English quotes and stories</h4>
+          <h4 className="text-7xl">Publikowanie i znajdywanie zgubionych przedmiotów</h4>
           <p className="mt-4 text-xl">
-            Read familiar quotes and stories href learn new words and sentence
-            context. Quotes - API ninjas, philosophy quotes API, shortstories
-            API.
+            {featuresContent.lostItems}
           </p>
         </div>
         <div className="hero-image">
@@ -92,11 +92,9 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h4 className="text-7xl">English quotes and stories</h4>
+          <h4 className="text-7xl">Udzielanie i pobieranie korepetycji</h4>
           <p className="mt-4 text-xl">
-            Read familiar quotes and stories href learn new words and sentence
-            context. Quotes - API ninjas, philosophy quotes API, shortstories
-            API.
+            {featuresContent.privateLessons}
           </p>
         </div>
         <div className="hero-image">

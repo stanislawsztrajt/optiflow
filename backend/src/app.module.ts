@@ -13,10 +13,16 @@ import { SetUserIdMiddleware } from './core/middlewares/set-user-id.middleware';
 import { AuthModule } from './modules/auth/auth.module';
 import { ChatGateway } from './websockets/chat.gateway';
 import { MessagesModule } from './modules/messages/messages.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 60,
+    }),
     MongooseModule.forRoot(process.env.MONGODB_URI),
     AuthModule,
     BooksModule,
@@ -27,7 +33,14 @@ import { MessagesModule } from './modules/messages/messages.module';
     MessagesModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ChatGateway],
+  providers: [
+    AppService, 
+    ChatGateway, 
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard
+    }
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

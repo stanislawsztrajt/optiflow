@@ -4,11 +4,13 @@ import { CreateLostItemDto } from './dto/create-lost-item.dto';
 import { UpdateLostItemDto } from './dto/update-lost-item.dto';
 import { OwnerGuard } from '../../core/guards/owner.guard';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('lost-items')
 export class LostItemsController {
   constructor(private readonly lostItemsService: LostItemsService) {}
 
+  @Throttle(6, 60)
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createLostItemDto: CreateLostItemDto) {

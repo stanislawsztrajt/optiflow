@@ -12,6 +12,7 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useUser } from "@/utils/hooks";
 import useEventItem from "./use-event-item";
 import { usePathname } from "next/navigation";
+import { UsersEnum } from "@/features/users/types";
 
 interface Props {
   event: Ievent;
@@ -60,7 +61,7 @@ const EventItem: FC<Props> = ({ event, setEvents }) => {
         </div>
       </div>
       {
-        userId === user?._id && pathname?.includes(userId) ?
+        (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
           <div className='flex flex-row items-end justify-end pt-3 mt-5 border-t'>
             <button
               onClick={() => confirmDelete(_id)}
