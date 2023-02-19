@@ -8,9 +8,7 @@ import { MessagesService } from '../modules/messages/messages.service';
 import { config } from 'dotenv'
 config()
 
-@WebSocketGateway(1338, {
-  cors: process.env.CLIENT_URL,
-})
+@WebSocketGateway()
 
 export class ChatGateway {
   constructor(private readonly messagesService: MessagesService) {}
