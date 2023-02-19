@@ -36,10 +36,10 @@ import { APP_GUARD } from '@nestjs/core';
   providers: [
     AppService, 
     // ChatGateway, 
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: ThrottlerGuard
-    // }
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard
+    }
   ],
 })
 export class AppModule implements NestModule {
