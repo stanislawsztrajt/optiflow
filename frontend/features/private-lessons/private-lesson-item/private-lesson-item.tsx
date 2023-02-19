@@ -5,7 +5,7 @@ import { IprivateLesson } from "../types";
 import usePrivateLessonItem from "./use-private-lesson-item";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faEdit, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { UsersEnum } from "@/features/users/types";
 
 interface Props {
@@ -48,6 +48,10 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
       {
         (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
           <div className='flex flex-row items-end justify-end mt-3'>
+            <Link className="edit-button" href={`private-lessons/edit-private-lesson/${_id}`}>
+              <FontAwesomeIcon icon={faEdit} />
+              <span className="ml-2">Edytuj</span>
+            </Link>
             <button
               onClick={() => confirmDelete(_id)}
               type="button"

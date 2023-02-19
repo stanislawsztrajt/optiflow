@@ -16,11 +16,11 @@ const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElemen
   return (
     <main className="mt-24 bg-white">
       <div className="container px-6 py-10 mx-auto">
-        <div className="flex flex-col justify-between sm:items-center sm:flex-row">
-          <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl">
+        <div className="flex flex-col justify-between md:items-center md:flex-row">
+          <h1 className="mr-10 text-3xl font-semibold text-gray-800 capitalize lg:text-4xl">
             {title}
           </h1>
-          <div className='flex flex-row'>
+          <div className='flex flex-col text-lg sm:flex-row'>
             <FeaturesListSorting elements={elements} setElements={setElements} sortingConfig={sortingConfig} />
             <FeaturesListSearchInput elements={initialElements} setElements={setElements} />
           </div>

@@ -37,12 +37,16 @@
 }
 
 
-.menu-button, .delete-button {
+.menu-button, .delete-button, .edit-button {
   @apply text-white bg-color-primary hover:brightness-125 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 lg:mr-0 flex flex-row justify-center items-center
 }
 
-.delete-button {
-  @apply w-[9.5rem];
+.delete-button, .edit-button {
+  @apply w-[9.5rem] mr-0;
+}
+
+.edit-button {
+  @apply bg-gray-500 sm:mr-3 mb-3 sm:mb-0;
 }
 
 .menu-button {

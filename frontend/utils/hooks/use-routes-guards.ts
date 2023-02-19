@@ -2,7 +2,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useUser } from ".";
 
-const loggedInRoutes = ["dashboard", "create", "chat"];
+const loggedInRoutes = ["dashboard", "create"];
 const notLoggedInRoutes = ["auth"];
 
 export const useRoutesGuards = () => {

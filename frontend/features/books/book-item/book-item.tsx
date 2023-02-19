@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { placeholderImageUrl } from "@/utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faTrashCan, faEdit } from "@fortawesome/free-regular-svg-icons";
 import { useUser } from "@/utils/hooks";
 import useBookItem from "./use-book-item";
 import { usePathname } from "next/navigation";
@@ -61,6 +61,10 @@ const BookItem: FC<Props> = ({ book, setBooks }) => {
       {
         (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN  ?
           <div className='flex flex-row items-end justify-end pt-3 mt-5 border-t'>
+            <Link className="edit-button" href={`books/edit-book/${_id}`}>
+              <FontAwesomeIcon icon={faEdit} />
+              <span className="ml-2">Edytuj</span>
+            </Link>
             <button
               onClick={() => confirmDelete(_id)}
               type="button"
