@@ -19,8 +19,10 @@ const users_module_1 = require("./modules/users/users.module");
 const private_lessons_module_1 = require("./modules/private-lessons/private-lessons.module");
 const set_user_id_middleware_1 = require("./core/middlewares/set-user-id.middleware");
 const auth_module_1 = require("./modules/auth/auth.module");
+const chat_gateway_1 = require("./websockets/chat.gateway");
 const messages_module_1 = require("./modules/messages/messages.module");
 const throttler_1 = require("@nestjs/throttler");
+const core_1 = require("@nestjs/core");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -48,6 +50,11 @@ AppModule = __decorate([
         controllers: [app_controller_1.AppController],
         providers: [
             app_service_1.AppService,
+            chat_gateway_1.ChatGateway,
+            {
+                provide: core_1.APP_GUARD,
+                useClass: throttler_1.ThrottlerGuard
+            }
         ],
     })
 ], AppModule);

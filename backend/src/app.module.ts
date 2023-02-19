@@ -35,7 +35,7 @@ import { APP_GUARD } from '@nestjs/core';
   controllers: [AppController],
   providers: [
     AppService, 
-    ChatGateway, 
+    // ChatGateway, 
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard
