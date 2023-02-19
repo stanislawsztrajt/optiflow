@@ -1,5 +1,5 @@
 import { IsString, IsArray, IsNumber, MaxLength, IsOptional, ArrayMaxSize, Validate, MinLength } from 'class-validator';
-import { MaxLengthOfArrayStrings } from 'src/modules/books/dto/create-book.dto';
+import { MaxLengthOfArrayStrings } from '../../books/dto/create-book.dto';
 
 export class CreateEventDto {
   @IsString()
