@@ -10,12 +10,12 @@ export declare enum BookCategoryEnum {
     CHEM = "Chemia",
     INF = "Informatyka",
     OTHER = "Inne",
-    PROFESSION_WOOD_TECHNOLOGY = "Zawodowe technologia drewna",
-    PROFESSION_PROGRAMMER = "Zawodowe programista",
-    PROFESSION_IT = "Zawodowe informatyk",
-    PROFESSION_PHOTOGRAPHY_AND_MULTIMEDIA = "Zawodowe fotografia i multimedia",
-    PROFESSION_MECHATRONICS = "Zawodowe mechatronik",
-    PROFESSION_ROBOTICIST = "Zawodowe robotyk"
+    PROFESSION_WOOD_TECHNOLOGY = "Zawodowe: technologia drewna",
+    PROFESSION_PROGRAMMER = "Zawodowe: programista",
+    PROFESSION_IT = "Zawodowe: informatyk",
+    PROFESSION_PHOTOGRAPHY_AND_MULTIMEDIA = "Zawodowe: fotografia i multimedia",
+    PROFESSION_MECHATRONICS = "Zawodowe: mechatronik",
+    PROFESSION_ROBOTICIST = "Zawodowe: robotyk"
 }
 export type BookCategoryType = `${BookCategoryEnum}`;
 export declare const BookCategories: BookCategoryEnum[];

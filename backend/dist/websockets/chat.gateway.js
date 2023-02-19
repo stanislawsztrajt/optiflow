@@ -64,9 +64,7 @@ __decorate([
     __metadata("design:type", socket_io_1.Server)
 ], ChatGateway.prototype, "server", void 0);
 ChatGateway = __decorate([
-    (0, websockets_1.WebSocketGateway)({
-        cors: process.env.CLIENT_URL,
-    }),
+    (0, websockets_1.WebSocketGateway)(),
     __metadata("design:paramtypes", [messages_service_1.MessagesService])
 ], ChatGateway);
 exports.ChatGateway = ChatGateway;
