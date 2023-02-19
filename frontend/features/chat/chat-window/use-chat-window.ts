@@ -37,7 +37,7 @@ const useChatWindow = (props: Iprops) => {
 
   useEffect(() => {
     if (user?._id && !noUserId)
-      if(user._id === secondUserId) router.push("/chat");
+      if(user?._id === secondUserId) router.push("/chat");
       joinSocketRoom();
   }, [user]);
 

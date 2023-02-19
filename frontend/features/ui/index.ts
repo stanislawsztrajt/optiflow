@@ -10,6 +10,7 @@ import FeaturesTabsLayout from "./features-tabs-layout";
 import FeaturesListLayout from "./features-list-layout";
 import FeaturesListSearchInput from "./features-list-search-input";
 import FeaturesListSorting from "./features-list-sorting";
+import Footer from "./footer";
 
 export {
   CreateFormLayout,
@@ -21,5 +22,6 @@ export {
   FeaturesTabsLayout,
   FeaturesListLayout,
   FeaturesListSearchInput,
-  FeaturesListSorting
+  FeaturesListSorting,
+  Footer
 };
