@@ -57,7 +57,7 @@ export default function DashboardPage() {
 
   return (
     <>
-      { user ? 
+      { user ?
         <FeaturesTabsLayout
           header={`Witaj ${user?.name ?? ''}!`}
           subHeader={headersContent.homePage}
@@ -67,6 +67,5 @@ export default function DashboardPage() {
         : null
       }
     </>
-    
   );
 }

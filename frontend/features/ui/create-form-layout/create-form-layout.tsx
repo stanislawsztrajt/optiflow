@@ -21,7 +21,6 @@ const CreateFormLayout: FCC<Props> = ({ imageSrc, children }) => {
           src={imageSrc}
           alt={""}
           className="w-1/2 lg:-translate-y-1/2 lg:fixed lg:top-1/2 lg:w-1/3"
-          loading="lazy"
         />
       </div>
     </main>

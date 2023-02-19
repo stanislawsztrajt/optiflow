@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import { placeholderImageUrl } from "@/utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faEdit, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useUser } from "@/utils/hooks";
 import useEventItem from "./use-event-item";
 import { usePathname } from "next/navigation";
@@ -62,7 +62,11 @@ const EventItem: FC<Props> = ({ event, setEvents }) => {
       </div>
       {
         (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
-          <div className='flex flex-row items-end justify-end pt-3 mt-5 border-t'>
+          <div className='flex flex-col items-end justify-end pt-3 mt-5 border-t sm:flex-row'>
+            <Link className="edit-button" href={`events/edit-event/${_id}`}>
+              <FontAwesomeIcon icon={faEdit} />
+              <span className="ml-2">Edytuj</span>
+            </Link>
             <button
               onClick={() => confirmDelete(_id)}
               type="button"

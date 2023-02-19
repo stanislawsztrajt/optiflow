@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import { placeholderImageUrl } from "@/utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faEdit, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import useLostItemItem from "./use-lost-item-item";
 import { useUser } from "@/utils/hooks";
 import { usePathname } from "next/navigation";
@@ -61,6 +61,10 @@ const LostItemItem: FC<Props> = ({ lostItem, setLostItems }) => {
       {
         user?.role === UsersEnum.ADMIN || (userId === user?._id && pathname?.includes(userId)) ?
           <div className='flex flex-row items-end justify-end pt-3 mt-5 border-t'>
+            <Link className="edit-button" href={`lost-items/edit-lost-item/${_id}`}>
+              <FontAwesomeIcon icon={faEdit} />
+              <span className="ml-2">Edytuj</span>
+            </Link>
             <button
               onClick={() => confirmDelete(_id)}
               type="button"

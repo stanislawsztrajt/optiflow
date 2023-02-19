@@ -14,7 +14,7 @@ export default function ChatPropPage(props: Iprops) {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-50 pt-14">
+      <div className="flex items-center justify-center min-h-screen bg-white pt-14">
         <ChatWindow secondUserId={params.secondUserId} />
       </div>
     </>

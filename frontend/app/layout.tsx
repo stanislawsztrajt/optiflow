@@ -2,26 +2,43 @@
 
 import "@/assets/styles/globals.css";
 import "animate.css";
-import { Header } from "@/features/ui";
+import { Footer, Header } from "@/features/ui";
 import ReduxProvider from "providers/redux-provider";
 import { useRoutesGuards } from "@/utils/hooks/use-routes-guards";
+import { useEffect } from 'react'
+import { usePathname } from "next/navigation";
+import { Open_Sans } from "@next/font/google"
 
-export default function RootLayout({
-  children,
-}: {
+interface Iprops {
   children: React.ReactNode;
-}) {
+}
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+export default function RootLayout({ children }:Iprops) {
+  const pathname = usePathname()
+
   useRoutesGuards();
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname]);
+
   return (
-    <html>
+    <html lang="pl" className={openSans.className}>
       <head>
-        <title>Nethings | Uporządkowane funkcje, których dotychczas brakowało - teraz dostępne w jednym miejscu.</title>
+        <title>Optiflow | Uporządkowane funkcje, których dotychczas brakowało - teraz dostępne w jednym miejscu.</title>
       </head>
       <body>
         <ReduxProvider>
-          <Header />
-          {children}
+          <div className='min-h-screen pb-20'>
+            <Header />
+            {children}
+          </div>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

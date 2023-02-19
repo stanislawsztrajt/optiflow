@@ -19,7 +19,7 @@ const Header: FC = () => {
   const linksMap = headerLinksList.map((links) => {
     return (
       <div key={links.name}>
-        <button className="flex items-center px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
+        <button className="flex items-center justify-center px-5 py-2 text-gray-700 duration-100 hover:text-black peer">
           { links.name }
           <FontAwesomeIcon icon={faCaretDown} className='h-4 ml-2' />
         </button>
