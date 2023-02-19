@@ -7,7 +7,13 @@ export interface Iuser {
   name: string;
   surname: string;
   class: string;
+  role?: string;
   _id: string;
+}
+
+export enum UsersEnum {
+  USER = 'Użytkownik',
+  ADMIN = 'Admin'
 }
 
 export interface IuserInfo {

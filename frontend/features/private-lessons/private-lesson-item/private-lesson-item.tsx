@@ -6,6 +6,7 @@ import usePrivateLessonItem from "./use-private-lesson-item";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { UsersEnum } from "@/features/users/types";
 
 interface Props {
   privateLesson: IprivateLesson;
@@ -45,7 +46,7 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
         </div>
       </div>
       {
-        userId === user?._id && pathname?.includes(userId) ?
+        (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
           <div className='flex flex-row items-end justify-end mt-3'>
             <button
               onClick={() => confirmDelete(_id)}

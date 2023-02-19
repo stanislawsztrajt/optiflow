@@ -56,11 +56,17 @@ export default function DashboardPage() {
     : null;
 
   return (
-    <FeaturesTabsLayout
-      header={`Witaj ${user?.name ?? ''}!`}
-      subHeader={headersContent.homePage}
-    >
-      {featuresList}
-    </FeaturesTabsLayout>
+    <>
+      { user ? 
+        <FeaturesTabsLayout
+          header={`Witaj ${user?.name ?? ''}!`}
+          subHeader={headersContent.homePage}
+        >
+          {featuresList}
+        </FeaturesTabsLayout>
+        : null
+      }
+    </>
+    
   );
 }
