@@ -5,16 +5,16 @@ import { errorAlert, successAlert } from "@/utils/helpers/sweet-alert";
 import { Ierror } from "@/utils/types/api";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IlostItem } from "../types";
-import lostItemsServices from "@/utils/api/lost-items-services";
+import { Ibook } from "../types";
 import { useUser } from "@/utils/hooks";
+import booksServices from "@/utils/api/books-services";
 
 interface Iprops {
-  currentLostItem: IlostItem
+  currentBook: Ibook
 }
 
-const useEditLostItemForm = (props:Iprops) => {
-  const { currentLostItem } = props
+const useEditBookForm = (props:Iprops) => {
+  const { currentBook } = props
   const router = useRouter();
   const { user } = useUser()
 
@@ -23,18 +23,16 @@ const useEditLostItemForm = (props:Iprops) => {
   const [images, setImages] = useState([]);
   const [imagesUrls, setImagesUrls] = useState<string[]>([]);
 
-  const editLostItemInitialValues =  {
-    ...currentLostItem,
-    date: String(currentLostItem.date).substring(0, 10),
-    images: [...currentLostItem.images]
+  const editBookInitialValues =  {
+    ...currentBook
   }
 
   useEffect(() => {
-    if(user && user?._id !== currentLostItem.userId) router.back();
+    if(user && user?._id !== currentBook.userId) router.back();
   }, [user]);
 
   useEffect(() => {
-    setImagesUrls([...currentLostItem.images])
+    setImagesUrls([...currentBook.images])
   }, []);
 
   useEffect(() => {
@@ -49,20 +47,19 @@ const useEditLostItemForm = (props:Iprops) => {
     setImages(Array.from(e.target.files as unknown as []).splice(0, 3));
   };
 
-  const editLostItem = async (values: IlostItem) => {
+  const editBook = async (values: Ibook) => {
     setLoading(true);
 
     try {
       let uploadedImages:string[] = await uploadImages(images as []);
 
-      const updatedLostItem: IlostItem = {
+      const updatedBook: Ibook = {
         ...values,
-        date: new Date(values.date),
         images: images.length > 0 ? uploadedImages : values.images,
       };
-      await lostItemsServices.update(updatedLostItem, currentLostItem._id);
+      await booksServices.update(updatedBook, currentBook._id);
 
-      successAlert("Twój zgubiony/znaleziony przedmiot został zaktualizowany");
+      successAlert("Twoja oferta została zaktualizowana");
       router.push("/dashboard");
     } catch (err) {
       errorAlert("Problem z serverem... spróbuj ponownie później");
@@ -77,13 +74,13 @@ const useEditLostItemForm = (props:Iprops) => {
   return {
     loading,
     error,
-    editLostItem,
+    editBook,
     setImages,
     handleSetImages,
     images,
     imagesUrls,
-    editLostItemInitialValues
+    editBookInitialValues
   };
 };
 
-export default useEditLostItemForm;
+export default useEditBookForm;

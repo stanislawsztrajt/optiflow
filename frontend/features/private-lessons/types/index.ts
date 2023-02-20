@@ -8,7 +8,14 @@ export enum PrivateLessonsCategoryEnum {
   PHYS = "Fizyka",
   BIOL = "Biologia",
   CHEM = "Chemia",
-  INF = "Informatyka"
+  INF = "Informatyka",
+  OTHER = "Inne",
+  PROFESSION_WOOD_TECHNOLOGY = 'Zawodowe: technologia drewna',
+  PROFESSION_PROGRAMMER = 'Zawodowe: programista',
+  PROFESSION_IT = 'Zawodowe: informatyk',
+  PROFESSION_PHOTOGRAPHY_AND_MULTIMEDIA = 'Zawodowe: fotografia i multimedia',
+  PROFESSION_MECHATRONICS = 'Zawodowe: mechatronik',
+  PROFESSION_ROBOTICIST = 'Zawodowe: robotyk'
 }
 
 type PrivateLessonsCategoryType = `${PrivateLessonsCategoryEnum}`;

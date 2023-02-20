@@ -40,7 +40,6 @@ const useCreateEventForm = () => {
       const event: Ievent = {
         ...values,
         date: new Date(values.date),
-        price: values.price || 0,
         images: uploadedImages,
       };
       await eventsServices.create(event);
