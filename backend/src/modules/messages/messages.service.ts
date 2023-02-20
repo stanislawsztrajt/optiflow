@@ -23,14 +23,20 @@ export class MessagesService {
   async findChats(userId: string): Promise<Chat[]> {
     const userOwner: Message[] = await this.messageModel.find({ userId }).exec();
     const otherUserOwner: Message[] = await this.messageModel.find({ secondUserId: userId }).exec();
-    const messages = [...userOwner, ...otherUserOwner];
+    const messages = [...userOwner, ...otherUserOwner].map(message => {
+      if (message.secondUserId === userId) {
+        message.secondUserId = message.userId
+      }
+
+      return message
+    });
 
     const groupedMessages: Record<string, Message[]> = groupBy(
       messages,
       (message) => message.secondUserId,
     );
+    console.log(groupedMessages)
     const groupedMessagesEntries = Object.entries(groupedMessages);
-
     const chats: Chat[] = await Promise.all(
       groupedMessagesEntries
         .map(async ([secondUserId, messages]) => {

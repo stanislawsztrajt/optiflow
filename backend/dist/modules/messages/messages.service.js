@@ -32,8 +32,14 @@ let MessagesService = class MessagesService {
     async findChats(userId) {
         const userOwner = await this.messageModel.find({ userId }).exec();
         const otherUserOwner = await this.messageModel.find({ secondUserId: userId }).exec();
-        const messages = [...userOwner, ...otherUserOwner];
+        const messages = [...userOwner, ...otherUserOwner].map(message => {
+            if (message.secondUserId === userId) {
+                message.secondUserId = message.userId;
+            }
+            return message;
+        });
         const groupedMessages = (0, helpers_1.groupBy)(messages, (message) => message.secondUserId);
+        console.log(groupedMessages);
         const groupedMessagesEntries = Object.entries(groupedMessages);
         const chats = await Promise.all(groupedMessagesEntries
             .map(async ([secondUserId, messages]) => {
