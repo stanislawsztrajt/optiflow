@@ -27,7 +27,7 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
           { offerType }
         </p>
 
-        <div className="flex items-end justify-between mt-2">
+        <div className="flex flex-col justify-between mt-2 sm:items-end sm:flex-row">
           <div>
             <p className="text-lg font-medium text-gray-700">
               {price ? `${price}zł/godz` : "Za darmo"}
@@ -39,7 +39,7 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
           </div>
           <Link
             href={`private-lessons/${_id}`}
-            className="inline-block text-red-500 underline hover:text-red-400 whitespace-nowrap"
+            className="flex items-end justify-end text-red-500 underline hover:text-red-400 whitespace-nowrap"
           >
             Czytaj więcej
           </Link>
@@ -47,8 +47,8 @@ const PrivateLessonItem: FC<Props> = ({ privateLesson, setPrivateLessons }) => {
       </div>
       {
         (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
-          <div className='flex flex-row items-end justify-end mt-3'>
-            <Link className="edit-button" href={`private-lessons/edit-private-lesson/${_id}`}>
+          <div className='flex flex-col items-end justify-end pt-3 mt-5 border-t sm:flex-row'>
+            <Link className="edit-button" href={`/private-lessons/edit-private-lesson/${_id}`}>
               <FontAwesomeIcon icon={faEdit} />
               <span className="ml-2">Edytuj</span>
             </Link>

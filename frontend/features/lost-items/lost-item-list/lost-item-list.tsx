@@ -20,7 +20,7 @@ const LostItemList: FC<Props> = ({ lostItems, setLostItems }) => {
         </div>
       ) : (
         <div>
-          <h2 className="text-4xl text-gray-500">
+          <h2 className="text-2xl text-gray-500 sm:text-4xl">
             Nie znaleziono żadnych zgubionych/znalezionych przedmiotów
           </h2>
         </div>

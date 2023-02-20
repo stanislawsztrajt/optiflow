@@ -24,12 +24,9 @@ const useEditEventForm = (props:Iprops) => {
   const [imagesUrls, setImagesUrls] = useState<string[]>([]);
 
   const editEventInitialValues =  {
-    title: currentEvent.title,
-    description: currentEvent.description,
-    location: currentEvent.location,
+    ...currentEvent,
     date: String(currentEvent.date).substring(0, 10),
     images: [...currentEvent.images],
-    price: currentEvent.price,
   }
 
   useEffect(() => {
@@ -61,7 +58,6 @@ const useEditEventForm = (props:Iprops) => {
       const updatedEvent: Ievent = {
         ...values,
         date: new Date(values.date),
-        price: values.price || 0,
         images: images.length > 0 ? uploadedImages : values.images,
       };
       await eventsServices.update(updatedEvent, currentEvent._id);

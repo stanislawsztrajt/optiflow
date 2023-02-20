@@ -38,11 +38,9 @@ const LostItemItem: FC<Props> = ({ lostItem, setLostItems }) => {
 
         <div className="flex flex-col justify-between">
           <h1 className="mt-4 text-xl text-gray-800 break-words">{name}</h1>
-
-          <div className="flex items-end justify-between mt-2">
+          <div className="flex flex-col justify-between mt-2 sm:items-end sm:flex-row">
             <div>
               <p className="text-lg font-medium text-gray-700">{type}</p>
-
               <p className="text-sm text-gray-500 ">
                 {format(new Date(date), "PP", { locale: pl })}
                 {foundLocation ? `, ${foundLocation}` : ""}
@@ -51,7 +49,7 @@ const LostItemItem: FC<Props> = ({ lostItem, setLostItems }) => {
 
             <Link
               href={`lost-items/${_id}`}
-              className="inline-block text-red-500 underline hover:text-red-400"
+              className="flex items-end justify-end text-red-500 underline hover:text-red-400"
               >
               Czytaj więcej
             </Link>
@@ -60,8 +58,8 @@ const LostItemItem: FC<Props> = ({ lostItem, setLostItems }) => {
       </div>
       {
         user?.role === UsersEnum.ADMIN || (userId === user?._id && pathname?.includes(userId)) ?
-          <div className='flex flex-row items-end justify-end pt-3 mt-5 border-t'>
-            <Link className="edit-button" href={`lost-items/edit-lost-item/${_id}`}>
+          <div className='flex flex-col items-end justify-end pt-3 mt-5 border-t sm:flex-row'>
+            <Link className="edit-button" href={`/lost-items/edit-lost-item/${_id}`}>
               <FontAwesomeIcon icon={faEdit} />
               <span className="ml-2">Edytuj</span>
             </Link>
