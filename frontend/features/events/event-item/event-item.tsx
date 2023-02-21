@@ -41,7 +41,7 @@ const EventItem: FC<Props> = ({ event, setEvents }) => {
         <div className="flex flex-col justify-between">
           <h1 className="mt-4 text-xl text-gray-800 break-words">{title}</h1>
 
-          <div className="flex items-end justify-between mt-2">
+          <div className="flex flex-col justify-between mt-2 sm:items-end sm:flex-row">
             <div>
               <p className="text-lg font-medium text-gray-700">
                 {price ? `Opłata: ${price}zł` : "Za darmo"}
@@ -53,7 +53,7 @@ const EventItem: FC<Props> = ({ event, setEvents }) => {
             </div>
             <Link
               href={`events/${_id}`}
-              className="inline-block text-red-500 underline hover:text-red-400"
+              className="flex items-end justify-end text-red-500 underline hover:text-red-400"
               >
               Czytaj więcej
             </Link>
@@ -63,7 +63,7 @@ const EventItem: FC<Props> = ({ event, setEvents }) => {
       {
         (userId === user?._id && pathname?.includes(userId)) || user?.role === UsersEnum.ADMIN ?
           <div className='flex flex-col items-end justify-end pt-3 mt-5 border-t sm:flex-row'>
-            <Link className="edit-button" href={`events/edit-event/${_id}`}>
+            <Link className="edit-button" href={`/events/edit-event/${_id}`}>
               <FontAwesomeIcon icon={faEdit} />
               <span className="ml-2">Edytuj</span>
             </Link>

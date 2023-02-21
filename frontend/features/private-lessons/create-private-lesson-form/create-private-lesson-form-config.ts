@@ -2,7 +2,7 @@ import { swearWords } from "@/utils/data/swear-words";
 import * as Yup from "yup";
 import { PrivateLessonsCategoryEnum, PrivateLessonsOfferTypeEnum } from "../types";
 
-export const createLostItemInitialValues = {
+export const createPrivateLessonInitialValues = {
   title: "",
   description: "",
   price: "",
@@ -10,7 +10,7 @@ export const createLostItemInitialValues = {
   offerType: PrivateLessonsOfferTypeEnum.OFFER
 };
 
-export const createLostItemValidationSchema = Yup.object({
+export const createPrivateLessonValidationSchema = Yup.object({
   title: Yup.string()
     .min(5, "Tytuł musi mieć conajmniej 5 znaków")
     .max(100, "Tytuł musi być krótszy niż 100 znaków")

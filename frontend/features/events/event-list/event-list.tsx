@@ -26,7 +26,7 @@ const EventList: FC<Props> = ({ events, setEvents }) => {
         </div>
       ) : (
         <div>
-          <h2 className="text-4xl text-gray-500">
+          <h2 className="text-2xl text-gray-500 sm:text-4xl">
             Nie znaleziono żadnych wydarzeń
           </h2>
         </div>

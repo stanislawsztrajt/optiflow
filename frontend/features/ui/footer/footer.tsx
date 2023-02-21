@@ -21,22 +21,22 @@ const Footer: FC = () => {
             <div className="grid grid-cols-1 gap-10 sm:gap-20 sm:grid-cols-3">
               <div>
                 <h3 className="font-medium text-gray-700 uppercase">Funkcjonalności</h3>
-                <Link href={`books`} className="block mt-2 text-sm text-gray-600 hover:underline">Książki</Link>
-                <Link href={`events`} className="block mt-2 text-sm text-gray-600 hover:underline">Wydarzenia</Link>
-                <Link href={`lost-items`} className="block mt-2 text-sm text-gray-600 hover:underline">Zgubione przedmioty</Link>
-                <Link href={`private-lessons`} className="block mt-2 text-sm text-gray-600 hover:underline">Korepetycje</Link>
+                <Link href={`/books`} className="block mt-2 text-sm text-gray-600 hover:underline">Książki</Link>
+                <Link href={`/events`} className="block mt-2 text-sm text-gray-600 hover:underline">Wydarzenia</Link>
+                <Link href={`/lost-items`} className="block mt-2 text-sm text-gray-600 hover:underline">Zgubione przedmioty</Link>
+                <Link href={`/private-lessons`} className="block mt-2 text-sm text-gray-600 hover:underline">Korepetycje</Link>
               </div>
               <div>
-                <h3 className="uppercase font-mediumtext-gray-700">Kwestie prawne</h3>
-                <Link href={`rodo`} className="block mt-2 text-sm text-gray-600 hover:underline">RODO</Link>
-                <Link href={`privacy-policy`} className="block mt-2 text-sm text-gray-600 hover:underline">Polityka prywatności</Link>
-                <Link href={`terms-of-use`} className="block mt-2 text-sm text-gray-600 hover:underline">Regulamin</Link>
+                <h3 className="font-medium text-gray-700 uppercase">Kwestie prawne</h3>
+                <Link href={`/rodo`} className="block mt-2 text-sm text-gray-600 hover:underline">RODO</Link>
+                <Link href={`/privacy-policy`} className="block mt-2 text-sm text-gray-600 hover:underline">Polityka prywatności</Link>
+                <Link href={`/terms-of-use`} className="block mt-2 text-sm text-gray-600 hover:underline">Regulamin</Link>
               </div>
               <div>
-                <h3 className="uppercase font-mediumtext-gray-700">Inne</h3>
-                <Link href={`hero`} className="block mt-2 text-sm text-gray-600 hover:underline">O stronie</Link>
-                <Link href={user ? 'dashboard' : 'auth/login'} className="block mt-2 text-sm text-gray-600 hover:underline">{user ? 'Panel użytkownika' : "Logowanie"}</Link>
-                <Link href={`chat`} className="block mt-2 text-sm text-gray-600 hover:underline">Chat</Link>
+                <h3 className="font-medium text-gray-700 uppercase">Inne</h3>
+                <Link href={`/hero`} className="block mt-2 text-sm text-gray-600 hover:underline">O stronie</Link>
+                <Link href={user ? '/dashboard' : '/auth/login'} className="block mt-2 text-sm text-gray-600 hover:underline">{user ? 'Panel użytkownika' : "Logowanie"}</Link>
+                <Link href={`/chat`} className="block mt-2 text-sm text-gray-600 hover:underline">Chat</Link>
               </div>
             </div>
           </div>
