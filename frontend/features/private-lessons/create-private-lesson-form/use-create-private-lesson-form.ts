@@ -5,8 +5,8 @@ import { Ierror } from "@/utils/types/api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  createLostItemInitialValues,
-  createLostItemValidationSchema,
+  createPrivateLessonInitialValues,
+  createPrivateLessonValidationSchema,
 } from "./create-private-lesson-form-config";
 import { IprivateLesson } from "../types";
 import privateLessonsServices from "@/utils/api/private-lessons-services";
@@ -38,8 +38,8 @@ const useCreatePrivateLessonForm = () => {
   return {
     loading,
     error,
-    initialValues: createLostItemInitialValues,
-    validationSchema: createLostItemValidationSchema,
+    initialValues: createPrivateLessonInitialValues,
+    validationSchema: createPrivateLessonValidationSchema,
     createPrivateLesson,
   };
 };

@@ -1,6 +1,6 @@
 import { FCC } from "@/utils/types";
 import Image from "next/image";
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface Props {
   imageSrc: any;
@@ -20,7 +20,7 @@ const CreateFormLayout: FCC<Props> = ({ imageSrc, children }) => {
         <Image
           src={imageSrc}
           alt={""}
-          className="w-1/2 lg:-translate-y-1/2 lg:fixed lg:top-1/2 lg:w-1/3"
+          className="w-1/2 lg:-translate-y-1/2 lg:sticky lg:top-1/2 lg:w-2/3"
         />
       </div>
     </main>
