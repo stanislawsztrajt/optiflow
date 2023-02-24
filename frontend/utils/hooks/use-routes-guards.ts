@@ -7,6 +7,10 @@ const loggedInRoutes = ["dashboard", "create", "chat"];
 const notLoggedInRoutes = ["auth"];
 
 export const isLoggedIn = () => {
+  if (typeof window === "undefined") {
+    return
+  }
+  
   const isLoggedInRoute = loggedInRoutes.some((route) =>
     window.location.href.includes(route)
   );
@@ -17,6 +21,10 @@ export const isLoggedIn = () => {
 }
 
 export const isNotLoggedInRoute = () => {
+  if (typeof window === "undefined") {
+    return
+  }
+
   const isNotLoggedInRoute = notLoggedInRoutes.some((route) =>
     window.location.href.includes(route)
   );
