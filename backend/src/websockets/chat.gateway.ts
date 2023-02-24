@@ -9,7 +9,7 @@ import { config } from 'dotenv'
 config()
 
 @WebSocketGateway({
-  cors: "*",
+  cors: "*"
   // cors: process.env.CLIENT_URL,
 })
 
