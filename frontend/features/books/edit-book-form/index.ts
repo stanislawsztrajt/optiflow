@@ -1,1 +1,1 @@
-export { defaut } from './edit-book-form'
+export { default } from './edit-book-form'
