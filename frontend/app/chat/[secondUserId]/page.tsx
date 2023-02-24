@@ -2,6 +2,7 @@
 
 import React from "react";
 import ChatWindow from "@/features/chat/chat-window/chat-window";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 interface Iprops {
   params: {
@@ -11,6 +12,7 @@ interface Iprops {
 
 export default function ChatPropPage(props: Iprops) {
   const { params } = props;
+  isLoggedIn()
 
   return (
     <>

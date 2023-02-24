@@ -18,5 +18,12 @@ var PrivateLessonsCategoryEnum;
     PrivateLessonsCategoryEnum["BIOL"] = "Biologia";
     PrivateLessonsCategoryEnum["CHEM"] = "Chemia";
     PrivateLessonsCategoryEnum["INF"] = "Informatyka";
+    PrivateLessonsCategoryEnum["OTHER"] = "Inne";
+    PrivateLessonsCategoryEnum["PROFESSION_WOOD_TECHNOLOGY"] = "Zawodowe: technologia drewna";
+    PrivateLessonsCategoryEnum["PROFESSION_PROGRAMMER"] = "Zawodowe: programista";
+    PrivateLessonsCategoryEnum["PROFESSION_IT"] = "Zawodowe: informatyk";
+    PrivateLessonsCategoryEnum["PROFESSION_PHOTOGRAPHY_AND_MULTIMEDIA"] = "Zawodowe: fotografia i multimedia";
+    PrivateLessonsCategoryEnum["PROFESSION_MECHATRONICS"] = "Zawodowe: mechatronik";
+    PrivateLessonsCategoryEnum["PROFESSION_ROBOTICIST"] = "Zawodowe: robotyk";
 })(PrivateLessonsCategoryEnum = exports.PrivateLessonsCategoryEnum || (exports.PrivateLessonsCategoryEnum = {}));
 //# sourceMappingURL=private-lessons.type.js.map

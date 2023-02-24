@@ -9,8 +9,10 @@ import { userFeaturesRoutes } from "@/utils/data/routes";
 import { IuserInfoLength } from "@/features/users/types";
 import { FeaturesTabsLayout } from "@/features/ui";
 import { headersContent } from "@/utils/data/features-content";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 export default function DashboardPage() {
+  isLoggedIn()
   const { user } = useUser();
   const [userInfoLength, setUserInfoLength] = useState<IuserInfoLength>();
 
