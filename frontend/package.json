@@ -44,6 +44,7 @@
     "sweetalert2": "^11.6.16",
     "swr": "^2.0.0",
     "typescript": "4.9.3",
+    "typescript-eslint": "^0.0.1-alpha.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
