@@ -9,7 +9,12 @@ import { config } from 'dotenv'
 config()
 //
 @WebSocketGateway({
-  cors: process.env.CLIENT_URL,
+  cors: {
+    origin: process.env.CLIENT_URL,
+    allowedHeaders: "*",
+    credentials: true,
+    methods: ['GET', 'POST']
+  }
 })
 
 export class ChatGateway {

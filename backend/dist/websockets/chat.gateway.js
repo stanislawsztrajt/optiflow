@@ -65,7 +65,12 @@ __decorate([
 ], ChatGateway.prototype, "server", void 0);
 ChatGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
-        cors: process.env.CLIENT_URL,
+        cors: {
+            origin: process.env.CLIENT_URL,
+            allowedHeaders: "*",
+            credentials: true,
+            methods: ['GET', 'POST']
+        }
     }),
     __metadata("design:paramtypes", [messages_service_1.MessagesService])
 ], ChatGateway);
