@@ -29,7 +29,7 @@ const useMessages = (props: Iprops) => {
     setMessages(chatMessages);
   };
 
-  socket?.off("message");
+  // socket?.off("message");
   socket?.on("message", (message: Imessage) => {
     setMessages((messages) => {
       return [message, ...messages];
