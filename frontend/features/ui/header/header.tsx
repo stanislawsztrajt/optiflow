@@ -10,12 +10,14 @@ import { Twirl } from 'hamburger-react'
 import { useUser } from '@/utils/hooks';
 import { logout } from '@/utils/helpers/user';
 import { headerLinksList } from '@/utils/data/header';
+import useOnlineUsers from '@/features/chat/online-users/use-online-users';
 
 
 const Header: FC = () => {
   const { user } = useUser();
   const { isMenuOpen, setIsMenuOpen } = useHeader();
   const closeMenu = () => setIsMenuOpen(false)
+  useOnlineUsers()
 
   const linksMap = headerLinksList.map((links) => {
     return (

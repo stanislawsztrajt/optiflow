@@ -8,7 +8,6 @@ import ReduxProvider from "providers/redux-provider";
 import { useEffect } from 'react'
 import { usePathname } from "next/navigation";
 import { Open_Sans } from "@next/font/google"
-import useOnlineUsers from "@/features/chat/online-users/use-online-users";
 
 interface Iprops {
   children: React.ReactNode;
@@ -21,7 +20,6 @@ const openSans = Open_Sans({
 
 export default function RootLayout({ children }:Iprops) {
   const pathname = usePathname()
-  useOnlineUsers();
 
   // useRoutesGuards();
 
