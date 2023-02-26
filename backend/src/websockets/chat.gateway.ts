@@ -7,7 +7,7 @@ import { CreateMessageDto } from '../modules/messages/dto/create-message.dto';
 import { MessagesService } from '../modules/messages/messages.service';
 import { config } from 'dotenv'
 config()
-//
+
 @WebSocketGateway({
   cors: {
     origin: process.env.CLIENT_URL,
