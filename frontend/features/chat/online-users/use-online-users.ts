@@ -11,11 +11,12 @@ const useOnlineUsers = () => {
 
   useEffect(() => {
     if (!socket || !user) return;
-
+    console.log('works')
     socket.emit("beOnline", { userId: user._id });
     socket.emit("onlineUsersIds");
 
     socket.on("getOnlineUsersIds", (users: string[]) => {
+      console.log(users)
       dispatch(loadOnlineUsersIds(users));
     });
 
