@@ -10,7 +10,6 @@ config()
 //
 @WebSocketGateway({
   cors: process.env.CLIENT_URL,
-  transports: ['websocket']
 })
 
 export class ChatGateway {
