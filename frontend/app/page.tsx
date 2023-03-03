@@ -8,9 +8,12 @@ import { FeaturesTabsLayout } from "@/features/ui";
 import { headersContent } from "@/utils/data/features-content";
 import { io } from "socket.io-client";
 import { useUser } from "@/utils/hooks";
+import { loadOnlineUsersIds } from "@/features/chat/chat-slice/chat-slice";
+import { useDispatch } from "react-redux";
 
 export default function Page() {
   const { user } = useUser()
+  const dispatch = useDispatch()
   useEffect(() => {
     const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
       transports: ['websocket', 'polling'],
@@ -18,6 +21,10 @@ export default function Page() {
     console.log('socket ten nie', socket)
     console.log('dziaa?')
     socket.emit("beOnline", { userId: user?._id });
+    socket.on("getOnlineUsersIds", (users: string[]) => {
+      console.log(users)
+      dispatch(loadOnlineUsersIds(users));
+    });
   }, [])
   const routes = featuresRoutes.map((route) => {
     return (
