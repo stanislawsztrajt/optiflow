@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
-// import { IoAdapter } from '@nestjs/platform-socket.io';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 import { WsAdapter } from '@nestjs/platform-ws';
 
 async function bootstrap() {
