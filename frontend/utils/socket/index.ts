@@ -2,9 +2,9 @@ import * as io from "socket.io-client";
 import { user } from "../constans/user";
 export const socket = null
 // export const socket = user
-//   ? io.connect(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
-//     transports: ['websocket', 'polling'],
-//   })
+  // ? io.connect(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
+  //   transports: ['websocket', 'polling'],
+  // })
 //   : null;
 
 // if (socket && user) {
