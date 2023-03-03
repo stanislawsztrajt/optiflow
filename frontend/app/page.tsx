@@ -15,9 +15,9 @@ export default function Page() {
     const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
       transports: ['websocket', 'polling'],
     })
-    
+    console.log(socket)
+    console.log('dziaa?')
     socket.emit("beOnline", { userId: user?._id });
-
   }, [])
   const routes = featuresRoutes.map((route) => {
     return (
