@@ -2,12 +2,23 @@
 
 import { featuresRoutes } from "@/utils/data/routes";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { FeaturesTabsLayout } from "@/features/ui";
 import { headersContent } from "@/utils/data/features-content";
+import { io } from "socket.io-client";
+import { useUser } from "@/utils/hooks";
 
 export default function Page() {
+  const { user } = useUser()
+  useEffect(() => {
+    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
+      transports: ['websocket', 'polling'],
+    })
+    
+    socket.emit("beOnline", { userId: user?._id });
+
+  }, [])
   const routes = featuresRoutes.map((route) => {
     return (
       <div key={route.name} className="section-element w-96">
