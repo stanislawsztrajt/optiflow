@@ -9,13 +9,14 @@ import { config } from 'dotenv'
 config()
 
 @WebSocketGateway({
-  transports: ['websocket', 'polling'],
   cors: {
     origin: process.env.CLIENT_URL,
     allowedHeaders: "*",
     credentials: true,
+    transports: ['websocket', 'polling'],
     methods: ['GET', 'POST']
   },
+  allowEIO3: true
 })
 
 export class ChatGateway {
