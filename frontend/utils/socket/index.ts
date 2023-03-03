@@ -1,6 +1,8 @@
+import { Socket } from "socket.io";
 import * as io from "socket.io-client";
+import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import { user } from "../constans/user";
-export const socket = null
+export const socket = null as unknown as Socket<DefaultEventsMap, DefaultEventsMap>
 // export const socket = user
   // ? io.connect(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
   //   transports: ['websocket', 'polling'],
