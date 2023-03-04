@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Ibook } from "../types";
 import { useUser } from "@/utils/hooks";
 import booksServices from "@/utils/api/books-services";
+import { UsersEnum } from "@/features/users/types";
 
 interface Iprops {
   currentBook: Ibook
@@ -28,7 +29,7 @@ const useEditBookForm = (props:Iprops) => {
   }
 
   useEffect(() => {
-    if(user && user?._id !== currentBook.userId) router.back();
+    if(user && user?._id !== currentBook.userId && user.role !== UsersEnum.ADMIN) router.back();
   }, [user]);
 
   useEffect(() => {
