@@ -15,7 +15,7 @@ export default function Page() {
   const { user } = useUser()
   const dispatch = useDispatch()
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
+    const socket = io.connect(process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:1337", {
       transports: ['websocket', 'polling'],
     })
     console.log('socket ten nie', socket)
