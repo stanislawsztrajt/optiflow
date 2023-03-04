@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { FeaturesTabsLayout } from "@/features/ui";
 import { headersContent } from "@/utils/data/features-content";
-import { io } from "socket.io-client";
+import io from 'socket.io-client';
 import { useUser } from "@/utils/hooks";
 import { loadOnlineUsersIds } from "@/features/chat/chat-slice/chat-slice";
 import { useDispatch } from "react-redux";
