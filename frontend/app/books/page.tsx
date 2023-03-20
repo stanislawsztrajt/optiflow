@@ -6,6 +6,7 @@ import { FeaturesListLayout } from "@/features/ui";
 import BookList from "@/features/books/book-list";
 import booksServices from "@/utils/api/books-services";
 import { booksSortingConfig } from "@/utils/data/sorting";
+import { booksFilters } from "@/utils/data/filtering";
 
 export default function BooksPage() {
   const [initialBooks, setInitialBooks] = useState<Ibook[]>([]);
@@ -29,6 +30,7 @@ export default function BooksPage() {
         initialElements={initialBooks}
         setElements={setBooks}
         sortingConfig={booksSortingConfig}
+        filteringConfig={booksFilters}
       />
     </>
   );
