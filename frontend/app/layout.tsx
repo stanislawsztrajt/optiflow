@@ -4,7 +4,7 @@ import "@/assets/styles/globals.css";
 import "animate.css";
 import { Footer, Header } from "@/features/ui";
 import ReduxProvider from "providers/redux-provider";
-import { useRoutesGuards } from "@/utils/hooks/use-routes-guards";
+// import { useRoutesGuards } from "@/utils/hooks/use-routes-guards";
 import { useEffect } from 'react'
 import { usePathname } from "next/navigation";
 import { Open_Sans } from "@next/font/google"
@@ -21,7 +21,7 @@ const openSans = Open_Sans({
 export default function RootLayout({ children }:Iprops) {
   const pathname = usePathname()
 
-  useRoutesGuards();
+  // useRoutesGuards();
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -31,7 +31,7 @@ export default function RootLayout({ children }:Iprops) {
     <html lang="pl" className={openSans.className}>
       <head>
         <meta charSet="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Optiflow | Uporządkowane funkcje, których dotychczas brakowało - teraz dostępne w jednym miejscu.</title>
       </head>

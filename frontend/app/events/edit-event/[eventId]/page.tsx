@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Ievent } from "@/features/events/types";
 import eventsServices from "@/utils/api/events-services";
 import EditEventForm from "@/features/events/edit-event-form";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 interface Iprops {
   params: {
@@ -12,6 +13,7 @@ interface Iprops {
 }
 
 export default function EditEventPage(props: Iprops) {
+  isLoggedIn()
   const { params } = props;
   const [event, setEvent] = useState<Ievent>();
 

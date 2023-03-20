@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .main-page-layout {
-  @apply w-full mt-24 lg:mt-36
+  @apply w-full mt-24 lg:mt-28
 }
 
 .section-header {

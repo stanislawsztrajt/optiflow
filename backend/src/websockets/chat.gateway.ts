@@ -8,8 +8,15 @@ import { MessagesService } from '../modules/messages/messages.service';
 import { config } from 'dotenv'
 config()
 
-@WebSocketGateway(1338, {
-  cors: process.env.CLIENT_URL,
+@WebSocketGateway({
+  cors: {
+    origin: process.env.CLIENT_URL,
+    allowedHeaders: "*",
+    credentials: true,
+    transports: ['websocket', 'polling'],
+    methods: ['GET', 'POST']
+  },
+  allowEIO3: true
 })
 
 export class ChatGateway {

@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 const useLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const router = useRouter()
 
   const login = async (loginDto: IloginDto) => {
     setLoading(true);
@@ -21,6 +20,7 @@ const useLogin = () => {
       Cookies.set("jwt", data.jwt, { expires: 7 });
 
       window.location.href = "/dashboard";
+      window.location.reload();
     } catch (err) {
       console.error(err);
       const error = err as unknown as Ierror;

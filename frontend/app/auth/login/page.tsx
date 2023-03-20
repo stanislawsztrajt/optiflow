@@ -2,9 +2,11 @@
 import React from "react";
 import useLogin from "@/features/authorization/login/use-login";
 import { Loading } from "@/features/ui";
+import { isNotLoggedInRoute } from "@/utils/hooks/use-routes-guards";
 
 export default function LoginPage() {
   const { error, loading, login } = useLogin();
+  isNotLoggedInRoute()
 
   return (
     <>

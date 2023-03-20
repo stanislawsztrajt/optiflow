@@ -6,15 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSchool, faUser, faRightFromBracket, faPlus, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { APP_NAME } from '@/utils/constans';
 import useHeader from './use-header';
-import { Twirl as Hamburger } from 'hamburger-react'
+import { Twirl } from 'hamburger-react'
 import { useUser } from '@/utils/hooks';
 import { logout } from '@/utils/helpers/user';
 import { headerLinksList } from '@/utils/data/header';
+import useOnlineUsers from '@/features/chat/online-users/use-online-users';
 
 
 const Header: FC = () => {
   const { user } = useUser();
   const { isMenuOpen, setIsMenuOpen } = useHeader();
+  const closeMenu = () => setIsMenuOpen(false)
+  useOnlineUsers()
 
   const linksMap = headerLinksList.map((links) => {
     return (
@@ -26,11 +29,11 @@ const Header: FC = () => {
         <div className="absolute flex-col hidden w-full rounded-lg lg:bg-white lg:w-auto peer-hover:flex hover:flex drop-shadow-lg">
           { links.list.map(link => (
             <div key={link.name} className="flex items-center justify-between w-56 p-4 pt-5 duration-100 bg-white border-b lg:bg-transparent hover:bg-gray-100">
-              <Link href={link.route} className='text-gray-700 hover:text-black'>
+              <Link onClick={closeMenu} href={link.route} className='text-gray-700 hover:text-black'>
                 {link.name}
               </Link>
               { link.createRoute ? (
-                <Link href={link.createRoute} title={link.createName}>
+                <Link onClick={closeMenu} href={link.createRoute} title={link.createName}>
                   <FontAwesomeIcon className='w-4 h-4 p-1 text-white border bg-color-primary border-color-primary hover:brightness-110 rounded-xl' icon={faPlus} />
                 </Link>
               ) : null }
@@ -46,7 +49,7 @@ const Header: FC = () => {
       {user ? (
         <>
           <Link href={"/dashboard"}>
-            <button type="button" className="menu-button">
+            <button onClick={closeMenu} type="button" className="menu-button">
               <FontAwesomeIcon className='h-4' icon={faUser} />
               <span className='ml-2'>
                 Panel użytkownika
@@ -55,7 +58,10 @@ const Header: FC = () => {
           </Link>
           <button
             type="button"
-            onClick={logout}
+            onClick={() => {
+              logout()
+              closeMenu()
+            }}
             className="text-white mr-3 w-80 lg:w-auto lg:ml-4 bg-red-500 hover:bg-red-400 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center lg:mr-1"
             title='Wyloguj się'
           >
@@ -64,7 +70,7 @@ const Header: FC = () => {
         </>
       ) : (
         <Link href={"/auth/login"}>
-          <button type="button" className="menu-button">
+          <button onClick={closeMenu} type="button" className="menu-button">
             <FontAwesomeIcon className="h-4" icon={faSchool} />
             <span className="ml-2">Zaloguj się używając Librus</span>
           </button>
@@ -88,7 +94,7 @@ const Header: FC = () => {
           id="navbar-sticky"
         >
           <div className="block text-2xl cursor-pointer lg:hidden">
-            <Hamburger
+            <Twirl
               toggled={isMenuOpen}
               toggle={setIsMenuOpen}
               rounded={true}

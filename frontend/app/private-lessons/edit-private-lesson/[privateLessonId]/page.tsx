@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IprivateLesson } from "@/features/private-lessons/types";
 import privateLessonsServices from "@/utils/api/private-lessons-services";
 import EditPrivateLessonForm from "@/features/private-lessons/edit-private-lesson-form";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 interface Iprops {
   params: {
@@ -12,6 +13,7 @@ interface Iprops {
 }
 
 export default function EditPrivateLessonPage(props: Iprops) {
+  isLoggedIn()
   const { params } = props;
   const [privateLesson, setPrivateLesson] = useState<IprivateLesson>();
 

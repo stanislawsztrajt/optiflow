@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IlostItem } from "@/features/lost-items/types";
 import EditLostItemForm from "@/features/lost-items/edit-lost-item-form";
 import lostItemsServices from "@/utils/api/lost-items-services";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 interface Iprops {
   params: {
@@ -12,6 +13,7 @@ interface Iprops {
 }
 
 export default function CreateLostItemPage(props: Iprops) {
+  isLoggedIn()
   const { params } = props;
   const [lostItem, setLostItem] = useState<IlostItem>();
 

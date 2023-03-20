@@ -11,7 +11,6 @@ const useOnlineUsers = () => {
 
   useEffect(() => {
     if (!socket || !user) return;
-
     socket.emit("beOnline", { userId: user._id });
     socket.emit("onlineUsersIds");
 

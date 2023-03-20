@@ -1,5 +1,5 @@
 import { MaxLength, IsArray, IsEnum, IsOptional, IsString, ArrayMaxSize, Validate, MinLength } from 'class-validator';
-import { MaxLengthOfArrayStrings } from 'src/modules/books/dto/create-book.dto';
+import { MaxLengthOfArrayStrings } from '../../books/dto/create-book.dto';
 import { LostItemFoundEnum } from '../types/lost-items.type';
 
 export class CreateLostItemDto {

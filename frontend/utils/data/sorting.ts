@@ -1,4 +1,10 @@
-export const eventsSortingConfig = [
+interface sortingOption {
+  text: string,
+  variable: string,
+  sort: string
+}
+
+export const eventsSortingConfig:sortingOption[] = [
   {
     text: "Data: rosnąco",
     variable: "date",
@@ -21,7 +27,7 @@ export const eventsSortingConfig = [
   },
 ]
 
-export const booksSortingConfig = [
+export const booksSortingConfig:sortingOption[] = [
   {
     text: "Cena: rosnąco",
     variable: "price",
@@ -34,7 +40,7 @@ export const booksSortingConfig = [
   },
 ]
 
-export const privateLessonsSortingConfig = [
+export const privateLessonsSortingConfig:sortingOption[] = [
   {
     text: "Cena: rosnąco",
     variable: "price",
@@ -47,7 +53,7 @@ export const privateLessonsSortingConfig = [
   },
 ]
 
-export const lostItemsSortingConfig = [
+export const lostItemsSortingConfig:sortingOption[] = [
   {
     text: "Data: rosnąco",
     variable: "date",

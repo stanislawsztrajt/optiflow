@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import EditBookForm from "@/features/books/edit-book-form/edit-book-form";
 import { Ibook } from "@/features/books/types";
 import booksServices from "@/utils/api/books-services";
+import { isLoggedIn } from "@/utils/hooks/use-routes-guards";
 
 interface Iprops {
   params: {
@@ -12,6 +13,7 @@ interface Iprops {
 }
 
 export default function EditBookPage(props: Iprops) {
+  isLoggedIn()
   const { params } = props;
   const [book, setBook] = useState<Ibook>();
 
