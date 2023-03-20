@@ -1,7 +1,6 @@
 import React, { FC, ReactNode, Suspense } from "react";
-import { Loading, FeaturesListSearchInput } from "@/features/ui";
-import { featureElementsType, featureSetElementsType, IsortingOption } from "../types";
-import FeaturesListSorting from "../features-list-sorting/features-list-sorting";
+import { Loading, FeaturesSearchFilterSort, FeaturesListSorting } from "@/features/ui";
+import { featureElementsType, featureSetElementsType, IsortingOption, IfilteringOption } from "../types";
 
 interface Props {
   content: ReactNode;
@@ -10,9 +9,11 @@ interface Props {
   initialElements: featureElementsType;
   setElements: featureSetElementsType
   sortingConfig: IsortingOption[]
+  filteringConfig?: IfilteringOption[]
 }
 
-const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElements, setElements, sortingConfig }) => {
+const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElements, setElements, sortingConfig, filteringConfig }) => {
+
   return (
     <main className="mt-24 bg-white">
       <div className="container px-6 py-10 mx-auto">
@@ -21,8 +22,16 @@ const FeaturesListLayout: FC<Props> = ({ content, title, elements, initialElemen
             {title}
           </h1>
           <div className='flex flex-col text-lg sm:flex-row'>
-            <FeaturesListSorting elements={elements} setElements={setElements} sortingConfig={sortingConfig} />
-            <FeaturesListSearchInput elements={initialElements} setElements={setElements} />
+            <FeaturesListSorting
+              sortingConfig={sortingConfig}
+              elements={elements}
+              setElements={setElements}
+            />
+            <FeaturesSearchFilterSort
+              filteringConfig={filteringConfig ?? []}
+              initialElements={initialElements}
+              setElements={setElements}
+            />
           </div>
         </div>
 

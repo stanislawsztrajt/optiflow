@@ -6,6 +6,7 @@ import LostItemList from "@/features/lost-items/lost-item-list";
 import { IlostItem } from "@/features/lost-items/types";
 import { FeaturesListLayout } from "@/features/ui";
 import { lostItemsSortingConfig } from "@/utils/data/sorting";
+import { lostItemsFilters } from "@/utils/data/filtering";
 
 export default function LostItemsPage() {
   const [initialLostItems, setInitialLostItems] = useState<IlostItem[]>([]);
@@ -28,6 +29,7 @@ export default function LostItemsPage() {
       initialElements={initialLostItems}
       setElements={setLostItems}
       sortingConfig={lostItemsSortingConfig}
+      filteringConfig={lostItemsFilters}
     />
   );
 }
