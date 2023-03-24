@@ -12,6 +12,7 @@ const useMessages = (props: Iprops) => {
   const { secondUserId } = props;
   const { user } = useUser();
   const [messages, setMessages] = useState<Imessage[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getMessages = async () => {
     if (!user?._id) return;
@@ -21,12 +22,10 @@ const useMessages = (props: Iprops) => {
     );
 
     // sorting messages by creation date
-    chatMessages.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+    chatMessages.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
     setMessages(chatMessages);
+    setLoading(false)
   };
 
   socket?.off("message");
@@ -43,6 +42,7 @@ const useMessages = (props: Iprops) => {
 
   return {
     messages,
+    loading
   };
 };
 

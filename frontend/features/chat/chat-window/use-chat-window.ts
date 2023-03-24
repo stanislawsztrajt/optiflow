@@ -14,10 +14,18 @@ interface Iprops {
 
 const useChatWindow = (props: Iprops) => {
   const { secondUserId, noUserId } = props;
-  const [loading, setLoading] = useState<boolean>(true);
   const { user } = useUser();
-  const [secondUser, setSecondUser] = useState<Iuser>();
   const router = useRouter()
+  const [loading, setLoading] = useState<boolean>(true);
+  const [secondUser, setSecondUser] = useState<Iuser>();
+  const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  // 1024px is also "lg" breakpoint in TailwindCSS
+  let isDeviceMobile
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    isDeviceMobile = window.innerWidth < 1024
+  }, [])
 
   const joinSocketRoom = () => {
     const roomId = [secondUserId, user?._id].sort().join("");
@@ -45,6 +53,9 @@ const useChatWindow = (props: Iprops) => {
     user,
     secondUser,
     loading,
+    setOpenMobileMenu,
+    openMobileMenu,
+    isDeviceMobile
   };
 };
 

@@ -1,9 +1,10 @@
+import { Loading } from "@/features/ui";
 import Link from "next/link";
 import React from "react";
 import useChatsList from "./use-chats-list";
 
 const ChatsList: React.FC = () => {
-  const { chats } = useChatsList();
+  const { chats, loading } = useChatsList();
 
   const chatsMap = chats.map((chat) => {
     return (
@@ -21,13 +22,21 @@ const ChatsList: React.FC = () => {
 
   return (
     <div className="h-full">
-      {chats.length > 0 ? (
-        <div className="flex flex-col">{chatsMap}</div>
-      ) : (
-        <div className="flex items-center justify-center w-full h-full">
-          <p className="text-center text-gray-400">Brak konwersacji</p>
-        </div>
-      )}
+      {
+        loading ?
+          <div className='flex items-center justify-center p-5'>
+            <Loading />
+          </div>
+        :
+          chats.length > 0 ?
+            <div className="flex flex-col">
+              {chatsMap}
+            </div>
+          :
+            <div className="flex items-center justify-center w-full h-full">
+              <p className="text-center text-gray-400">Brak konwersacji</p>
+            </div>
+      }
     </div>
   );
 };
