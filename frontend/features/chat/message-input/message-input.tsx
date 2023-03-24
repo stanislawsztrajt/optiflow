@@ -6,18 +6,18 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 interface Iprops {
   loading: boolean;
-  noUserId: boolean;
+  disableInput: boolean;
   secondUserId: string;
 }
 
 const MessageInput: React.FC<Iprops> = ({
   loading,
   secondUserId,
-  noUserId,
+  disableInput,
 }) => {
   const { initialValues, sendMessage, validationSchema } = useMessageInput({
     secondUserId,
-    noUserId,
+    disableInput,
   });
 
   return (
@@ -31,13 +31,13 @@ const MessageInput: React.FC<Iprops> = ({
           <Field
             type="text"
             name="content"
-            disabled={loading || noUserId}
+            disabled={loading || disableInput}
             className="w-full h-full px-5 outline-none focus:shadow-inner focus:bg-gray-50"
             placeholder="Napisz wiadomość"
           />
           <button
             type="submit"
-            disabled={loading || noUserId}
+            disabled={loading || disableInput}
             className="h-full px-5 border-l hover:shadow-inner hover:bg-gray-50 disabled:hover:shadow-none disabled:bg-gray-50"
           >
             <FontAwesomeIcon icon={faPaperPlane} className="text-lg" />
