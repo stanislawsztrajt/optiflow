@@ -9,6 +9,7 @@ import usersServices from "@/utils/api/users-services";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
 import { privateLessonsSortingConfig } from "@/utils/data/sorting";
+import { privateLessonsFilters } from "@/utils/data/filtering";
 
 interface Iprops {
   params: {
@@ -59,6 +60,7 @@ export default function PrivateLessonsPage(props: Iprops) {
       initialElements={initialUserPrivateLessons}
       setElements={setUserPrivateLessons}
       sortingConfig={privateLessonsSortingConfig}
+      filteringConfig={privateLessonsFilters}
     />
   );
 }

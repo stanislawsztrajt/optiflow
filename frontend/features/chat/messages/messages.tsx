@@ -1,3 +1,4 @@
+import { Loading } from "@/features/ui";
 import { useUser } from "@/utils/hooks";
 import React from "react";
 import useMessages from "./use-messages";
@@ -7,8 +8,8 @@ interface Iprops {
 }
 
 const Messages: React.FC<Iprops> = ({ secondUserId }) => {
-  const { messages } = useMessages({ secondUserId });
   const { user } = useUser();
+  const { messages, loading } = useMessages({ secondUserId });
 
   const messagesMap = messages?.map((message, _index) => {
     return (
@@ -37,14 +38,19 @@ const Messages: React.FC<Iprops> = ({ secondUserId }) => {
 
   return (
     <div className="h-full max-h-full ">
-      {messages ? (
-        <div className="flex flex-col-reverse w-full h-full px-10 pb-5 overflow-y-scroll">
-          {messagesMap}
-          <p className="my-3 text-center text-gray-400">Początek konwersacji</p>
-        </div>
-      ) : (
-        <div>Ładowanie</div>
-      )}
+      <div className="flex flex-col-reverse w-full h-full px-5 pb-5 overflow-y-scroll md:px-10">
+        {
+          loading ?
+            <div className='flex items-center justify-center p-5'>
+              <Loading />
+            </div>
+          :
+            <>
+              {messagesMap}
+              <p className="my-3 text-center text-gray-400">Początek konwersacji</p>
+            </>
+        }
+      </div>
     </div>
   );
 };

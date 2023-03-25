@@ -8,11 +8,11 @@ import { Field, Form, Formik } from "formik";
 
 interface Iprops {
   secondUserId: string;
-  noUserId: boolean;
+  disableInput: boolean;
 }
 
 const useMessageInput = (props: Iprops) => {
-  const { secondUserId, noUserId } = props;
+  const { secondUserId, disableInput } = props;
 
   const initialValues: ImessageInputInitialValues = {
     content: "",
@@ -28,7 +28,7 @@ const useMessageInput = (props: Iprops) => {
     values: ImessageInputInitialValues,
     actions: ImessageInputFormikActions
   ) => {
-    if (!socket || noUserId) return;
+    if (!socket || disableInput) return;
 
     const message = {
       content: values.content,
