@@ -11,11 +11,13 @@ import { privateLessonsFilters } from "@/utils/data/filtering";
 export default function PrivateLessonsPage() {
   const [initialPrivateLessons, setInitialPrivateLessons] = useState<IprivateLesson[]>([]);
   const [privateLessons, setPrivateLessons] = useState<IprivateLesson[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     privateLessonsServices.findAll().then((res) => {
       setPrivateLessons(res);
       setInitialPrivateLessons(res);
+      setLoading(false)
     });
   }, []);
 
@@ -30,6 +32,7 @@ export default function PrivateLessonsPage() {
       setElements={setPrivateLessons}
       sortingConfig={privateLessonsSortingConfig}
       filteringConfig={privateLessonsFilters}
+      loading={loading}
     />
   );
 }

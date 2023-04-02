@@ -11,6 +11,7 @@ import FeaturesListLayout from "./features-list-layout";
 import Footer from "./footer";
 import FeaturesSearchFilterSort from "./features-search-filter";
 import FeaturesListSorting from "./features-list-sorting";
+import LoadingScreen from "./loading-screen";
 
 export {
   CreateFormLayout,
@@ -23,5 +24,6 @@ export {
   FeaturesListLayout,
   FeaturesSearchFilterSort,
   FeaturesListSorting,
-  Footer
+  Footer,
+  LoadingScreen
 };
