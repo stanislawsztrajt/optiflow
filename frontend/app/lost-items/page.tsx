@@ -11,11 +11,13 @@ import { lostItemsFilters } from "@/utils/data/filtering";
 export default function LostItemsPage() {
   const [initialLostItems, setInitialLostItems] = useState<IlostItem[]>([]);
   const [lostItems, setLostItems] = useState<IlostItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     lostItemsServices.findAll().then((res) => {
       setLostItems(res);
       setInitialLostItems(res);
+      setLoading(false)
     });
   }, []);
 
@@ -30,6 +32,7 @@ export default function LostItemsPage() {
       setElements={setLostItems}
       sortingConfig={lostItemsSortingConfig}
       filteringConfig={lostItemsFilters}
+      loading={loading}
     />
   );
 }

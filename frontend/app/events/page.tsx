@@ -10,11 +10,13 @@ import { eventsSortingConfig } from "@/utils/data/sorting";
 export default function EventsPage() {
   const [initialEvents, setInitialEvents] = useState<Ievent[]>([]);
   const [events, setEvents] = useState<Ievent[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     eventsServices.findAll().then((res) => {
       setEvents(res);
       setInitialEvents(res);
+      setLoading(false)
     });
   }, []);
 
@@ -29,6 +31,7 @@ export default function EventsPage() {
         initialElements={initialEvents}
         setElements={setEvents}
         sortingConfig={eventsSortingConfig}
+        loading={loading}
       />
     </>
   );

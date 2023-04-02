@@ -11,11 +11,13 @@ import { booksFilters } from "@/utils/data/filtering";
 export default function BooksPage() {
   const [initialBooks, setInitialBooks] = useState<Ibook[]>([]);
   const [books, setBooks] = useState<Ibook[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     booksServices.findAll().then((res) => {
       setBooks(res);
       setInitialBooks(res);
+      setLoading(false)
     });
   }, []);
 
@@ -31,6 +33,7 @@ export default function BooksPage() {
         setElements={setBooks}
         sortingConfig={booksSortingConfig}
         filteringConfig={booksFilters}
+        loading={loading}
       />
     </>
   );
