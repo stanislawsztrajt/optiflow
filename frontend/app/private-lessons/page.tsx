@@ -6,6 +6,7 @@ import privateLessonsServices from "@/utils/api/private-lessons-services";
 import PrivateLessonList from "@/features/private-lessons/private-lesson-list/private-lesson-list";
 import { FeaturesListLayout } from "@/features/ui";
 import { privateLessonsSortingConfig } from "@/utils/data/sorting";
+import { privateLessonsFilters } from "@/utils/data/filtering";
 
 export default function PrivateLessonsPage() {
   const [initialPrivateLessons, setInitialPrivateLessons] = useState<IprivateLesson[]>([]);
@@ -28,6 +29,7 @@ export default function PrivateLessonsPage() {
       initialElements={initialPrivateLessons}
       setElements={setPrivateLessons}
       sortingConfig={privateLessonsSortingConfig}
+      filteringConfig={privateLessonsFilters}
     />
   );
 }

@@ -6,11 +6,13 @@ import { Ichat, Imessage } from "../types";
 const useChatsList = () => {
   const { user } = useUser();
   const [chats, setChats] = useState<Ichat[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getChats = async () => {
     if (!user?._id) return;
     const userChats: Ichat[] = await chatServices.findChats(user._id);
 
+    setLoading(false)
     setChats(userChats);
   };
 
@@ -21,6 +23,7 @@ const useChatsList = () => {
 
   return {
     chats,
+    loading
   };
 };
 

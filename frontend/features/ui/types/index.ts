@@ -14,6 +14,7 @@ export interface IrulesAndLawLink {
 }
 
 export type featureElementsType = Ievent[] | IprivateLesson[] | Ibook[] | IlostItem[];
+export type featureElementType =  Ievent & IprivateLesson & IlostItem | Ibook
 
 export type featureSetElementsType = Dispatch<SetStateAction<Ibook[]>> | Dispatch<SetStateAction<Ievent[]>> | Dispatch<SetStateAction<IprivateLesson[]>> | Dispatch<SetStateAction<IlostItem[]>>;
 
@@ -21,4 +22,15 @@ export interface IsortingOption {
   text: string
   variable: string
   sort: string
+}
+
+export interface IfilteringOption {
+  label: string,
+  variable: string,
+  options: string[],
+}
+
+export interface IsingleFilter {
+  variable: string,
+  option: string
 }

@@ -5,6 +5,7 @@ import { IlostItem } from "@/features/lost-items/types";
 import { FeaturesListLayout } from "@/features/ui";
 import { Iuser } from "@/features/users/types";
 import usersServices from "@/utils/api/users-services";
+import { lostItemsFilters } from "@/utils/data/filtering";
 import { lostItemsSortingConfig } from "@/utils/data/sorting";
 import { useUser } from "@/utils/hooks";
 import { useRouter } from "next/navigation";
@@ -57,6 +58,7 @@ export default function LostItemsPage(props: Iprops) {
       initialElements={initialUserLostItems}
       setElements={setUserLostItems}
       sortingConfig={lostItemsSortingConfig}
+      filteringConfig={lostItemsFilters}
     />
   );
 }

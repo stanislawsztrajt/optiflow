@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PrivateLessonList: FC<Props> = ({ privateLessons, setPrivateLessons }) => {
-  const privateLessonsMap = privateLessons.map((privateLesson) => {
+  const privateLessonsMap = (privateLessons ?? []).map((privateLesson) => {
     return (
       <PrivateLessonItem
         key={privateLesson._id}

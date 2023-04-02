@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { featureElementsType, featureSetElementsType, IsortingOption } from '../types'
 import useFeaturesListSorting from './use-features-list-sorting'
 
