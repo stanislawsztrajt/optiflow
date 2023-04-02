@@ -22,6 +22,7 @@ export default function EventsPage(props: Iprops) {
   const [user, setUser] = useState<Iuser>();
   const [userEvents, setUserEvents] = useState<Ievent[]>([]);
   const [initialUserEvents, setInitialUserEvents] = useState<Ievent[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +38,7 @@ export default function EventsPage(props: Iprops) {
       );
       setUserEvents(userEvents);
       setInitialUserEvents(userEvents);
+      setLoading(false)
     };
     fetchData();
   }, []);
@@ -56,6 +58,7 @@ export default function EventsPage(props: Iprops) {
         initialElements={initialUserEvents}
         setElements={setUserEvents}
         sortingConfig={eventsSortingConfig}
+        loading={loading}
       />
     </>
   );

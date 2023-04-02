@@ -25,6 +25,7 @@ export default function PrivateLessonsPage(props: Iprops) {
   const [user, setUser] = useState<Iuser>();
   const [userPrivateLessons, setUserPrivateLessons] = useState<IprivateLesson[]>([]);
   const [initialUserPrivateLessons, setInitialUserPrivateLessons] = useState<IprivateLesson[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +43,7 @@ export default function PrivateLessonsPage(props: Iprops) {
 
       setUserPrivateLessons(userPrivateLessons);
       setInitialUserPrivateLessons(userPrivateLessons);
+      setLoading(false)
     };
     fetchData();
   }, []);
@@ -61,6 +63,7 @@ export default function PrivateLessonsPage(props: Iprops) {
       setElements={setUserPrivateLessons}
       sortingConfig={privateLessonsSortingConfig}
       filteringConfig={privateLessonsFilters}
+      loading={loading}
     />
   );
 }

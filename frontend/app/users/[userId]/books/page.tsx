@@ -25,6 +25,7 @@ export default function BooksPage(props: Iprops) {
   const [user, setUser] = useState<Iuser>();
   const [initialUserBooks, setInitialUserBooks] = useState<Ibook[]>([]);
   const [userBooks, setUserBooks] = useState<Ibook[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (params.userId === User?._id) {
@@ -46,6 +47,7 @@ export default function BooksPage(props: Iprops) {
 
       setUserBooks(userBooks);
       setInitialUserBooks(userBooks);
+      setLoading(false)
     };
     fetchData();
   }, []);
@@ -65,6 +67,7 @@ export default function BooksPage(props: Iprops) {
       setElements={setUserBooks}
       sortingConfig={booksSortingConfig}
       filteringConfig={booksFilters}
+      loading={loading}
     />
   );
 }
