@@ -56,7 +56,7 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h2 className="text-7xl">Sprzedaż i kupno książek</h2>
+          <h2 className="text-5xl">Sprzedaż i kupno książek</h2>
           <p className="mt-4 text-xl">
             {featuresContent.books}
           </p>
@@ -68,7 +68,7 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h3 className="text-7xl">Publikowanie i przeglądanie wydzarzeń</h3>
+          <h3 className="text-5xl">Publikowanie i przeglądanie wydzarzeń</h3>
           <p className="mt-4 text-xl">
             {featuresContent.events}
           </p>
@@ -80,7 +80,7 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h4 className="text-7xl">Publikowanie i znajdywanie zgubionych przedmiotów</h4>
+          <h4 className="text-5xl">Publikowanie i znajdywanie zgubionych przedmiotów</h4>
           <p className="mt-4 text-xl">
             {featuresContent.lostItems}
           </p>
@@ -92,7 +92,7 @@ export default function HeroPage() {
 
       <section className="hero-box">
         <div className="hero-text-element">
-          <h4 className="text-7xl">Udzielanie i pobieranie korepetycji</h4>
+          <h4 className="text-5xl">Udzielanie i pobieranie korepetycji</h4>
           <p className="mt-4 text-xl">
             {featuresContent.privateLessons}
           </p>
