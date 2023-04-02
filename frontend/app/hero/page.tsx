@@ -21,10 +21,10 @@ export default function HeroPage() {
     <main className="flex flex-col items-center p-8">
       <section className="hero-box">
         <div className="-mt-12 hero-text-element">
-          <h1 className="font-semibold text-7xl">
+          <h1 className="text-5xl font-semibold">
             {headersContent.homePage}
           </h1>
-          <p className="mt-4 text-xl">
+          <p className="mt-6 text-xl">
             {heroContent.h1Content}
           </p>
           <div className="flex flex-row gap-4 mt-2">
