@@ -27,7 +27,7 @@ export default function HeroPage() {
           <p className="mt-6 text-xl">
             {heroContent.h1Content}
           </p>
-          <div className="flex flex-row gap-4 mt-2">
+          <div className="flex flex-row gap-4 mt-4">
             {user ? (
               <Link href={"/dashboard"}>
                 <button type="button" className="menu-button lg:text">
